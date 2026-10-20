@@ -271,10 +271,60 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secContactEyebrow => 'تواصل';
 
   @override
-  String get secContactTitle => 'لنتحدث';
+  String get secContactTitle => 'لنبنِ شيئًا معًا.';
 
   @override
-  String get secContactIntro => 'منفتح على الفرص والتعاون — راسلني في أي وقت.';
+  String get secContactIntro =>
+      'منفتح على أدوار فلاتر، عن بُعد أو في القاهرة، ومشاريع مستقلة.';
+
+  @override
+  String get contactSayHi => 'قل مرحبًا 👋';
+
+  @override
+  String get contactEmail => 'البريد';
+
+  @override
+  String get contactPhone => 'الهاتف';
+
+  @override
+  String get contactCopied => 'تم النسخ!';
+
+  @override
+  String get contactPostcardTo => 'إلى';
+
+  @override
+  String get contactPostcardFrom => 'من مكتب';
+
+  @override
+  String get footerCopyright => '© ٢٠٢٦ أحمد هشام رسمي';
+
+  @override
+  String get footerBackToTop => 'العودة للأعلى';
+
+  @override
+  String get resumeDownload => 'تحميل PDF';
+
+  @override
+  String get resumeSummaryTitle => 'ملخص السيرة';
+
+  @override
+  String get resumeHeadline => 'مطوّر فلاتر';
+
+  @override
+  String get resumeIntro =>
+      'هندسة نظيفة، BLoC، REST، Firebase — أطلق للموبايل والويب وسطح المكتب من القاهرة.';
+
+  @override
+  String get resumeExperienceHeading => 'الخبرة';
+
+  @override
+  String get resumeEducationHeading => 'التعليم';
+
+  @override
+  String get resumeSkillsHeading => 'المهارات';
+
+  @override
+  String get resumeProjectsHeading => 'أعمال مختارة';
 
   @override
   String get sectionPlaceholder => 'المحتوى يصل في الخطوة التالية.';
@@ -445,19 +495,298 @@ class AppLocalizationsAr extends AppLocalizations {
   String get courseCenterlyOrg => 'CENTERLY';
 
   @override
-  String get caseGatherUpOverview => 'TODO_REPLACE';
+  String get caseBackToPortfolio => '← العودة للمعرض';
 
   @override
-  String get caseGatherUpProblem => 'TODO_REPLACE';
+  String get caseStudyLabel => 'دراسة حالة';
 
   @override
-  String get caseGatherUpSolution => 'TODO_REPLACE';
+  String get caseMetaRole => 'الدور';
 
   @override
-  String get caseGatherUpO1 => 'TODO_REPLACE';
+  String get caseMetaPlatform => 'المنصة';
 
   @override
-  String get caseGatherUpO2 => 'TODO_REPLACE';
+  String get caseMetaPeriod => 'الفترة';
+
+  @override
+  String get caseMetaStack => 'التقنيات';
+
+  @override
+  String get caseSecProduct => 'المنتج';
+
+  @override
+  String get caseSecProductTitle => 'ما هو GatherUp';
+
+  @override
+  String get caseSecProductIntro =>
+      'حلقة اجتماعية حول الاهتمامات المشتركة والفعاليات المحلية.';
+
+  @override
+  String get caseSecRole => 'دوري';
+
+  @override
+  String get caseSecRoleTitle => 'ما بنيته';
+
+  @override
+  String get caseSecRoleIntro => 'ميزات فلاتر على تطبيق GatherUp للموبايل.';
+
+  @override
+  String get caseSecArch => 'الهندسة';
+
+  @override
+  String get caseSecArchTitle => 'هندسة نظيفة من الأساس';
+
+  @override
+  String get caseSecArchIntro =>
+      'عرض، مجال، وبيانات — مع Provider والمستودعات.';
+
+  @override
+  String get caseSecScreens => 'التجربة';
+
+  @override
+  String get caseSecScreensTitle => 'الشاشات';
+
+  @override
+  String get caseSecScreensIntro =>
+      'اسحب إطارات الهاتف — عناصر نائبة حتى تصل الصور.';
+
+  @override
+  String get caseSecChallenges => 'التحديات';
+
+  @override
+  String get caseSecChallengesTitle => 'مشكلة ← حل ← تعلّم';
+
+  @override
+  String get caseSecChallengesIntro => 'احتكاك هندسي حقيقي من بناء GatherUp.';
+
+  @override
+  String get caseSecResults => 'النتائج';
+
+  @override
+  String get caseSecResultsTitle => 'الأثر';
+
+  @override
+  String get caseSecResultsIntro => 'الأرقام تظهر هنا عندما تكون حقيقية.';
+
+  @override
+  String get caseSecLearn => 'ما تعلّمته';
+
+  @override
+  String get caseSecLearnTitle => 'خلاصات';
+
+  @override
+  String get caseSecLearnIntro => 'ملاحظات قصيرة من إطلاق GatherUp.';
+
+  @override
+  String get caseChallengeProblem => 'المشكلة';
+
+  @override
+  String get caseChallengeSolution => 'الحل';
+
+  @override
+  String get caseChallengeLearned => 'ما تعلّمته';
+
+  @override
+  String get caseNextLabel => 'دراسة الحالة التالية';
+
+  @override
+  String get caseAllStudies => '← كل دراسات الحالة';
+
+  @override
+  String get caseComingSoon => 'دراسة الحالة قريبًا.';
+
+  @override
+  String get caseArchPresentation => 'العرض';
+
+  @override
+  String get caseArchDomain => 'المجال';
+
+  @override
+  String get caseArchData => 'البيانات';
+
+  @override
+  String get caseArchProvider => 'Provider';
+
+  @override
+  String get caseArchRepo => 'المستودع';
+
+  @override
+  String get caseArchRemote => 'بعيد';
+
+  @override
+  String get caseArchLocal => 'محلي';
+
+  @override
+  String get caseGatherUpHeroTagline =>
+      'التعارف عبر الاهتمامات المشتركة، لا الملفات الشخصية.';
+
+  @override
+  String get caseGatherUpCredit =>
+      'المنتج والتصميم من فريق GatherUp (TODO: إضافة الأسماء). بنيت ميزات فلاتر لتطبيق الموبايل.';
+
+  @override
+  String get caseGatherUpRoleMeta => 'مطوّر فلاتر مبتدئ';
+
+  @override
+  String get caseGatherUpPlatformMeta => 'iOS · Android · Web';
+
+  @override
+  String get caseGatherUpPeriodMeta => '٠٦/٢٠٢٦ حتى الآن';
+
+  @override
+  String get caseGatherUpStackMeta =>
+      'Flutter · REST · Firebase (FCM) · Google Maps';
+
+  @override
+  String get caseGatherUpProductP1 =>
+      'GatherUp تطبيق اجتماعي لاكتشاف والانضمام وإدارة الفعاليات المحلية حول الاهتمامات المشتركة.';
+
+  @override
+  String get caseGatherUpProductP2 =>
+      'يلتقي الناس عبر ما يهتمون به — هوايات ومشاهد وتجمعات قريبة — لا عبر ملفات ثابتة وحدها.';
+
+  @override
+  String get caseGatherUpLoopDiscover => 'اكتشف';
+
+  @override
+  String get caseGatherUpLoopDiscoverD =>
+      'تصفّح فعاليات محلية حسب الاهتمام والمكان.';
+
+  @override
+  String get caseGatherUpLoopJoin => 'انضم';
+
+  @override
+  String get caseGatherUpLoopJoinD => 'احجز مقعدًا وأكّد الحضور في التدفق.';
+
+  @override
+  String get caseGatherUpLoopMeet => 'التقِ';
+
+  @override
+  String get caseGatherUpLoopMeetD =>
+      'احضر مع الخرائط والتوقيت وسياق الفعالية.';
+
+  @override
+  String get caseGatherUpLoopConnect => 'تواصل';
+
+  @override
+  String get caseGatherUpLoopConnectD =>
+      'دردش وابقَ على تواصل مع من التقيت بهم.';
+
+  @override
+  String get caseGatherUpRoleBooking => 'تدفق حجز الفعاليات';
+
+  @override
+  String get caseGatherUpRoleBookingD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleAuth => 'المصادقة وتفويض JWT';
+
+  @override
+  String get caseGatherUpRoleAuthD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleRest => 'تكامل REST';
+
+  @override
+  String get caseGatherUpRoleRestD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleCache => 'تخزين مؤقت محلي';
+
+  @override
+  String get caseGatherUpRoleCacheD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleMaps => 'تكامل خرائط جوجل';
+
+  @override
+  String get caseGatherUpRoleMapsD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleFcm => 'إشعارات الدفع (FCM)';
+
+  @override
+  String get caseGatherUpRoleFcmD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleChat => 'دردشة فورية';
+
+  @override
+  String get caseGatherUpRoleChatD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleUi => 'واجهة متجاوبة عبر المنصات';
+
+  @override
+  String get caseGatherUpRoleUiD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpArchWhy =>
+      'الهندسة النظيفة تفصل الواجهة وقواعد العمل ومصادر البيانات — فيمكن للحجز والمصادقة والخرائط والدردشة أن تنمو دون تشابك. Provider يدير الحالة عند حافة العرض؛ والمستودعات تتحدث مع واجهات بعيدة وتخزين محلي خلف طبقة مجال مستقرة.';
+
+  @override
+  String get caseGatherUpScrDiscover => 'اكتشف';
+
+  @override
+  String get caseGatherUpScrDetails => 'تفاصيل الفعالية';
+
+  @override
+  String get caseGatherUpScrBook => 'احجز';
+
+  @override
+  String get caseGatherUpScrChat => 'دردشة';
+
+  @override
+  String get caseGatherUpScrMap => 'خريطة';
+
+  @override
+  String get caseGatherUpScrNotif => 'إشعارات';
+
+  @override
+  String get caseGatherUpCh1Problem => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh1Solution => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh1Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh2Problem => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh2Solution => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh2Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh3Problem => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh3Solution => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh3Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpStatUsers => 'المستخدمون';
+
+  @override
+  String get caseGatherUpStatBookings => 'الحجوزات';
+
+  @override
+  String get caseGatherUpStatRating => 'التقييم';
+
+  @override
+  String get caseGatherUpLearn1 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpLearn2 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpLearn3 => 'TODO_REPLACE';
 
   @override
   String get langArabic => 'العربية (لغة أم)';

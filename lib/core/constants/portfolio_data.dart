@@ -117,20 +117,108 @@ class Course {
   final String? url;
 }
 
+class CaseStudyLoopStep {
+  const CaseStudyLoopStep({
+    required this.titleKey,
+    required this.detailKey,
+  });
+
+  final String titleKey;
+  final String detailKey;
+}
+
+class CaseStudyRoleNote {
+  const CaseStudyRoleNote({
+    required this.titleKey,
+    required this.icon,
+    this.detailKey,
+  });
+
+  final String titleKey;
+  final String icon;
+  final String? detailKey;
+}
+
+class CaseStudyScreen {
+  const CaseStudyScreen({
+    required this.index,
+    required this.captionKey,
+  });
+
+  final int index;
+  final String captionKey;
+
+  String assetPath(String slug) =>
+      'assets/images/projects/$slug/screens/${index.toString().padLeft(2, '0')}.png';
+}
+
+class CaseStudyChallenge {
+  const CaseStudyChallenge({
+    required this.problemKey,
+    required this.solutionKey,
+    required this.learnedKey,
+  });
+
+  final String problemKey;
+  final String solutionKey;
+  final String learnedKey;
+}
+
+class CaseStudyStat {
+  const CaseStudyStat({
+    required this.labelKey,
+    this.value,
+  });
+
+  final String labelKey;
+
+  /// Null / TODO → sticker stays hidden.
+  final String? value;
+}
+
+/// Full case-study content for `/work/:slug`. Add a new entry + images to ship another.
 class CaseStudy {
   const CaseStudy({
     required this.projectSlug,
-    required this.overviewKey,
-    this.problemKey,
-    this.solutionKey,
-    this.outcomeKeys = const [],
+    required this.heroTaglineKey,
+    required this.heroTags,
+    required this.creditKey,
+    required this.roleMetaKey,
+    required this.platformMetaKey,
+    required this.periodMetaKey,
+    required this.stackMetaKey,
+    required this.productP1Key,
+    required this.productP2Key,
+    required this.loopSteps,
+    required this.roleNotes,
+    required this.architectureWhyKey,
+    required this.screens,
+    this.challenges = const [],
+    this.stats = const [],
+    this.learningKeys = const [],
+    this.nextSlug,
   });
 
   final String projectSlug;
-  final String overviewKey;
-  final String? problemKey;
-  final String? solutionKey;
-  final List<String> outcomeKeys;
+  final String heroTaglineKey;
+  final List<String> heroTags;
+  final String creditKey;
+  final String roleMetaKey;
+  final String platformMetaKey;
+  final String periodMetaKey;
+  final String stackMetaKey;
+  final String productP1Key;
+  final String productP2Key;
+  final List<CaseStudyLoopStep> loopSteps;
+  final List<CaseStudyRoleNote> roleNotes;
+  final String architectureWhyKey;
+  final List<CaseStudyScreen> screens;
+  final List<CaseStudyChallenge> challenges;
+  final List<CaseStudyStat> stats;
+  final List<String> learningKeys;
+  final String? nextSlug;
+
+  String get heroImagePath => 'assets/images/projects/$projectSlug/hero.png';
 }
 
 class SocialLink {
@@ -435,12 +523,127 @@ abstract final class PortfolioData {
   static const caseStudies = <CaseStudy>[
     CaseStudy(
       projectSlug: 'gatherup',
-      overviewKey: 'caseGatherUpOverview',
-      problemKey: 'caseGatherUpProblem',
-      solutionKey: 'caseGatherUpSolution',
-      outcomeKeys: ['caseGatherUpO1', 'caseGatherUpO2'],
+      heroTaglineKey: 'caseGatherUpHeroTagline',
+      heroTags: [
+        'Flutter',
+        'Clean Architecture',
+        'Provider',
+        'REST',
+        'FCM',
+      ],
+      creditKey: 'caseGatherUpCredit',
+      roleMetaKey: 'caseGatherUpRoleMeta',
+      platformMetaKey: 'caseGatherUpPlatformMeta',
+      periodMetaKey: 'caseGatherUpPeriodMeta',
+      stackMetaKey: 'caseGatherUpStackMeta',
+      productP1Key: 'caseGatherUpProductP1',
+      productP2Key: 'caseGatherUpProductP2',
+      loopSteps: [
+        CaseStudyLoopStep(
+          titleKey: 'caseGatherUpLoopDiscover',
+          detailKey: 'caseGatherUpLoopDiscoverD',
+        ),
+        CaseStudyLoopStep(
+          titleKey: 'caseGatherUpLoopJoin',
+          detailKey: 'caseGatherUpLoopJoinD',
+        ),
+        CaseStudyLoopStep(
+          titleKey: 'caseGatherUpLoopMeet',
+          detailKey: 'caseGatherUpLoopMeetD',
+        ),
+        CaseStudyLoopStep(
+          titleKey: 'caseGatherUpLoopConnect',
+          detailKey: 'caseGatherUpLoopConnectD',
+        ),
+      ],
+      roleNotes: [
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleBooking',
+          icon: 'event',
+          detailKey: 'caseGatherUpRoleBookingD',
+        ),
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleAuth',
+          icon: 'lock',
+          detailKey: 'caseGatherUpRoleAuthD',
+        ),
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleRest',
+          icon: 'api',
+          detailKey: 'caseGatherUpRoleRestD',
+        ),
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleCache',
+          icon: 'storage',
+          detailKey: 'caseGatherUpRoleCacheD',
+        ),
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleMaps',
+          icon: 'map',
+          detailKey: 'caseGatherUpRoleMapsD',
+        ),
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleFcm',
+          icon: 'notifications',
+          detailKey: 'caseGatherUpRoleFcmD',
+        ),
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleChat',
+          icon: 'chat',
+          detailKey: 'caseGatherUpRoleChatD',
+        ),
+        CaseStudyRoleNote(
+          titleKey: 'caseGatherUpRoleUi',
+          icon: 'devices',
+          detailKey: 'caseGatherUpRoleUiD',
+        ),
+      ],
+      architectureWhyKey: 'caseGatherUpArchWhy',
+      screens: [
+        CaseStudyScreen(index: 1, captionKey: 'caseGatherUpScrDiscover'),
+        CaseStudyScreen(index: 2, captionKey: 'caseGatherUpScrDetails'),
+        CaseStudyScreen(index: 3, captionKey: 'caseGatherUpScrBook'),
+        CaseStudyScreen(index: 4, captionKey: 'caseGatherUpScrChat'),
+        CaseStudyScreen(index: 5, captionKey: 'caseGatherUpScrMap'),
+        CaseStudyScreen(index: 6, captionKey: 'caseGatherUpScrNotif'),
+      ],
+      challenges: [
+        CaseStudyChallenge(
+          problemKey: 'caseGatherUpCh1Problem',
+          solutionKey: 'caseGatherUpCh1Solution',
+          learnedKey: 'caseGatherUpCh1Learned',
+        ),
+        CaseStudyChallenge(
+          problemKey: 'caseGatherUpCh2Problem',
+          solutionKey: 'caseGatherUpCh2Solution',
+          learnedKey: 'caseGatherUpCh2Learned',
+        ),
+        CaseStudyChallenge(
+          problemKey: 'caseGatherUpCh3Problem',
+          solutionKey: 'caseGatherUpCh3Solution',
+          learnedKey: 'caseGatherUpCh3Learned',
+        ),
+      ],
+      stats: [
+        CaseStudyStat(labelKey: 'caseGatherUpStatUsers', value: null),
+        CaseStudyStat(labelKey: 'caseGatherUpStatBookings', value: null),
+        CaseStudyStat(labelKey: 'caseGatherUpStatRating', value: null),
+      ],
+      learningKeys: [
+        'caseGatherUpLearn1',
+        'caseGatherUpLearn2',
+        'caseGatherUpLearn3',
+      ],
+      nextSlug: 'awwaab',
     ),
   ];
+
+  static CaseStudy? caseStudyBySlug(String slug) {
+    for (final c in caseStudies) {
+      if (c.projectSlug == slug) return c;
+    }
+    return null;
+  }
 }
 
 /// GlobalKeys for scrolling to Selected Work cards (registered when section mounts).

@@ -272,11 +272,60 @@ class AppLocalizationsEn extends AppLocalizations {
   String get secContactEyebrow => 'CONTACT';
 
   @override
-  String get secContactTitle => 'Let’s talk';
+  String get secContactTitle => 'Let’s build something together.';
 
   @override
   String get secContactIntro =>
-      'Open to roles and collaborations — reach out anytime.';
+      'Open to Flutter roles, remote or in Cairo, and freelance projects.';
+
+  @override
+  String get contactSayHi => 'SAY HI 👋';
+
+  @override
+  String get contactEmail => 'Email';
+
+  @override
+  String get contactPhone => 'Phone';
+
+  @override
+  String get contactCopied => 'Copied!';
+
+  @override
+  String get contactPostcardTo => 'TO';
+
+  @override
+  String get contactPostcardFrom => 'FROM THE DESK OF';
+
+  @override
+  String get footerCopyright => '© 2026 Ahmed Hisham Rasmy';
+
+  @override
+  String get footerBackToTop => 'BACK TO TOP';
+
+  @override
+  String get resumeDownload => 'Download PDF';
+
+  @override
+  String get resumeSummaryTitle => 'CV summary';
+
+  @override
+  String get resumeHeadline => 'Flutter Developer';
+
+  @override
+  String get resumeIntro =>
+      'Clean Architecture, BLoC, REST, Firebase — shipping mobile, web, and desktop from Cairo.';
+
+  @override
+  String get resumeExperienceHeading => 'Experience';
+
+  @override
+  String get resumeEducationHeading => 'Education';
+
+  @override
+  String get resumeSkillsHeading => 'Skills';
+
+  @override
+  String get resumeProjectsHeading => 'Selected work';
 
   @override
   String get sectionPlaceholder => 'Content landing in the next step.';
@@ -453,19 +502,301 @@ class AppLocalizationsEn extends AppLocalizations {
   String get courseCenterlyOrg => 'CENTERLY';
 
   @override
-  String get caseGatherUpOverview => 'TODO_REPLACE';
+  String get caseBackToPortfolio => '← Back to Portfolio';
 
   @override
-  String get caseGatherUpProblem => 'TODO_REPLACE';
+  String get caseStudyLabel => 'CASE STUDY';
 
   @override
-  String get caseGatherUpSolution => 'TODO_REPLACE';
+  String get caseMetaRole => 'Role';
 
   @override
-  String get caseGatherUpO1 => 'TODO_REPLACE';
+  String get caseMetaPlatform => 'Platform';
 
   @override
-  String get caseGatherUpO2 => 'TODO_REPLACE';
+  String get caseMetaPeriod => 'Period';
+
+  @override
+  String get caseMetaStack => 'Stack';
+
+  @override
+  String get caseSecProduct => 'PRODUCT';
+
+  @override
+  String get caseSecProductTitle => 'What GatherUp is';
+
+  @override
+  String get caseSecProductIntro =>
+      'A social loop built around shared interests and local events.';
+
+  @override
+  String get caseSecRole => 'MY ROLE';
+
+  @override
+  String get caseSecRoleTitle => 'What I built';
+
+  @override
+  String get caseSecRoleIntro =>
+      'Flutter features shipped on the GatherUp mobile app.';
+
+  @override
+  String get caseSecArch => 'ARCHITECTURE';
+
+  @override
+  String get caseSecArchTitle => 'Clean Architecture under the hood';
+
+  @override
+  String get caseSecArchIntro =>
+      'Presentation, Domain, and Data — held together with Provider and repositories.';
+
+  @override
+  String get caseSecScreens => 'EXPERIENCE';
+
+  @override
+  String get caseSecScreensTitle => 'Screens';
+
+  @override
+  String get caseSecScreensIntro =>
+      'Drag through the phone frames — placeholders until shots land.';
+
+  @override
+  String get caseSecChallenges => 'CHALLENGES';
+
+  @override
+  String get caseSecChallengesTitle => 'Problem → Solution → Learned';
+
+  @override
+  String get caseSecChallengesIntro =>
+      'Real engineering friction from the GatherUp build.';
+
+  @override
+  String get caseSecResults => 'RESULTS';
+
+  @override
+  String get caseSecResultsTitle => 'Impact';
+
+  @override
+  String get caseSecResultsIntro => 'Numbers go here when they’re real.';
+
+  @override
+  String get caseSecLearn => 'WHAT I LEARNED';
+
+  @override
+  String get caseSecLearnTitle => 'Takeaways';
+
+  @override
+  String get caseSecLearnIntro => 'Short notes from shipping GatherUp.';
+
+  @override
+  String get caseChallengeProblem => 'Problem';
+
+  @override
+  String get caseChallengeSolution => 'Solution';
+
+  @override
+  String get caseChallengeLearned => 'Learned';
+
+  @override
+  String get caseNextLabel => 'Next case study';
+
+  @override
+  String get caseAllStudies => '← All case studies';
+
+  @override
+  String get caseComingSoon => 'Case study coming soon.';
+
+  @override
+  String get caseArchPresentation => 'Presentation';
+
+  @override
+  String get caseArchDomain => 'Domain';
+
+  @override
+  String get caseArchData => 'Data';
+
+  @override
+  String get caseArchProvider => 'Provider';
+
+  @override
+  String get caseArchRepo => 'Repository';
+
+  @override
+  String get caseArchRemote => 'Remote';
+
+  @override
+  String get caseArchLocal => 'Local';
+
+  @override
+  String get caseGatherUpHeroTagline =>
+      'Meet through shared interests, not profiles.';
+
+  @override
+  String get caseGatherUpCredit =>
+      'Product & design by the GatherUp team (TODO: add names). I built Flutter features for the mobile app.';
+
+  @override
+  String get caseGatherUpRoleMeta => 'Junior Flutter Developer';
+
+  @override
+  String get caseGatherUpPlatformMeta => 'iOS · Android · Web';
+
+  @override
+  String get caseGatherUpPeriodMeta => '06/2026 to present';
+
+  @override
+  String get caseGatherUpStackMeta =>
+      'Flutter · REST · Firebase (FCM) · Google Maps';
+
+  @override
+  String get caseGatherUpProductP1 =>
+      'GatherUp is a social app for discovering, joining, and managing local events around shared interests.';
+
+  @override
+  String get caseGatherUpProductP2 =>
+      'People meet through what they care about — hobbies, scenes, and nearby gatherings — not through static profiles alone.';
+
+  @override
+  String get caseGatherUpLoopDiscover => 'Discover';
+
+  @override
+  String get caseGatherUpLoopDiscoverD =>
+      'Browse local events filtered by interest and place.';
+
+  @override
+  String get caseGatherUpLoopJoin => 'Join';
+
+  @override
+  String get caseGatherUpLoopJoinD =>
+      'Book a spot and confirm attendance in-flow.';
+
+  @override
+  String get caseGatherUpLoopMeet => 'Meet';
+
+  @override
+  String get caseGatherUpLoopMeetD =>
+      'Show up with maps, timing, and event context.';
+
+  @override
+  String get caseGatherUpLoopConnect => 'Connect';
+
+  @override
+  String get caseGatherUpLoopConnectD =>
+      'Chat and stay linked with people you meet.';
+
+  @override
+  String get caseGatherUpRoleBooking => 'Event booking flow';
+
+  @override
+  String get caseGatherUpRoleBookingD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleAuth => 'Authentication & JWT authorization';
+
+  @override
+  String get caseGatherUpRoleAuthD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleRest => 'REST API integration';
+
+  @override
+  String get caseGatherUpRoleRestD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleCache => 'Local caching';
+
+  @override
+  String get caseGatherUpRoleCacheD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleMaps => 'Google Maps integration';
+
+  @override
+  String get caseGatherUpRoleMapsD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleFcm => 'Push notifications (FCM)';
+
+  @override
+  String get caseGatherUpRoleFcmD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleChat => 'Real-time chat';
+
+  @override
+  String get caseGatherUpRoleChatD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpRoleUi => 'Responsive cross-platform UI';
+
+  @override
+  String get caseGatherUpRoleUiD => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpArchWhy =>
+      'Clean Architecture keeps UI, business rules, and data sources separate — so booking, auth, maps, and chat can grow without tangling. Provider owns state at the presentation edge; repositories talk to remote APIs and local caches behind a stable domain layer.';
+
+  @override
+  String get caseGatherUpScrDiscover => 'Discover';
+
+  @override
+  String get caseGatherUpScrDetails => 'Event details';
+
+  @override
+  String get caseGatherUpScrBook => 'Book';
+
+  @override
+  String get caseGatherUpScrChat => 'Chat';
+
+  @override
+  String get caseGatherUpScrMap => 'Map';
+
+  @override
+  String get caseGatherUpScrNotif => 'Notifications';
+
+  @override
+  String get caseGatherUpCh1Problem => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh1Solution => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh1Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh2Problem => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh2Solution => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh2Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh3Problem => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh3Solution => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpCh3Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpStatUsers => 'Users';
+
+  @override
+  String get caseGatherUpStatBookings => 'Bookings';
+
+  @override
+  String get caseGatherUpStatRating => 'Rating';
+
+  @override
+  String get caseGatherUpLearn1 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpLearn2 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpLearn3 => 'TODO_REPLACE';
 
   @override
   String get langArabic => 'Arabic (Native)';

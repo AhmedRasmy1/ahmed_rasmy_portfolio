@@ -71,6 +71,7 @@ flutter:
     - assets/content/
     - assets/images/
     - assets/images/projects/gatherup/
+    - assets/images/projects/gatherup/screens/
     - assets/images/projects/awwaab/
     - assets/images/projects/elmohandes/
     - assets/images/projects/flowery/
@@ -78,6 +79,7 @@ flutter:
     - assets/images/about/
     - assets/images/logos/
     - assets/icons/
+    - assets/resume/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

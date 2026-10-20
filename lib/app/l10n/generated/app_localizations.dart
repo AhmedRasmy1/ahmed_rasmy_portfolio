@@ -611,14 +611,110 @@ abstract class AppLocalizations {
   /// No description provided for @secContactTitle.
   ///
   /// In en, this message translates to:
-  /// **'Let’s talk'**
+  /// **'Let’s build something together.'**
   String get secContactTitle;
 
   /// No description provided for @secContactIntro.
   ///
   /// In en, this message translates to:
-  /// **'Open to roles and collaborations — reach out anytime.'**
+  /// **'Open to Flutter roles, remote or in Cairo, and freelance projects.'**
   String get secContactIntro;
+
+  /// No description provided for @contactSayHi.
+  ///
+  /// In en, this message translates to:
+  /// **'SAY HI 👋'**
+  String get contactSayHi;
+
+  /// No description provided for @contactEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get contactEmail;
+
+  /// No description provided for @contactPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get contactPhone;
+
+  /// No description provided for @contactCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied!'**
+  String get contactCopied;
+
+  /// No description provided for @contactPostcardTo.
+  ///
+  /// In en, this message translates to:
+  /// **'TO'**
+  String get contactPostcardTo;
+
+  /// No description provided for @contactPostcardFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'FROM THE DESK OF'**
+  String get contactPostcardFrom;
+
+  /// No description provided for @footerCopyright.
+  ///
+  /// In en, this message translates to:
+  /// **'© 2026 Ahmed Hisham Rasmy'**
+  String get footerCopyright;
+
+  /// No description provided for @footerBackToTop.
+  ///
+  /// In en, this message translates to:
+  /// **'BACK TO TOP'**
+  String get footerBackToTop;
+
+  /// No description provided for @resumeDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Download PDF'**
+  String get resumeDownload;
+
+  /// No description provided for @resumeSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CV summary'**
+  String get resumeSummaryTitle;
+
+  /// No description provided for @resumeHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Developer'**
+  String get resumeHeadline;
+
+  /// No description provided for @resumeIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean Architecture, BLoC, REST, Firebase — shipping mobile, web, and desktop from Cairo.'**
+  String get resumeIntro;
+
+  /// No description provided for @resumeExperienceHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get resumeExperienceHeading;
+
+  /// No description provided for @resumeEducationHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Education'**
+  String get resumeEducationHeading;
+
+  /// No description provided for @resumeSkillsHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills'**
+  String get resumeSkillsHeading;
+
+  /// No description provided for @resumeProjectsHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected work'**
+  String get resumeProjectsHeading;
 
   /// No description provided for @sectionPlaceholder.
   ///
@@ -938,35 +1034,569 @@ abstract class AppLocalizations {
   /// **'CENTERLY'**
   String get courseCenterlyOrg;
 
-  /// No description provided for @caseGatherUpOverview.
+  /// No description provided for @caseBackToPortfolio.
   ///
   /// In en, this message translates to:
-  /// **'TODO_REPLACE'**
-  String get caseGatherUpOverview;
+  /// **'← Back to Portfolio'**
+  String get caseBackToPortfolio;
 
-  /// No description provided for @caseGatherUpProblem.
+  /// No description provided for @caseStudyLabel.
   ///
   /// In en, this message translates to:
-  /// **'TODO_REPLACE'**
-  String get caseGatherUpProblem;
+  /// **'CASE STUDY'**
+  String get caseStudyLabel;
 
-  /// No description provided for @caseGatherUpSolution.
+  /// No description provided for @caseMetaRole.
   ///
   /// In en, this message translates to:
-  /// **'TODO_REPLACE'**
-  String get caseGatherUpSolution;
+  /// **'Role'**
+  String get caseMetaRole;
 
-  /// No description provided for @caseGatherUpO1.
+  /// No description provided for @caseMetaPlatform.
   ///
   /// In en, this message translates to:
-  /// **'TODO_REPLACE'**
-  String get caseGatherUpO1;
+  /// **'Platform'**
+  String get caseMetaPlatform;
 
-  /// No description provided for @caseGatherUpO2.
+  /// No description provided for @caseMetaPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get caseMetaPeriod;
+
+  /// No description provided for @caseMetaStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Stack'**
+  String get caseMetaStack;
+
+  /// No description provided for @caseSecProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'PRODUCT'**
+  String get caseSecProduct;
+
+  /// No description provided for @caseSecProductTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What GatherUp is'**
+  String get caseSecProductTitle;
+
+  /// No description provided for @caseSecProductIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'A social loop built around shared interests and local events.'**
+  String get caseSecProductIntro;
+
+  /// No description provided for @caseSecRole.
+  ///
+  /// In en, this message translates to:
+  /// **'MY ROLE'**
+  String get caseSecRole;
+
+  /// No description provided for @caseSecRoleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What I built'**
+  String get caseSecRoleTitle;
+
+  /// No description provided for @caseSecRoleIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter features shipped on the GatherUp mobile app.'**
+  String get caseSecRoleIntro;
+
+  /// No description provided for @caseSecArch.
+  ///
+  /// In en, this message translates to:
+  /// **'ARCHITECTURE'**
+  String get caseSecArch;
+
+  /// No description provided for @caseSecArchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean Architecture under the hood'**
+  String get caseSecArchTitle;
+
+  /// No description provided for @caseSecArchIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Presentation, Domain, and Data — held together with Provider and repositories.'**
+  String get caseSecArchIntro;
+
+  /// No description provided for @caseSecScreens.
+  ///
+  /// In en, this message translates to:
+  /// **'EXPERIENCE'**
+  String get caseSecScreens;
+
+  /// No description provided for @caseSecScreensTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Screens'**
+  String get caseSecScreensTitle;
+
+  /// No description provided for @caseSecScreensIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag through the phone frames — placeholders until shots land.'**
+  String get caseSecScreensIntro;
+
+  /// No description provided for @caseSecChallenges.
+  ///
+  /// In en, this message translates to:
+  /// **'CHALLENGES'**
+  String get caseSecChallenges;
+
+  /// No description provided for @caseSecChallengesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Problem → Solution → Learned'**
+  String get caseSecChallengesTitle;
+
+  /// No description provided for @caseSecChallengesIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Real engineering friction from the GatherUp build.'**
+  String get caseSecChallengesIntro;
+
+  /// No description provided for @caseSecResults.
+  ///
+  /// In en, this message translates to:
+  /// **'RESULTS'**
+  String get caseSecResults;
+
+  /// No description provided for @caseSecResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Impact'**
+  String get caseSecResultsTitle;
+
+  /// No description provided for @caseSecResultsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Numbers go here when they’re real.'**
+  String get caseSecResultsIntro;
+
+  /// No description provided for @caseSecLearn.
+  ///
+  /// In en, this message translates to:
+  /// **'WHAT I LEARNED'**
+  String get caseSecLearn;
+
+  /// No description provided for @caseSecLearnTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Takeaways'**
+  String get caseSecLearnTitle;
+
+  /// No description provided for @caseSecLearnIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Short notes from shipping GatherUp.'**
+  String get caseSecLearnIntro;
+
+  /// No description provided for @caseChallengeProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Problem'**
+  String get caseChallengeProblem;
+
+  /// No description provided for @caseChallengeSolution.
+  ///
+  /// In en, this message translates to:
+  /// **'Solution'**
+  String get caseChallengeSolution;
+
+  /// No description provided for @caseChallengeLearned.
+  ///
+  /// In en, this message translates to:
+  /// **'Learned'**
+  String get caseChallengeLearned;
+
+  /// No description provided for @caseNextLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Next case study'**
+  String get caseNextLabel;
+
+  /// No description provided for @caseAllStudies.
+  ///
+  /// In en, this message translates to:
+  /// **'← All case studies'**
+  String get caseAllStudies;
+
+  /// No description provided for @caseComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Case study coming soon.'**
+  String get caseComingSoon;
+
+  /// No description provided for @caseArchPresentation.
+  ///
+  /// In en, this message translates to:
+  /// **'Presentation'**
+  String get caseArchPresentation;
+
+  /// No description provided for @caseArchDomain.
+  ///
+  /// In en, this message translates to:
+  /// **'Domain'**
+  String get caseArchDomain;
+
+  /// No description provided for @caseArchData.
+  ///
+  /// In en, this message translates to:
+  /// **'Data'**
+  String get caseArchData;
+
+  /// No description provided for @caseArchProvider.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider'**
+  String get caseArchProvider;
+
+  /// No description provided for @caseArchRepo.
+  ///
+  /// In en, this message translates to:
+  /// **'Repository'**
+  String get caseArchRepo;
+
+  /// No description provided for @caseArchRemote.
+  ///
+  /// In en, this message translates to:
+  /// **'Remote'**
+  String get caseArchRemote;
+
+  /// No description provided for @caseArchLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'Local'**
+  String get caseArchLocal;
+
+  /// No description provided for @caseGatherUpHeroTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Meet through shared interests, not profiles.'**
+  String get caseGatherUpHeroTagline;
+
+  /// No description provided for @caseGatherUpCredit.
+  ///
+  /// In en, this message translates to:
+  /// **'Product & design by the GatherUp team (TODO: add names). I built Flutter features for the mobile app.'**
+  String get caseGatherUpCredit;
+
+  /// No description provided for @caseGatherUpRoleMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'Junior Flutter Developer'**
+  String get caseGatherUpRoleMeta;
+
+  /// No description provided for @caseGatherUpPlatformMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS · Android · Web'**
+  String get caseGatherUpPlatformMeta;
+
+  /// No description provided for @caseGatherUpPeriodMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'06/2026 to present'**
+  String get caseGatherUpPeriodMeta;
+
+  /// No description provided for @caseGatherUpStackMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter · REST · Firebase (FCM) · Google Maps'**
+  String get caseGatherUpStackMeta;
+
+  /// No description provided for @caseGatherUpProductP1.
+  ///
+  /// In en, this message translates to:
+  /// **'GatherUp is a social app for discovering, joining, and managing local events around shared interests.'**
+  String get caseGatherUpProductP1;
+
+  /// No description provided for @caseGatherUpProductP2.
+  ///
+  /// In en, this message translates to:
+  /// **'People meet through what they care about — hobbies, scenes, and nearby gatherings — not through static profiles alone.'**
+  String get caseGatherUpProductP2;
+
+  /// No description provided for @caseGatherUpLoopDiscover.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover'**
+  String get caseGatherUpLoopDiscover;
+
+  /// No description provided for @caseGatherUpLoopDiscoverD.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse local events filtered by interest and place.'**
+  String get caseGatherUpLoopDiscoverD;
+
+  /// No description provided for @caseGatherUpLoopJoin.
+  ///
+  /// In en, this message translates to:
+  /// **'Join'**
+  String get caseGatherUpLoopJoin;
+
+  /// No description provided for @caseGatherUpLoopJoinD.
+  ///
+  /// In en, this message translates to:
+  /// **'Book a spot and confirm attendance in-flow.'**
+  String get caseGatherUpLoopJoinD;
+
+  /// No description provided for @caseGatherUpLoopMeet.
+  ///
+  /// In en, this message translates to:
+  /// **'Meet'**
+  String get caseGatherUpLoopMeet;
+
+  /// No description provided for @caseGatherUpLoopMeetD.
+  ///
+  /// In en, this message translates to:
+  /// **'Show up with maps, timing, and event context.'**
+  String get caseGatherUpLoopMeetD;
+
+  /// No description provided for @caseGatherUpLoopConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get caseGatherUpLoopConnect;
+
+  /// No description provided for @caseGatherUpLoopConnectD.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat and stay linked with people you meet.'**
+  String get caseGatherUpLoopConnectD;
+
+  /// No description provided for @caseGatherUpRoleBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Event booking flow'**
+  String get caseGatherUpRoleBooking;
+
+  /// No description provided for @caseGatherUpRoleBookingD.
   ///
   /// In en, this message translates to:
   /// **'TODO_REPLACE'**
-  String get caseGatherUpO2;
+  String get caseGatherUpRoleBookingD;
+
+  /// No description provided for @caseGatherUpRoleAuth.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication & JWT authorization'**
+  String get caseGatherUpRoleAuth;
+
+  /// No description provided for @caseGatherUpRoleAuthD.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpRoleAuthD;
+
+  /// No description provided for @caseGatherUpRoleRest.
+  ///
+  /// In en, this message translates to:
+  /// **'REST API integration'**
+  String get caseGatherUpRoleRest;
+
+  /// No description provided for @caseGatherUpRoleRestD.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpRoleRestD;
+
+  /// No description provided for @caseGatherUpRoleCache.
+  ///
+  /// In en, this message translates to:
+  /// **'Local caching'**
+  String get caseGatherUpRoleCache;
+
+  /// No description provided for @caseGatherUpRoleCacheD.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpRoleCacheD;
+
+  /// No description provided for @caseGatherUpRoleMaps.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Maps integration'**
+  String get caseGatherUpRoleMaps;
+
+  /// No description provided for @caseGatherUpRoleMapsD.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpRoleMapsD;
+
+  /// No description provided for @caseGatherUpRoleFcm.
+  ///
+  /// In en, this message translates to:
+  /// **'Push notifications (FCM)'**
+  String get caseGatherUpRoleFcm;
+
+  /// No description provided for @caseGatherUpRoleFcmD.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpRoleFcmD;
+
+  /// No description provided for @caseGatherUpRoleChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Real-time chat'**
+  String get caseGatherUpRoleChat;
+
+  /// No description provided for @caseGatherUpRoleChatD.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpRoleChatD;
+
+  /// No description provided for @caseGatherUpRoleUi.
+  ///
+  /// In en, this message translates to:
+  /// **'Responsive cross-platform UI'**
+  String get caseGatherUpRoleUi;
+
+  /// No description provided for @caseGatherUpRoleUiD.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpRoleUiD;
+
+  /// No description provided for @caseGatherUpArchWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean Architecture keeps UI, business rules, and data sources separate — so booking, auth, maps, and chat can grow without tangling. Provider owns state at the presentation edge; repositories talk to remote APIs and local caches behind a stable domain layer.'**
+  String get caseGatherUpArchWhy;
+
+  /// No description provided for @caseGatherUpScrDiscover.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover'**
+  String get caseGatherUpScrDiscover;
+
+  /// No description provided for @caseGatherUpScrDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Event details'**
+  String get caseGatherUpScrDetails;
+
+  /// No description provided for @caseGatherUpScrBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get caseGatherUpScrBook;
+
+  /// No description provided for @caseGatherUpScrChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get caseGatherUpScrChat;
+
+  /// No description provided for @caseGatherUpScrMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get caseGatherUpScrMap;
+
+  /// No description provided for @caseGatherUpScrNotif.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get caseGatherUpScrNotif;
+
+  /// No description provided for @caseGatherUpCh1Problem.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh1Problem;
+
+  /// No description provided for @caseGatherUpCh1Solution.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh1Solution;
+
+  /// No description provided for @caseGatherUpCh1Learned.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh1Learned;
+
+  /// No description provided for @caseGatherUpCh2Problem.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh2Problem;
+
+  /// No description provided for @caseGatherUpCh2Solution.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh2Solution;
+
+  /// No description provided for @caseGatherUpCh2Learned.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh2Learned;
+
+  /// No description provided for @caseGatherUpCh3Problem.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh3Problem;
+
+  /// No description provided for @caseGatherUpCh3Solution.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh3Solution;
+
+  /// No description provided for @caseGatherUpCh3Learned.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCh3Learned;
+
+  /// No description provided for @caseGatherUpStatUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get caseGatherUpStatUsers;
+
+  /// No description provided for @caseGatherUpStatBookings.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookings'**
+  String get caseGatherUpStatBookings;
+
+  /// No description provided for @caseGatherUpStatRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get caseGatherUpStatRating;
+
+  /// No description provided for @caseGatherUpLearn1.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpLearn1;
+
+  /// No description provided for @caseGatherUpLearn2.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpLearn2;
+
+  /// No description provided for @caseGatherUpLearn3.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpLearn3;
 
   /// No description provided for @langArabic.
   ///

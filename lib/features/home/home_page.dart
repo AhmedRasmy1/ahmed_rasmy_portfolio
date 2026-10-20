@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/animation/idle_ticker.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/breakpoints.dart';
@@ -11,11 +10,12 @@ import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/navigation/home_sections.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/ink_splatter_painter.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/sections/about_section.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/sections/contact_section.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/sections/education_section.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/sections/experience_section.dart';
-import 'package:ahmed_rasmy_portfolio/features/home/sections/section_placeholder.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/sections/skills_section.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/sections/work_section.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/widgets/site_footer.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/footer_marquee.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/hero_headline.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/masthead_bar.dart';
@@ -85,12 +85,20 @@ class _HomePageState extends ConsumerState<HomePage> {
   Future<void> _scrollToSection(HomeSection section) =>
       HomeSectionKeys.scrollTo(section);
 
+  Future<void> _scrollToTop() async {
+    if (!_scrollController.hasClients) return;
+    await _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 900),
+      curve: Curves.easeInOutCubic,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final idle = ref.watch(idleTickerProvider);
     final reduceMotion = MediaQuery.disableAnimationsOf(context);
     idle.setReducedMotion(reduceMotion);
-    final l10n = AppLocalizations.of(context);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -367,16 +375,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                               reduceMotion: reduceMotion,
                               customCursor: customCursor,
                             ),
-                            SectionPlaceholder(
-                              section: HomeSection.contact,
-                              eyebrow: l10n.secContactEyebrow,
-                              title: l10n.secContactTitle,
-                              intro: l10n.secContactIntro,
-                              placeholder: l10n.sectionPlaceholder,
+                            ContactSection(
                               scrollOffset: _scrollOffset,
                               reduceMotion: reduceMotion,
+                              customCursor: customCursor,
                             ),
-                            const SizedBox(height: 48),
+                            SiteFooter(
+                              onBackToTop: _scrollToTop,
+                              reduceMotion: reduceMotion,
+                              customCursor: customCursor,
+                            ),
                           ],
                         ),
                       ),
