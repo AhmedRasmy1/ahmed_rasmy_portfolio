@@ -1,17 +1,23 @@
-# ahmed_rasmy_portfolio
+# Ahmed Rasmy Portfolio
 
-A new Flutter project.
+Flutter Web personal portfolio — feature-first architecture with Riverpod, go_router, gen-l10n, and a Phase 1 SEO HTML shell.
 
-## Getting Started
+## Docs
 
-This project is a starting point for a Flutter application.
+- [Architecture](docs/ARCHITECTURE.md)
+- [Performance baseline](docs/PERF.md)
 
-A few resources to get you started if this is your first Flutter project:
+## Run
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```bash
+flutter pub get
+flutter run -d chrome
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Release (Wasm preferred)
+
+```bash
+flutter build web --wasm --release
+```
+
+Serve `build/web` behind SPA rewrites (all routes → `index.html`). Update `https://ahmedrasmy.dev` in `web/index.html`, `web/robots.txt`, `web/sitemap.xml`, and `lib/core/constants/app_constants.dart` when the production domain is final.

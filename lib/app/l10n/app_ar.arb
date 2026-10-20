@@ -1,0 +1,16 @@
+{
+  "@@locale": "ar",
+  "appTitle": "أحمد رسمي",
+  "homeTitle": "الرئيسية",
+  "projectsTitle": "المشاريع",
+  "aboutTitle": "نبذة",
+  "contactTitle": "تواصل",
+  "projectDetailTitle": "مشروع",
+  "loadingLabel": "جاري التحميل…",
+  "themeSystem": "النظام",
+  "themeLight": "فاتح",
+  "themeDark": "داكن",
+  "languageEnglish": "الإنجليزية",
+  "languageArabic": "العربية",
+  "languageSystem": "النظام"
+}

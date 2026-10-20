@@ -1,12 +1,12 @@
 {
-    "name": "ahmed_rasmy_portfolio",
-    "short_name": "ahmed_rasmy_portfolio",
+    "name": "Ahmed Rasmy Portfolio",
+    "short_name": "Ahmed Rasmy",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#0B1220",
+    "theme_color": "#0B3D91",
+    "description": "Personal portfolio of Ahmed Rasmy, Flutter developer.",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {

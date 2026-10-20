@@ -1,46 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
+    Base href is replaced by `flutter build` via --base-href.
   -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO (Phase 1: HTML shell is the brochure; Flutter is the app) -->
+  <title>Ahmed Rasmy — Flutter Developer Portfolio</title>
+  <meta name="description" content="Personal portfolio of Ahmed Rasmy, Flutter developer. Projects, experience, and contact.">
+  <meta name="author" content="Ahmed Rasmy">
+  <link rel="canonical" href="https://ahmedrasmy.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahmedrasmy.dev/">
+  <meta property="og:title" content="Ahmed Rasmy — Flutter Developer Portfolio">
+  <meta property="og:description" content="Personal portfolio of Ahmed Rasmy, Flutter developer. Projects, experience, and contact.">
+  <meta property="og:site_name" content="Ahmed Rasmy">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ar_AR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ahmed Rasmy — Flutter Developer Portfolio">
+  <meta name="twitter:description" content="Personal portfolio of Ahmed Rasmy, Flutter developer. Projects, experience, and contact.">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://ahmedrasmy.dev/#person",
+        "name": "Ahmed Rasmy",
+        "url": "https://ahmedrasmy.dev/",
+        "jobTitle": "Flutter Developer",
+        "description": "Flutter developer focused on mobile and web craft."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ahmedrasmy.dev/#website",
+        "url": "https://ahmedrasmy.dev/",
+        "name": "Ahmed Rasmy Portfolio",
+        "description": "Personal portfolio of Ahmed Rasmy, Flutter developer.",
+        "publisher": { "@id": "https://ahmedrasmy.dev/#person" },
+        "inLanguage": ["en", "ar"]
+      }
+    ]
+  }
+  </script>
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="ahmed_rasmy_portfolio">
+  <meta name="apple-mobile-web-app-title" content="Ahmed Rasmy">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>ahmed_rasmy_portfolio</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* Minimal first-paint shell before Flutter boots */
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0b1220;
+      color: #e8eef9;
+      font-family: system-ui, sans-serif;
+    }
+    .boot-shell {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .boot-shell h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+    }
+    .boot-shell p {
+      margin: 0;
+      opacity: 0.8;
+      max-width: 36rem;
+    }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+  <div class="boot-shell" id="boot-shell" aria-live="polite">
+    <div>
+      <h1>Ahmed Rasmy</h1>
+      <p>Flutter developer — loading portfolio…</p>
+    </div>
+  </div>
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <noscript>
+    <main style="max-width:40rem;margin:2rem auto;padding:1rem;font-family:system-ui,sans-serif;color:#111;background:#fff">
+      <h1>Ahmed Rasmy</h1>
+      <p>Flutter developer portfolio. Enable JavaScript to view the interactive site.</p>
+      <ul>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </main>
+  </noscript>
+
+  <script>
+    // Remove boot shell once Flutter attaches (first frame).
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('boot-shell');
+      if (el) el.remove();
+    });
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

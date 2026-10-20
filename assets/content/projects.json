@@ -1,0 +1,8 @@
+[
+  {
+    "id": "sample-portfolio",
+    "title": "Personal Portfolio",
+    "summary": "Flutter Web portfolio with Riverpod, go_router, and SEO shell.",
+    "tags": ["Flutter", "Web", "Architecture"]
+  }
+]

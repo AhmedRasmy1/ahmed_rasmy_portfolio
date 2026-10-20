@@ -1,0 +1,22 @@
+{
+  "@@locale": "en",
+  "appTitle": "Ahmed Rasmy",
+  "@appTitle": {
+    "description": "Browser tab and app title"
+  },
+  "homeTitle": "Home",
+  "projectsTitle": "Projects",
+  "aboutTitle": "About",
+  "contactTitle": "Contact",
+  "projectDetailTitle": "Project",
+  "@projectDetailTitle": {
+    "description": "Fallback title for a project detail route"
+  },
+  "loadingLabel": "Loading…",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "languageEnglish": "English",
+  "languageArabic": "Arabic",
+  "languageSystem": "System"
+}
