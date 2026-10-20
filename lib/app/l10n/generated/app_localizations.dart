@@ -308,6 +308,156 @@ abstract class AppLocalizations {
   /// **'SWIPE UP'**
   String get scrollHintMobile;
 
+  /// No description provided for @navWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Work'**
+  String get navWork;
+
+  /// No description provided for @navAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get navAbout;
+
+  /// No description provided for @navExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get navExperience;
+
+  /// No description provided for @navSkills.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills'**
+  String get navSkills;
+
+  /// No description provided for @navResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get navResume;
+
+  /// No description provided for @navContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get navContact;
+
+  /// No description provided for @secWorkEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECTED WORK'**
+  String get secWorkEyebrow;
+
+  /// No description provided for @secWorkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Projects that shipped'**
+  String get secWorkTitle;
+
+  /// No description provided for @secWorkIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Product work across events, faith, commerce, and services — Clean Architecture first.'**
+  String get secWorkIntro;
+
+  /// No description provided for @secAboutEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'ABOUT'**
+  String get secAboutEyebrow;
+
+  /// No description provided for @secAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A bit about me'**
+  String get secAboutTitle;
+
+  /// No description provided for @secAboutIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter developer in Cairo — building mobile, web, and desktop with care.'**
+  String get secAboutIntro;
+
+  /// No description provided for @secExperienceEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'EXPERIENCE'**
+  String get secExperienceEyebrow;
+
+  /// No description provided for @secExperienceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Where I’ve shipped'**
+  String get secExperienceTitle;
+
+  /// No description provided for @secExperienceIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'From internships to junior roles — Agile teams, Clean Architecture, and real products.'**
+  String get secExperienceIntro;
+
+  /// No description provided for @secSkillsEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'SKILLS'**
+  String get secSkillsEyebrow;
+
+  /// No description provided for @secSkillsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Toolkit'**
+  String get secSkillsTitle;
+
+  /// No description provided for @secSkillsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter core, APIs, storage, UI craft, testing, and AI-assisted workflows.'**
+  String get secSkillsIntro;
+
+  /// No description provided for @secEducationEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'EDUCATION & COURSES'**
+  String get secEducationEyebrow;
+
+  /// No description provided for @secEducationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning path'**
+  String get secEducationTitle;
+
+  /// No description provided for @secEducationIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Degree, internships, and focused Flutter tracks.'**
+  String get secEducationIntro;
+
+  /// No description provided for @secContactEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'CONTACT'**
+  String get secContactEyebrow;
+
+  /// No description provided for @secContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let’s talk'**
+  String get secContactTitle;
+
+  /// No description provided for @secContactIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Open to roles and collaborations — reach out anytime.'**
+  String get secContactIntro;
+
+  /// No description provided for @sectionPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Content landing in the next step.'**
+  String get sectionPlaceholder;
+
   /// No description provided for @linkLinkedIn.
   ///
   /// In en, this message translates to:

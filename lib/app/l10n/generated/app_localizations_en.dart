@@ -115,6 +115,87 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scrollHintMobile => 'SWIPE UP';
 
   @override
+  String get navWork => 'Work';
+
+  @override
+  String get navAbout => 'About';
+
+  @override
+  String get navExperience => 'Experience';
+
+  @override
+  String get navSkills => 'Skills';
+
+  @override
+  String get navResume => 'Resume';
+
+  @override
+  String get navContact => 'Contact';
+
+  @override
+  String get secWorkEyebrow => 'SELECTED WORK';
+
+  @override
+  String get secWorkTitle => 'Projects that shipped';
+
+  @override
+  String get secWorkIntro =>
+      'Product work across events, faith, commerce, and services — Clean Architecture first.';
+
+  @override
+  String get secAboutEyebrow => 'ABOUT';
+
+  @override
+  String get secAboutTitle => 'A bit about me';
+
+  @override
+  String get secAboutIntro =>
+      'Flutter developer in Cairo — building mobile, web, and desktop with care.';
+
+  @override
+  String get secExperienceEyebrow => 'EXPERIENCE';
+
+  @override
+  String get secExperienceTitle => 'Where I’ve shipped';
+
+  @override
+  String get secExperienceIntro =>
+      'From internships to junior roles — Agile teams, Clean Architecture, and real products.';
+
+  @override
+  String get secSkillsEyebrow => 'SKILLS';
+
+  @override
+  String get secSkillsTitle => 'Toolkit';
+
+  @override
+  String get secSkillsIntro =>
+      'Flutter core, APIs, storage, UI craft, testing, and AI-assisted workflows.';
+
+  @override
+  String get secEducationEyebrow => 'EDUCATION & COURSES';
+
+  @override
+  String get secEducationTitle => 'Learning path';
+
+  @override
+  String get secEducationIntro =>
+      'Degree, internships, and focused Flutter tracks.';
+
+  @override
+  String get secContactEyebrow => 'CONTACT';
+
+  @override
+  String get secContactTitle => 'Let’s talk';
+
+  @override
+  String get secContactIntro =>
+      'Open to roles and collaborations — reach out anytime.';
+
+  @override
+  String get sectionPlaceholder => 'Content landing in the next step.';
+
+  @override
   String get linkLinkedIn => 'LinkedIn';
 
   @override

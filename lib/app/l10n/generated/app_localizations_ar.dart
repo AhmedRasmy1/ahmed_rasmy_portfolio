@@ -116,6 +116,85 @@ class AppLocalizationsAr extends AppLocalizations {
   String get scrollHintMobile => 'اسحب للأعلى';
 
   @override
+  String get navWork => 'الأعمال';
+
+  @override
+  String get navAbout => 'نبذة';
+
+  @override
+  String get navExperience => 'الخبرة';
+
+  @override
+  String get navSkills => 'المهارات';
+
+  @override
+  String get navResume => 'السيرة';
+
+  @override
+  String get navContact => 'تواصل';
+
+  @override
+  String get secWorkEyebrow => 'أعمال مختارة';
+
+  @override
+  String get secWorkTitle => 'مشاريع وصلت للإطلاق';
+
+  @override
+  String get secWorkIntro =>
+      'منتجات في الفعاليات والإيمان والتجارة والخدمات — بهندسة نظيفة أولاً.';
+
+  @override
+  String get secAboutEyebrow => 'نبذة';
+
+  @override
+  String get secAboutTitle => 'قليلاً عني';
+
+  @override
+  String get secAboutIntro =>
+      'مطوّر فلاتر من القاهرة — أبني للموبايل والويب وسطح المكتب بعناية.';
+
+  @override
+  String get secExperienceEyebrow => 'الخبرة';
+
+  @override
+  String get secExperienceTitle => 'أين أطلقت';
+
+  @override
+  String get secExperienceIntro =>
+      'من التدريب إلى دور مبتدئ — فرق Agile وهندسة نظيفة ومنتجات حقيقية.';
+
+  @override
+  String get secSkillsEyebrow => 'المهارات';
+
+  @override
+  String get secSkillsTitle => 'عدّة العمل';
+
+  @override
+  String get secSkillsIntro =>
+      'فلاتر، واجهات، تخزين، واجهات دقيقة، اختبارات، وأدوات مدعومة بالذكاء الاصطناعي.';
+
+  @override
+  String get secEducationEyebrow => 'التعليم والدورات';
+
+  @override
+  String get secEducationTitle => 'مسار التعلّم';
+
+  @override
+  String get secEducationIntro => 'الشهادة والتدريبات ومسارات فلاتر مركّزة.';
+
+  @override
+  String get secContactEyebrow => 'تواصل';
+
+  @override
+  String get secContactTitle => 'لنتحدث';
+
+  @override
+  String get secContactIntro => 'منفتح على الفرص والتعاون — راسلني في أي وقت.';
+
+  @override
+  String get sectionPlaceholder => 'المحتوى يصل في الخطوة التالية.';
+
+  @override
   String get linkLinkedIn => 'لينكدإن';
 
   @override
