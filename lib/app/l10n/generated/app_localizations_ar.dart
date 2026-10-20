@@ -12,38 +12,108 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appTitle => 'أحمد رسمي';
 
   @override
-  String get homeTitle => 'الرئيسية';
+  String get issueNo => 'العدد ٠١';
 
   @override
-  String get projectsTitle => 'المشاريع';
+  String get personalEdition => 'إصدار شخصي';
 
   @override
-  String get aboutTitle => 'نبذة';
+  String get locationMeta => 'القاهرة · عن بُعد';
 
   @override
-  String get contactTitle => 'تواصل';
-
-  @override
-  String get projectDetailTitle => 'مشروع';
-
-  @override
-  String get loadingLabel => 'جاري التحميل…';
-
-  @override
-  String get themeSystem => 'النظام';
-
-  @override
-  String get themeLight => 'فاتح';
+  String get estYear => 'تأسس ٢٠٢٦';
 
   @override
   String get themeDark => 'داكن';
 
   @override
-  String get languageEnglish => 'الإنجليزية';
+  String get themeLight => 'فاتح';
 
   @override
-  String get languageArabic => 'العربية';
+  String get langEn => 'EN';
 
   @override
-  String get languageSystem => 'النظام';
+  String get langAr => 'ع';
+
+  @override
+  String get headlinePrimary => 'فلاتر';
+
+  @override
+  String get headlineScript => 'مطوّر';
+
+  @override
+  String get firstName => 'أحمد';
+
+  @override
+  String get lastName => 'رسمي';
+
+  @override
+  String get metaTagline => 'مطوّر فلاتر · موبايل وويب · ٥ سنوات إطلاق تطبيقات';
+
+  @override
+  String get redTagline => 'صمّم · ابنِ · أطلق';
+
+  @override
+  String get whoIAmTitle => 'من أنا';
+
+  @override
+  String get whoItem1 => 'مطوّر فلاتر · موبايل وويب';
+
+  @override
+  String get whoItem2 => 'هندسة نظيفة · Bloc / Riverpod';
+
+  @override
+  String get whoItem3 => '٥ سنوات في بناء تطبيقات iOS / Android / Web';
+
+  @override
+  String get whoItem4 => 'القاهرة، مصر · عن بُعد';
+
+  @override
+  String get whoItem5 => 'ثنائي اللغة EN / AR';
+
+  @override
+  String get estBadge => 'منذ ٢٠٢١ · فلاتر';
+
+  @override
+  String get statCardLabel => 'تطبيقات أُطلقت';
+
+  @override
+  String get statCardValue => '١٠٠ألف+';
+
+  @override
+  String get statCardSub => 'تحميل ↑';
+
+  @override
+  String get flagshipLabel => 'التطبيق الرئيسي';
+
+  @override
+  String get flagshipValue => 'متعدد المنصات';
+
+  @override
+  String get teachNote => 'أعلم + أصنع أيضاً';
+
+  @override
+  String get chip1 => 'موقع المحفظة';
+
+  @override
+  String get chip2 => 'تطبيق تجارة';
+
+  @override
+  String get chip3 => 'محفظة مالية';
+
+  @override
+  String get chip4 => 'متتبع صحة';
+
+  @override
+  String get chip5 => 'دردشة فورية';
+
+  @override
+  String get footerMarquee =>
+      'أفكار تتحول لتطبيقات · بكسلات لتجارب · كود لمنتجات';
+
+  @override
+  String get scrollHint => 'مرّر للأسفل';
+
+  @override
+  String get scrollHintMobile => 'اسحب للأعلى';
 }

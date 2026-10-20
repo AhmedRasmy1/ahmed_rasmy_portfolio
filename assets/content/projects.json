@@ -1,8 +1,7 @@
 [
-  {
-    "id": "sample-portfolio",
-    "title": "Personal Portfolio",
-    "summary": "Flutter Web portfolio with Riverpod, go_router, and SEO shell.",
-    "tags": ["Flutter", "Web", "Architecture"]
-  }
+  { "id": "portfolio-web", "title": "Portfolio Web", "summary": "Flutter Web zine portfolio.", "tags": ["Flutter", "Web"] },
+  { "id": "ecommerce", "title": "E-Commerce App", "summary": "Cross-platform storefront.", "tags": ["Flutter", "Mobile"] },
+  { "id": "fintech", "title": "Fintech Wallet", "summary": "Payments and balances.", "tags": ["Flutter", "Fintech"] },
+  { "id": "health", "title": "Health Tracker", "summary": "Habits and vitals.", "tags": ["Flutter", "Health"] },
+  { "id": "chat", "title": "Realtime Chat", "summary": "Messaging with presence.", "tags": ["Flutter", "Realtime"] }
 ]

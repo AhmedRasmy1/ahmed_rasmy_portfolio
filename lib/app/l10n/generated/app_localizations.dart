@@ -98,83 +98,221 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// Browser tab and app title
+  /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
   /// **'Ahmed Rasmy'**
   String get appTitle;
 
-  /// No description provided for @homeTitle.
+  /// No description provided for @issueNo.
   ///
   /// In en, this message translates to:
-  /// **'Home'**
-  String get homeTitle;
+  /// **'ISSUE NO. 01'**
+  String get issueNo;
 
-  /// No description provided for @projectsTitle.
+  /// No description provided for @personalEdition.
   ///
   /// In en, this message translates to:
-  /// **'Projects'**
-  String get projectsTitle;
+  /// **'PERSONAL EDITION'**
+  String get personalEdition;
 
-  /// No description provided for @aboutTitle.
+  /// No description provided for @locationMeta.
   ///
   /// In en, this message translates to:
-  /// **'About'**
-  String get aboutTitle;
+  /// **'CAIRO · REMOTE'**
+  String get locationMeta;
 
-  /// No description provided for @contactTitle.
+  /// No description provided for @estYear.
   ///
   /// In en, this message translates to:
-  /// **'Contact'**
-  String get contactTitle;
-
-  /// Fallback title for a project detail route
-  ///
-  /// In en, this message translates to:
-  /// **'Project'**
-  String get projectDetailTitle;
-
-  /// No description provided for @loadingLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading…'**
-  String get loadingLabel;
-
-  /// No description provided for @themeSystem.
-  ///
-  /// In en, this message translates to:
-  /// **'System'**
-  String get themeSystem;
-
-  /// No description provided for @themeLight.
-  ///
-  /// In en, this message translates to:
-  /// **'Light'**
-  String get themeLight;
+  /// **'EST. 2026'**
+  String get estYear;
 
   /// No description provided for @themeDark.
   ///
   /// In en, this message translates to:
-  /// **'Dark'**
+  /// **'DARK'**
   String get themeDark;
 
-  /// No description provided for @languageEnglish.
+  /// No description provided for @themeLight.
   ///
   /// In en, this message translates to:
-  /// **'English'**
-  String get languageEnglish;
+  /// **'LIGHT'**
+  String get themeLight;
 
-  /// No description provided for @languageArabic.
+  /// No description provided for @langEn.
   ///
   /// In en, this message translates to:
-  /// **'Arabic'**
-  String get languageArabic;
+  /// **'EN'**
+  String get langEn;
 
-  /// No description provided for @languageSystem.
+  /// No description provided for @langAr.
   ///
   /// In en, this message translates to:
-  /// **'System'**
-  String get languageSystem;
+  /// **'ع'**
+  String get langAr;
+
+  /// No description provided for @headlinePrimary.
+  ///
+  /// In en, this message translates to:
+  /// **'FLUTTER'**
+  String get headlinePrimary;
+
+  /// No description provided for @headlineScript.
+  ///
+  /// In en, this message translates to:
+  /// **'Developer'**
+  String get headlineScript;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en, this message translates to:
+  /// **'AHMED'**
+  String get firstName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'RASMY'**
+  String get lastName;
+
+  /// No description provided for @metaTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'FLUTTER DEV · MOBILE & WEB · 5 YRS SHIPPING APPS'**
+  String get metaTagline;
+
+  /// No description provided for @redTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Design · Build · Ship'**
+  String get redTagline;
+
+  /// No description provided for @whoIAmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'WHO I AM'**
+  String get whoIAmTitle;
+
+  /// No description provided for @whoItem1.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Developer · Mobile & Web'**
+  String get whoItem1;
+
+  /// No description provided for @whoItem2.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean Architecture · Bloc / Riverpod'**
+  String get whoItem2;
+
+  /// No description provided for @whoItem3.
+  ///
+  /// In en, this message translates to:
+  /// **'5 yrs building iOS / Android / Web apps'**
+  String get whoItem3;
+
+  /// No description provided for @whoItem4.
+  ///
+  /// In en, this message translates to:
+  /// **'Cairo, Egypt · Remote'**
+  String get whoItem4;
+
+  /// No description provided for @whoItem5.
+  ///
+  /// In en, this message translates to:
+  /// **'Bilingual EN / AR'**
+  String get whoItem5;
+
+  /// No description provided for @estBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'EST. 2021 · FLUTTER'**
+  String get estBadge;
+
+  /// No description provided for @statCardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'SHIPPED APPS'**
+  String get statCardLabel;
+
+  /// No description provided for @statCardValue.
+  ///
+  /// In en, this message translates to:
+  /// **'100K+'**
+  String get statCardValue;
+
+  /// No description provided for @statCardSub.
+  ///
+  /// In en, this message translates to:
+  /// **'DOWNLOADS ↑'**
+  String get statCardSub;
+
+  /// No description provided for @flagshipLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'FLAGSHIP APP'**
+  String get flagshipLabel;
+
+  /// No description provided for @flagshipValue.
+  ///
+  /// In en, this message translates to:
+  /// **'MULTI-PLATFORM'**
+  String get flagshipValue;
+
+  /// No description provided for @teachNote.
+  ///
+  /// In en, this message translates to:
+  /// **'I ALSO TEACH + CREATE'**
+  String get teachNote;
+
+  /// No description provided for @chip1.
+  ///
+  /// In en, this message translates to:
+  /// **'PORTFOLIO WEB'**
+  String get chip1;
+
+  /// No description provided for @chip2.
+  ///
+  /// In en, this message translates to:
+  /// **'E-COMMERCE APP'**
+  String get chip2;
+
+  /// No description provided for @chip3.
+  ///
+  /// In en, this message translates to:
+  /// **'FINTECH WALLET'**
+  String get chip3;
+
+  /// No description provided for @chip4.
+  ///
+  /// In en, this message translates to:
+  /// **'HEALTH TRACKER'**
+  String get chip4;
+
+  /// No description provided for @chip5.
+  ///
+  /// In en, this message translates to:
+  /// **'REALTIME CHAT'**
+  String get chip5;
+
+  /// No description provided for @footerMarquee.
+  ///
+  /// In en, this message translates to:
+  /// **'TURNING IDEAS INTO APPS · PIXELS INTO EXPERIENCES · CODE INTO PRODUCTS'**
+  String get footerMarquee;
+
+  /// No description provided for @scrollHint.
+  ///
+  /// In en, this message translates to:
+  /// **'SCROLL TO VIEW'**
+  String get scrollHint;
+
+  /// No description provided for @scrollHintMobile.
+  ///
+  /// In en, this message translates to:
+  /// **'SWIPE UP'**
+  String get scrollHintMobile;
 }
 
 class _AppLocalizationsDelegate

@@ -23,9 +23,16 @@ class SettingsNotifier extends Notifier<AppSettings> {
 
   @override
   AppSettings build() {
+    // Zine portfolio defaults: dark theme + English until the user toggles.
+    final storedTheme = _prefs.getString(_themeKey);
+    final storedLocale = _prefs.getString(_localeKey);
     return AppSettings(
-      themeMode: _decodeThemeMode(_prefs.getString(_themeKey)),
-      locale: _decodeLocale(_prefs.getString(_localeKey)),
+      themeMode: storedTheme == null
+          ? ThemeMode.dark
+          : _decodeThemeMode(storedTheme),
+      locale: storedLocale == null
+          ? const Locale('en')
+          : (_decodeLocale(storedLocale) ?? const Locale('en')),
     );
   }
 
