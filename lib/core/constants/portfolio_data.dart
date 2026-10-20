@@ -28,7 +28,13 @@ class Experience {
   final String start;
   final String? end;
   final List<String> bulletKeys;
+
+  bool get isCurrent => end == null;
+
+  String get logoImagePath => 'assets/images/logos/$id.png';
 }
+
+enum ProjectFilter { all, mobile, web, desktop }
 
 class Project {
   const Project({
@@ -40,6 +46,8 @@ class Project {
     required this.platforms,
     required this.tech,
     this.playStoreUrl,
+    this.githubUrl,
+    this.websiteUrl,
     this.featured = false,
     this.hasCaseStudy = false,
   });
@@ -52,8 +60,35 @@ class Project {
   final List<String> platforms;
   final List<String> tech;
   final String? playStoreUrl;
+  final String? githubUrl;
+  final String? websiteUrl;
   final bool featured;
   final bool hasCaseStudy;
+
+  String get heroImagePath => 'assets/images/projects/$slug/hero.png';
+  String get coverImagePath => 'assets/images/projects/$slug/cover.png';
+
+  List<String> get visibleTech =>
+      tech.where((t) => !isTodo(t)).toList(growable: false);
+
+  bool matchesFilter(ProjectFilter filter) {
+    if (filter == ProjectFilter.all) return true;
+    final lower = platforms.map((p) => p.toLowerCase()).toList();
+    return switch (filter) {
+      ProjectFilter.mobile =>
+        lower.any((p) => p.contains('android') || p.contains('ios') || p == 'mobile'),
+      ProjectFilter.web =>
+        lower.any((p) => p.contains('web') || p.contains('website')),
+      ProjectFilter.desktop => lower.any((p) => p.contains('desktop')),
+      ProjectFilter.all => true,
+    };
+  }
+
+  /// Deterministic card tilt from slug (−0.04 … 0.04).
+  double get cardTilt {
+    final h = slug.hashCode;
+    return ((h % 80) - 40) / 1000.0;
+  }
 }
 
 class SkillGroup {
@@ -73,11 +108,13 @@ class Course {
     required this.id,
     required this.titleKey,
     this.orgKey,
+    this.url,
   });
 
   final String id;
   final String titleKey;
   final String? orgKey;
+  final String? url;
 }
 
 class CaseStudy {
@@ -364,18 +401,34 @@ abstract final class PortfolioData {
   ];
 
   static const courses = <Course>[
-    Course(id: 'iti', titleKey: 'courseIti', orgKey: 'courseItiOrg'),
+    Course(
+      id: 'iti',
+      titleKey: 'courseIti',
+      orgKey: 'courseItiOrg',
+      url: kTodoUrl,
+    ),
     Course(
       id: 'elevate',
       titleKey: 'courseElevate',
       orgKey: 'courseElevateOrg',
+      url: kTodoUrl,
     ),
-    Course(id: 'udemy', titleKey: 'courseUdemy', orgKey: 'courseUdemyOrg'),
-    Course(id: 'payments', titleKey: 'coursePayments'),
     Course(
       id: 'centerly',
       titleKey: 'courseCenterly',
       orgKey: 'courseCenterlyOrg',
+      url: kTodoUrl,
+    ),
+    Course(
+      id: 'udemy',
+      titleKey: 'courseUdemy',
+      orgKey: 'courseUdemyOrg',
+      url: kTodoUrl,
+    ),
+    Course(
+      id: 'payments',
+      titleKey: 'coursePayments',
+      url: kTodoUrl,
     ),
   ];
 

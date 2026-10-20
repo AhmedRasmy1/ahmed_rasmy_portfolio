@@ -10,7 +10,12 @@ import 'package:ahmed_rasmy_portfolio/core/cursor/cursor_controller.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/navigation/home_sections.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/ink_splatter_painter.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/sections/about_section.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/sections/education_section.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/sections/experience_section.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/sections/section_placeholder.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/sections/skills_section.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/sections/work_section.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/footer_marquee.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/hero_headline.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/masthead_bar.dart';
@@ -337,50 +342,30 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   const EdgeInsets.symmetric(horizontal: 16),
                               child: FooterMarquee(reduceMotion: reduceMotion),
                             ),
-                            SectionPlaceholder(
-                              section: HomeSection.work,
-                              eyebrow: l10n.secWorkEyebrow,
-                              title: l10n.secWorkTitle,
-                              intro: l10n.secWorkIntro,
-                              placeholder: l10n.sectionPlaceholder,
+                            WorkSection(
                               scrollOffset: _scrollOffset,
                               reduceMotion: reduceMotion,
+                              customCursor: customCursor,
                             ),
-                            SectionPlaceholder(
-                              section: HomeSection.about,
-                              eyebrow: l10n.secAboutEyebrow,
-                              title: l10n.secAboutTitle,
-                              intro: l10n.secAboutIntro,
-                              placeholder: l10n.sectionPlaceholder,
+                            AboutSection(
                               scrollOffset: _scrollOffset,
                               reduceMotion: reduceMotion,
+                              customCursor: customCursor,
                             ),
-                            SectionPlaceholder(
-                              section: HomeSection.experience,
-                              eyebrow: l10n.secExperienceEyebrow,
-                              title: l10n.secExperienceTitle,
-                              intro: l10n.secExperienceIntro,
-                              placeholder: l10n.sectionPlaceholder,
+                            ExperienceSection(
                               scrollOffset: _scrollOffset,
                               reduceMotion: reduceMotion,
+                              customCursor: customCursor,
                             ),
-                            SectionPlaceholder(
-                              section: HomeSection.skills,
-                              eyebrow: l10n.secSkillsEyebrow,
-                              title: l10n.secSkillsTitle,
-                              intro: l10n.secSkillsIntro,
-                              placeholder: l10n.sectionPlaceholder,
+                            SkillsSection(
                               scrollOffset: _scrollOffset,
                               reduceMotion: reduceMotion,
+                              customCursor: customCursor,
                             ),
-                            SectionPlaceholder(
-                              section: HomeSection.education,
-                              eyebrow: l10n.secEducationEyebrow,
-                              title: l10n.secEducationTitle,
-                              intro: l10n.secEducationIntro,
-                              placeholder: l10n.sectionPlaceholder,
+                            EducationSection(
                               scrollOffset: _scrollOffset,
                               reduceMotion: reduceMotion,
+                              customCursor: customCursor,
                             ),
                             SectionPlaceholder(
                               section: HomeSection.contact,

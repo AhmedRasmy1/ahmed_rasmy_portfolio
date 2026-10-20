@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/cursor_controller.dart';
@@ -18,6 +19,7 @@ class CustomCursorOverlay extends StatelessWidget {
             controller.rawPosition,
             controller.ringPosition,
             controller.hotspot,
+            controller.label,
             controller.pressed,
             controller.visible,
           ]),
@@ -28,6 +30,7 @@ class CustomCursorOverlay extends StatelessWidget {
             final dot = controller.rawPosition.value;
             final ring = controller.ringPosition.value;
             final hot = controller.hotspot.value;
+            final label = controller.label.value;
             final pressed = controller.pressed.value;
 
             final interactive = hot == CursorHotspot.interactive;
@@ -62,6 +65,19 @@ class CustomCursorOverlay extends StatelessWidget {
                                 width: 1.5,
                               ),
                             ),
+                            alignment: Alignment.center,
+                            child: label == null
+                                ? null
+                                : Text(
+                                    label,
+                                    style: GoogleFonts.spaceMono(
+                                      fontSize: 8,
+                                      letterSpacing: 1.2,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.offWhite,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                  ),
                           ),
                   ),
                 ),
@@ -125,11 +141,13 @@ class CursorTarget extends StatelessWidget {
     super.key,
     required this.child,
     this.hotspot = CursorHotspot.interactive,
+    this.label,
     this.enabled = true,
   });
 
   final Widget child;
   final CursorHotspot hotspot;
+  final String? label;
   final bool enabled;
 
   @override
@@ -137,7 +155,7 @@ class CursorTarget extends StatelessWidget {
     if (!enabled) return child;
     return MouseRegion(
       cursor: SystemMouseCursors.none,
-      onEnter: (_) => cursorController.setHotspot(hotspot),
+      onEnter: (_) => cursorController.setHotspot(hotspot, label: label),
       onExit: (_) => cursorController.setHotspot(CursorHotspot.none),
       child: Listener(
         onPointerDown: (_) => cursorController.setPressed(true),

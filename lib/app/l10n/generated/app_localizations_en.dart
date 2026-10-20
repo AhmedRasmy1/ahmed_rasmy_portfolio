@@ -136,51 +136,137 @@ class AppLocalizationsEn extends AppLocalizations {
   String get secWorkEyebrow => 'SELECTED WORK';
 
   @override
-  String get secWorkTitle => 'Projects that shipped';
+  String get secWorkTitle => 'Case studies & apps';
 
   @override
   String get secWorkIntro =>
-      'Product work across events, faith, commerce, and services — Clean Architecture first.';
+      'Apps I built and shipped, with Clean Architecture under the hood.';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterMobile => 'Mobile';
+
+  @override
+  String get filterWeb => 'Web';
+
+  @override
+  String get filterDesktop => 'Desktop';
+
+  @override
+  String get readCaseStudy => 'READ CASE STUDY →';
+
+  @override
+  String get linkPlayStore => 'Play Store';
+
+  @override
+  String get linkWebsite => 'Website';
+
+  @override
+  String get platformAndroid => 'Android';
+
+  @override
+  String get platformIos => 'iOS';
+
+  @override
+  String get platformDesktop => 'Desktop';
+
+  @override
+  String get platformWeb => 'Web';
+
+  @override
+  String get platformMobile => 'Mobile';
 
   @override
   String get secAboutEyebrow => 'ABOUT';
 
   @override
-  String get secAboutTitle => 'A bit about me';
+  String get secAboutTitle => 'Building apps that feel fast and look right.';
 
   @override
   String get secAboutIntro =>
-      'Flutter developer in Cairo — building mobile, web, and desktop with care.';
+      'Flutter developer in Cairo — Clean Architecture, real products, careful craft.';
+
+  @override
+  String get aboutP1 =>
+      'I’m a Flutter developer who ships mobile, web, and desktop apps with Clean Architecture, BLoC, REST APIs, Firebase, Google Maps, and real-time chat — work that feels fast and looks right.';
+
+  @override
+  String get aboutP2 =>
+      'I started with internships at Elevate and Centerly, and I’m now building at GatherUp. I studied Information Technology at Minya University (Very Good with Honors). I use AI tools like Cursor and Claude to move faster — and I review everything myself.';
+
+  @override
+  String get aboutCaptionWorkspace => 'Workspace';
+
+  @override
+  String get aboutCaptionAction => 'In action';
+
+  @override
+  String get aboutCaptionCraft => 'Craft';
+
+  @override
+  String get aboutCaptionStudio => 'Studio';
+
+  @override
+  String get aboutFactCairo => 'CAIRO, EGYPT';
+
+  @override
+  String get aboutFactLang => 'AR / EN';
+
+  @override
+  String get aboutFactOpen => 'OPEN TO WORK';
 
   @override
   String get secExperienceEyebrow => 'EXPERIENCE';
 
   @override
-  String get secExperienceTitle => 'Where I’ve shipped';
+  String get secExperienceTitle => 'Where I’ve been';
 
   @override
   String get secExperienceIntro =>
       'From internships to junior roles — Agile teams, Clean Architecture, and real products.';
 
   @override
+  String get expNow => 'NOW';
+
+  @override
+  String get expPresent => 'Present';
+
+  @override
   String get secSkillsEyebrow => 'SKILLS';
 
   @override
-  String get secSkillsTitle => 'Toolkit';
+  String get secSkillsTitle => 'The toolbox.';
 
   @override
   String get secSkillsIntro =>
       'Flutter core, APIs, storage, UI craft, testing, and AI-assisted workflows.';
 
   @override
-  String get secEducationEyebrow => 'EDUCATION & COURSES';
+  String get secEducationEyebrow => 'EDUCATION';
 
   @override
-  String get secEducationTitle => 'Learning path';
+  String get secEducationTitle => 'Degree & certificates.';
 
   @override
   String get secEducationIntro =>
-      'Degree, internships, and focused Flutter tracks.';
+      'University diploma and focused Flutter tracks.';
+
+  @override
+  String get eduYearsLabel => 'Years';
+
+  @override
+  String get eduGradeLabel => 'Grade';
+
+  @override
+  String get eduProjectLabel => 'Graduation project';
+
+  @override
+  String get eduCertificateStamp => 'CERTIFICATE';
+
+  @override
+  String get eduViewCert => 'View certificate →';
 
   @override
   String get secContactEyebrow => 'CONTACT';

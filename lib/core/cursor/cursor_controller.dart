@@ -14,6 +14,7 @@ class CursorController extends ChangeNotifier {
   final ValueNotifier<Offset> ringPosition = ValueNotifier(Offset.zero);
   final ValueNotifier<CursorHotspot> hotspot =
       ValueNotifier(CursorHotspot.none);
+  final ValueNotifier<String?> label = ValueNotifier<String?>(null);
   final ValueNotifier<bool> pressed = ValueNotifier(false);
   final ValueNotifier<bool> visible = ValueNotifier(false);
 
@@ -32,14 +33,17 @@ class CursorController extends ChangeNotifier {
     visible.value = true;
   }
 
-  void setHotspot(CursorHotspot value) {
-    if (hotspot.value == value) return;
-    hotspot.value = value;
+  void setHotspot(CursorHotspot value, {String? label}) {
+    if (hotspot.value != value) hotspot.value = value;
+    if (this.label.value != label) this.label.value = label;
   }
 
   void setPressed(bool value) => pressed.value = value;
 
-  void hide() => visible.value = false;
+  void hide() {
+    visible.value = false;
+    label.value = null;
+  }
 
   void _onTick(Duration _) {
     if (!enabled || !visible.value) return;
@@ -60,6 +64,7 @@ class CursorController extends ChangeNotifier {
     rawPosition.dispose();
     ringPosition.dispose();
     hotspot.dispose();
+    label.dispose();
     pressed.dispose();
     visible.dispose();
     super.dispose();

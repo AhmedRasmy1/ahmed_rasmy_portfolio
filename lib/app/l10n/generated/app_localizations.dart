@@ -353,14 +353,86 @@ abstract class AppLocalizations {
   /// No description provided for @secWorkTitle.
   ///
   /// In en, this message translates to:
-  /// **'Projects that shipped'**
+  /// **'Case studies & apps'**
   String get secWorkTitle;
 
   /// No description provided for @secWorkIntro.
   ///
   /// In en, this message translates to:
-  /// **'Product work across events, faith, commerce, and services — Clean Architecture first.'**
+  /// **'Apps I built and shipped, with Clean Architecture under the hood.'**
   String get secWorkIntro;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterMobile.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile'**
+  String get filterMobile;
+
+  /// No description provided for @filterWeb.
+  ///
+  /// In en, this message translates to:
+  /// **'Web'**
+  String get filterWeb;
+
+  /// No description provided for @filterDesktop.
+  ///
+  /// In en, this message translates to:
+  /// **'Desktop'**
+  String get filterDesktop;
+
+  /// No description provided for @readCaseStudy.
+  ///
+  /// In en, this message translates to:
+  /// **'READ CASE STUDY →'**
+  String get readCaseStudy;
+
+  /// No description provided for @linkPlayStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Play Store'**
+  String get linkPlayStore;
+
+  /// No description provided for @linkWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get linkWebsite;
+
+  /// No description provided for @platformAndroid.
+  ///
+  /// In en, this message translates to:
+  /// **'Android'**
+  String get platformAndroid;
+
+  /// No description provided for @platformIos.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS'**
+  String get platformIos;
+
+  /// No description provided for @platformDesktop.
+  ///
+  /// In en, this message translates to:
+  /// **'Desktop'**
+  String get platformDesktop;
+
+  /// No description provided for @platformWeb.
+  ///
+  /// In en, this message translates to:
+  /// **'Web'**
+  String get platformWeb;
+
+  /// No description provided for @platformMobile.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile'**
+  String get platformMobile;
 
   /// No description provided for @secAboutEyebrow.
   ///
@@ -371,14 +443,68 @@ abstract class AppLocalizations {
   /// No description provided for @secAboutTitle.
   ///
   /// In en, this message translates to:
-  /// **'A bit about me'**
+  /// **'Building apps that feel fast and look right.'**
   String get secAboutTitle;
 
   /// No description provided for @secAboutIntro.
   ///
   /// In en, this message translates to:
-  /// **'Flutter developer in Cairo — building mobile, web, and desktop with care.'**
+  /// **'Flutter developer in Cairo — Clean Architecture, real products, careful craft.'**
   String get secAboutIntro;
+
+  /// No description provided for @aboutP1.
+  ///
+  /// In en, this message translates to:
+  /// **'I’m a Flutter developer who ships mobile, web, and desktop apps with Clean Architecture, BLoC, REST APIs, Firebase, Google Maps, and real-time chat — work that feels fast and looks right.'**
+  String get aboutP1;
+
+  /// No description provided for @aboutP2.
+  ///
+  /// In en, this message translates to:
+  /// **'I started with internships at Elevate and Centerly, and I’m now building at GatherUp. I studied Information Technology at Minya University (Very Good with Honors). I use AI tools like Cursor and Claude to move faster — and I review everything myself.'**
+  String get aboutP2;
+
+  /// No description provided for @aboutCaptionWorkspace.
+  ///
+  /// In en, this message translates to:
+  /// **'Workspace'**
+  String get aboutCaptionWorkspace;
+
+  /// No description provided for @aboutCaptionAction.
+  ///
+  /// In en, this message translates to:
+  /// **'In action'**
+  String get aboutCaptionAction;
+
+  /// No description provided for @aboutCaptionCraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Craft'**
+  String get aboutCaptionCraft;
+
+  /// No description provided for @aboutCaptionStudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Studio'**
+  String get aboutCaptionStudio;
+
+  /// No description provided for @aboutFactCairo.
+  ///
+  /// In en, this message translates to:
+  /// **'CAIRO, EGYPT'**
+  String get aboutFactCairo;
+
+  /// No description provided for @aboutFactLang.
+  ///
+  /// In en, this message translates to:
+  /// **'AR / EN'**
+  String get aboutFactLang;
+
+  /// No description provided for @aboutFactOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'OPEN TO WORK'**
+  String get aboutFactOpen;
 
   /// No description provided for @secExperienceEyebrow.
   ///
@@ -389,7 +515,7 @@ abstract class AppLocalizations {
   /// No description provided for @secExperienceTitle.
   ///
   /// In en, this message translates to:
-  /// **'Where I’ve shipped'**
+  /// **'Where I’ve been'**
   String get secExperienceTitle;
 
   /// No description provided for @secExperienceIntro.
@@ -397,6 +523,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'From internships to junior roles — Agile teams, Clean Architecture, and real products.'**
   String get secExperienceIntro;
+
+  /// No description provided for @expNow.
+  ///
+  /// In en, this message translates to:
+  /// **'NOW'**
+  String get expNow;
+
+  /// No description provided for @expPresent.
+  ///
+  /// In en, this message translates to:
+  /// **'Present'**
+  String get expPresent;
 
   /// No description provided for @secSkillsEyebrow.
   ///
@@ -407,7 +545,7 @@ abstract class AppLocalizations {
   /// No description provided for @secSkillsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Toolkit'**
+  /// **'The toolbox.'**
   String get secSkillsTitle;
 
   /// No description provided for @secSkillsIntro.
@@ -419,20 +557,50 @@ abstract class AppLocalizations {
   /// No description provided for @secEducationEyebrow.
   ///
   /// In en, this message translates to:
-  /// **'EDUCATION & COURSES'**
+  /// **'EDUCATION'**
   String get secEducationEyebrow;
 
   /// No description provided for @secEducationTitle.
   ///
   /// In en, this message translates to:
-  /// **'Learning path'**
+  /// **'Degree & certificates.'**
   String get secEducationTitle;
 
   /// No description provided for @secEducationIntro.
   ///
   /// In en, this message translates to:
-  /// **'Degree, internships, and focused Flutter tracks.'**
+  /// **'University diploma and focused Flutter tracks.'**
   String get secEducationIntro;
+
+  /// No description provided for @eduYearsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Years'**
+  String get eduYearsLabel;
+
+  /// No description provided for @eduGradeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade'**
+  String get eduGradeLabel;
+
+  /// No description provided for @eduProjectLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Graduation project'**
+  String get eduProjectLabel;
+
+  /// No description provided for @eduCertificateStamp.
+  ///
+  /// In en, this message translates to:
+  /// **'CERTIFICATE'**
+  String get eduCertificateStamp;
+
+  /// No description provided for @eduViewCert.
+  ///
+  /// In en, this message translates to:
+  /// **'View certificate →'**
+  String get eduViewCert;
 
   /// No description provided for @secContactEyebrow.
   ///

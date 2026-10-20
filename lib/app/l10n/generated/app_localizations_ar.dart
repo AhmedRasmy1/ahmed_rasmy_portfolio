@@ -137,50 +137,135 @@ class AppLocalizationsAr extends AppLocalizations {
   String get secWorkEyebrow => 'أعمال مختارة';
 
   @override
-  String get secWorkTitle => 'مشاريع وصلت للإطلاق';
+  String get secWorkTitle => 'دراسات حالة وتطبيقات';
 
   @override
-  String get secWorkIntro =>
-      'منتجات في الفعاليات والإيمان والتجارة والخدمات — بهندسة نظيفة أولاً.';
+  String get secWorkIntro => 'تطبيقات بنيتها وأطلقتها، بهندسة نظيفة من الأساس.';
+
+  @override
+  String get filterAll => 'الكل';
+
+  @override
+  String get filterMobile => 'موبايل';
+
+  @override
+  String get filterWeb => 'ويب';
+
+  @override
+  String get filterDesktop => 'سطح المكتب';
+
+  @override
+  String get readCaseStudy => 'اقرأ دراسة الحالة ←';
+
+  @override
+  String get linkPlayStore => 'متجر Play';
+
+  @override
+  String get linkWebsite => 'الموقع';
+
+  @override
+  String get platformAndroid => 'Android';
+
+  @override
+  String get platformIos => 'iOS';
+
+  @override
+  String get platformDesktop => 'سطح المكتب';
+
+  @override
+  String get platformWeb => 'ويب';
+
+  @override
+  String get platformMobile => 'موبايل';
 
   @override
   String get secAboutEyebrow => 'نبذة';
 
   @override
-  String get secAboutTitle => 'قليلاً عني';
+  String get secAboutTitle => 'أبني تطبيقات سريعة الملمس وصحيحة الشكل.';
 
   @override
   String get secAboutIntro =>
-      'مطوّر فلاتر من القاهرة — أبني للموبايل والويب وسطح المكتب بعناية.';
+      'مطوّر فلاتر من القاهرة — هندسة نظيفة، منتجات حقيقية، وحِرفة دقيقة.';
+
+  @override
+  String get aboutP1 =>
+      'أنا مطوّر فلاتر أطلق تطبيقات للموبايل والويب وسطح المكتب بهندسة نظيفة وBLoC وواجهات REST وFirebase وخرائط جوجل ودردشة فورية — عمل يشعر بالسرعة ويبدو صحيحًا.';
+
+  @override
+  String get aboutP2 =>
+      'بدأت بتدريب في Elevate وCenterly، وأبني الآن في GatherUp. درست تكنولوجيا المعلومات في جامعة المنيا (جيد جدًا مع مرتبة الشرف). أستخدم أدوات ذكاء اصطناعي مثل Cursor وClaude لأتحرّك أسرع — وأراجع كل شيء بنفسي.';
+
+  @override
+  String get aboutCaptionWorkspace => 'مساحة العمل';
+
+  @override
+  String get aboutCaptionAction => 'في الميدان';
+
+  @override
+  String get aboutCaptionCraft => 'الحِرفة';
+
+  @override
+  String get aboutCaptionStudio => 'الاستوديو';
+
+  @override
+  String get aboutFactCairo => 'القاهرة، مصر';
+
+  @override
+  String get aboutFactLang => 'ع / EN';
+
+  @override
+  String get aboutFactOpen => 'منفتح على العمل';
 
   @override
   String get secExperienceEyebrow => 'الخبرة';
 
   @override
-  String get secExperienceTitle => 'أين أطلقت';
+  String get secExperienceTitle => 'أين مررت';
 
   @override
   String get secExperienceIntro =>
       'من التدريب إلى دور مبتدئ — فرق Agile وهندسة نظيفة ومنتجات حقيقية.';
 
   @override
+  String get expNow => 'الآن';
+
+  @override
+  String get expPresent => 'حتى الآن';
+
+  @override
   String get secSkillsEyebrow => 'المهارات';
 
   @override
-  String get secSkillsTitle => 'عدّة العمل';
+  String get secSkillsTitle => 'العدّة.';
 
   @override
   String get secSkillsIntro =>
       'فلاتر، واجهات، تخزين، واجهات دقيقة، اختبارات، وأدوات مدعومة بالذكاء الاصطناعي.';
 
   @override
-  String get secEducationEyebrow => 'التعليم والدورات';
+  String get secEducationEyebrow => 'التعليم';
 
   @override
-  String get secEducationTitle => 'مسار التعلّم';
+  String get secEducationTitle => 'الشهادة والدورات.';
 
   @override
-  String get secEducationIntro => 'الشهادة والتدريبات ومسارات فلاتر مركّزة.';
+  String get secEducationIntro => 'دبلوم جامعي ومسارات فلاتر مركّزة.';
+
+  @override
+  String get eduYearsLabel => 'السنوات';
+
+  @override
+  String get eduGradeLabel => 'التقدير';
+
+  @override
+  String get eduProjectLabel => 'مشروع التخرج';
+
+  @override
+  String get eduCertificateStamp => 'شهادة';
+
+  @override
+  String get eduViewCert => 'عرض الشهادة ←';
 
   @override
   String get secContactEyebrow => 'تواصل';
