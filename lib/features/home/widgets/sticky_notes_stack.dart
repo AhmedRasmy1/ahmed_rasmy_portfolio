@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/animation/idle_ticker.dart';
+import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/hand_drawn_painter.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/tape_painter.dart';
 
@@ -24,6 +26,9 @@ class StickyNotesStack extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final zine = context.zine;
+    final awwaab = PortfolioData.projectBySlug('awwaab');
+    final playUrl = awwaab?.playStoreUrl;
+    final canOpenPlay = !isTodo(playUrl);
 
     return Column(
       children: [
@@ -38,7 +43,11 @@ class StickyNotesStack extends StatelessWidget {
             tapeColor: zine.tape,
             child: Column(
               children: [
-                const Icon(Icons.flutter_dash, color: AppColors.flutterBlue, size: 22),
+                const Icon(
+                  Icons.flutter_dash,
+                  color: AppColors.flutterBlue,
+                  size: 22,
+                ),
                 const SizedBox(height: 4),
                 Text(
                   l10n.statCardLabel,
@@ -50,7 +59,7 @@ class StickyNotesStack extends StatelessWidget {
                     decoration: TextDecoration.none,
                   ),
                 ),
-                const _CountUpStat(end: 100, suffix: 'K+'),
+                _CountUpStat(end: PortfolioData.shippedAppsCount),
                 Text(
                   l10n.statCardSub,
                   style: GoogleFonts.spaceMono(
@@ -74,9 +83,19 @@ class StickyNotesStack extends StatelessWidget {
           child: _PaperCard(
             color: zine.stickyAlt,
             tapeColor: zine.tapeAlt,
+            onTap: canOpenPlay
+                ? () => launchUrl(
+                      Uri.parse(playUrl!),
+                      mode: LaunchMode.externalApplication,
+                    )
+                : null,
             child: Column(
               children: [
-                const Icon(Icons.flutter_dash, color: AppColors.flutterBlue, size: 22),
+                const Icon(
+                  Icons.flutter_dash,
+                  color: AppColors.flutterBlue,
+                  size: 22,
+                ),
                 const SizedBox(height: 4),
                 Text(
                   l10n.flagshipLabel,
@@ -103,7 +122,7 @@ class StickyNotesStack extends StatelessWidget {
           ),
         ),
         SizedBox(height: compact ? 12 : 18),
-        _TeachSticky(
+        _OpenToWorkSticky(
           compact: compact,
           reduceMotion: reduceMotion,
           idle: idle,
@@ -113,8 +132,8 @@ class StickyNotesStack extends StatelessWidget {
   }
 }
 
-class _TeachSticky extends StatefulWidget {
-  const _TeachSticky({
+class _OpenToWorkSticky extends StatefulWidget {
+  const _OpenToWorkSticky({
     required this.compact,
     required this.reduceMotion,
     this.idle,
@@ -125,10 +144,10 @@ class _TeachSticky extends StatefulWidget {
   final IdleTicker? idle;
 
   @override
-  State<_TeachSticky> createState() => _TeachStickyState();
+  State<_OpenToWorkSticky> createState() => _OpenToWorkStickyState();
 }
 
-class _TeachStickyState extends State<_TeachSticky> {
+class _OpenToWorkStickyState extends State<_OpenToWorkSticky> {
   bool _hover = false;
 
   @override
@@ -137,6 +156,7 @@ class _TeachStickyState extends State<_TeachSticky> {
     final zine = context.zine;
 
     Widget sticky = MouseRegion(
+      cursor: SystemMouseCursors.none,
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
       child: Row(
@@ -152,8 +172,9 @@ class _TeachStickyState extends State<_TeachSticky> {
             duration: const Duration(milliseconds: 280),
             curve: Curves.easeOutCubic,
             transformAlignment: Alignment.center,
-            transform: Matrix4.rotationZ(_hover || widget.reduceMotion ? 0 : 0.08)
-              ..setTranslationRaw(0, _hover ? -6.0 : 0, 0),
+            transform: Matrix4.rotationZ(
+              _hover || widget.reduceMotion ? 0 : 0.08,
+            )..setTranslationRaw(0, _hover ? -6.0 : 0, 0),
             child: Stack(
               clipBehavior: Clip.none,
               children: [
@@ -184,7 +205,11 @@ class _TeachStickyState extends State<_TeachSticky> {
                         ),
                       ),
                       const SizedBox(height: 6),
-                      const Icon(Icons.mic, color: AppColors.flutterBlue, size: 22),
+                      const Icon(
+                        Icons.work_outline,
+                        color: AppColors.flutterBlue,
+                        size: 22,
+                      ),
                     ],
                   ),
                 ),
@@ -214,10 +239,12 @@ class _TeachStickyState extends State<_TeachSticky> {
         listenable: widget.idle!,
         child: sticky,
         builder: (context, child) {
-          // Brief wiggle every ~4s
           final c = widget.idle!.cycle(const Duration(seconds: 4));
           final wiggle = c > 0.85
-              ? (c - 0.85) / 0.15 * 0.06 * ((c * 40).remainder(2) > 1 ? 1 : -1)
+              ? (c - 0.85) /
+                  0.15 *
+                  0.06 *
+                  ((c * 40).remainder(2) > 1 ? 1 : -1)
               : 0.0;
           return Transform.rotate(angle: wiggle, child: child);
         },
@@ -255,6 +282,7 @@ class _HoverCardState extends State<_HoverCard> {
   @override
   Widget build(BuildContext context) {
     Widget card = MouseRegion(
+      cursor: SystemMouseCursors.none,
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
       child: AnimatedContainer(
@@ -297,15 +325,17 @@ class _PaperCard extends StatelessWidget {
     required this.color,
     required this.tapeColor,
     required this.child,
+    this.onTap,
   });
 
   final Color color;
   final Color tapeColor;
   final Widget child;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    final card = Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
@@ -330,14 +360,16 @@ class _PaperCard extends StatelessWidget {
         ),
       ],
     );
+
+    if (onTap == null) return card;
+    return GestureDetector(onTap: onTap, child: card);
   }
 }
 
 class _CountUpStat extends StatelessWidget {
-  const _CountUpStat({required this.end, this.suffix = ''});
+  const _CountUpStat({required this.end});
 
   final int end;
-  final String suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -347,7 +379,7 @@ class _CountUpStat extends StatelessWidget {
       curve: Curves.easeOutCubic,
       builder: (context, value, _) {
         return Text(
-          '${value.round()}$suffix',
+          '${value.round()}',
           style: GoogleFonts.bebasNeue(
             fontSize: 42,
             color: AppColors.flutterLightBlue,

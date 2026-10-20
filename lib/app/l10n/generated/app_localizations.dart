@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'Ahmed Rasmy'**
+  /// **'Ahmed Hisham Rasmy'**
   String get appTitle;
 
   /// No description provided for @issueNo.
@@ -179,7 +179,7 @@ abstract class AppLocalizations {
   /// No description provided for @metaTagline.
   ///
   /// In en, this message translates to:
-  /// **'FLUTTER DEV · MOBILE & WEB · 5 YRS SHIPPING APPS'**
+  /// **'FLUTTER DEV · MOBILE & WEB · 2+ YRS SHIPPING APPS'**
   String get metaTagline;
 
   /// No description provided for @redTagline.
@@ -197,109 +197,103 @@ abstract class AppLocalizations {
   /// No description provided for @whoItem1.
   ///
   /// In en, this message translates to:
-  /// **'Flutter Developer · Mobile & Web'**
+  /// **'Flutter Developer · GatherUp'**
   String get whoItem1;
 
   /// No description provided for @whoItem2.
   ///
   /// In en, this message translates to:
-  /// **'Clean Architecture · Bloc / Riverpod'**
+  /// **'Clean Architecture · BLoC / Provider'**
   String get whoItem2;
 
   /// No description provided for @whoItem3.
   ///
   /// In en, this message translates to:
-  /// **'5 yrs building iOS / Android / Web apps'**
+  /// **'Mobile · Web · Desktop'**
   String get whoItem3;
 
   /// No description provided for @whoItem4.
   ///
   /// In en, this message translates to:
-  /// **'Cairo, Egypt · Remote'**
+  /// **'Cairo, Egypt · Open to remote'**
   String get whoItem4;
 
   /// No description provided for @whoItem5.
   ///
   /// In en, this message translates to:
-  /// **'Bilingual EN / AR'**
+  /// **'Arabic / English'**
   String get whoItem5;
 
   /// No description provided for @estBadge.
   ///
   /// In en, this message translates to:
-  /// **'EST. 2021 · FLUTTER'**
+  /// **'EST. 2024 · FLUTTER'**
   String get estBadge;
 
   /// No description provided for @statCardLabel.
   ///
   /// In en, this message translates to:
-  /// **'SHIPPED APPS'**
+  /// **'APPS SHIPPED'**
   String get statCardLabel;
-
-  /// No description provided for @statCardValue.
-  ///
-  /// In en, this message translates to:
-  /// **'100K+'**
-  String get statCardValue;
 
   /// No description provided for @statCardSub.
   ///
   /// In en, this message translates to:
-  /// **'DOWNLOADS ↑'**
+  /// **'+ SERVICEX'**
   String get statCardSub;
 
   /// No description provided for @flagshipLabel.
   ///
   /// In en, this message translates to:
-  /// **'FLAGSHIP APP'**
+  /// **'LIVE ON'**
   String get flagshipLabel;
 
   /// No description provided for @flagshipValue.
   ///
   /// In en, this message translates to:
-  /// **'MULTI-PLATFORM'**
+  /// **'GOOGLE PLAY'**
   String get flagshipValue;
 
   /// No description provided for @teachNote.
   ///
   /// In en, this message translates to:
-  /// **'I ALSO TEACH + CREATE'**
+  /// **'OPEN TO WORK'**
   String get teachNote;
 
-  /// No description provided for @chip1.
+  /// No description provided for @chipGatherUp.
   ///
   /// In en, this message translates to:
-  /// **'PORTFOLIO WEB'**
-  String get chip1;
+  /// **'GATHERUP'**
+  String get chipGatherUp;
 
-  /// No description provided for @chip2.
+  /// No description provided for @chipAwwaab.
   ///
   /// In en, this message translates to:
-  /// **'E-COMMERCE APP'**
-  String get chip2;
+  /// **'AWWAAB'**
+  String get chipAwwaab;
 
-  /// No description provided for @chip3.
+  /// No description provided for @chipElmohandes.
   ///
   /// In en, this message translates to:
-  /// **'FINTECH WALLET'**
-  String get chip3;
+  /// **'ELMOHANDES'**
+  String get chipElmohandes;
 
-  /// No description provided for @chip4.
+  /// No description provided for @chipFlowery.
   ///
   /// In en, this message translates to:
-  /// **'HEALTH TRACKER'**
-  String get chip4;
+  /// **'FLOWERY'**
+  String get chipFlowery;
 
-  /// No description provided for @chip5.
+  /// No description provided for @chipServiceX.
   ///
   /// In en, this message translates to:
-  /// **'REALTIME CHAT'**
-  String get chip5;
+  /// **'SERVICEX'**
+  String get chipServiceX;
 
   /// No description provided for @footerMarquee.
   ///
   /// In en, this message translates to:
-  /// **'TURNING IDEAS INTO APPS · PIXELS INTO EXPERIENCES · CODE INTO PRODUCTS'**
+  /// **'CLEAN ARCHITECTURE · BLOC · FIREBASE · REST APIS · PIXEL-PERFECT UI'**
   String get footerMarquee;
 
   /// No description provided for @scrollHint.
@@ -313,6 +307,360 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'SWIPE UP'**
   String get scrollHintMobile;
+
+  /// No description provided for @linkLinkedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'LinkedIn'**
+  String get linkLinkedIn;
+
+  /// No description provided for @linkGitHub.
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub'**
+  String get linkGitHub;
+
+  /// No description provided for @eduDegree.
+  ///
+  /// In en, this message translates to:
+  /// **'Bachelor of Information Technology'**
+  String get eduDegree;
+
+  /// No description provided for @eduSchool.
+  ///
+  /// In en, this message translates to:
+  /// **'Minya University'**
+  String get eduSchool;
+
+  /// No description provided for @eduGrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Very Good with Honors'**
+  String get eduGrade;
+
+  /// No description provided for @eduProject.
+  ///
+  /// In en, this message translates to:
+  /// **'ServiceX — Home Repair Services Platform (2025)'**
+  String get eduProject;
+
+  /// No description provided for @expGatherUpRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Junior Flutter Developer'**
+  String get expGatherUpRole;
+
+  /// No description provided for @expGatherUpCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'GatherUp'**
+  String get expGatherUpCompany;
+
+  /// No description provided for @expGatherUpB1.
+  ///
+  /// In en, this message translates to:
+  /// **'Event booking, authentication, and JWT authorization'**
+  String get expGatherUpB1;
+
+  /// No description provided for @expGatherUpB2.
+  ///
+  /// In en, this message translates to:
+  /// **'REST API integration, local caching, Clean Architecture'**
+  String get expGatherUpB2;
+
+  /// No description provided for @expGatherUpB3.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Maps integration and Firebase push notifications (FCM)'**
+  String get expGatherUpB3;
+
+  /// No description provided for @expGatherUpB4.
+  ///
+  /// In en, this message translates to:
+  /// **'Real-time chat and responsive cross-platform UI'**
+  String get expGatherUpB4;
+
+  /// No description provided for @expCenterlyRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Intern Flutter Developer'**
+  String get expCenterlyRole;
+
+  /// No description provided for @expCenterlyCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Centerly'**
+  String get expCenterlyCompany;
+
+  /// No description provided for @expCenterlyB1.
+  ///
+  /// In en, this message translates to:
+  /// **'Worked in a cross-functional Agile team'**
+  String get expCenterlyB1;
+
+  /// No description provided for @expCenterlyB2.
+  ///
+  /// In en, this message translates to:
+  /// **'Applied Clean Architecture with BLoC/Cubit and MVVM'**
+  String get expCenterlyB2;
+
+  /// No description provided for @expCenterlyB3.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered scalable, maintainable, responsive mobile features'**
+  String get expCenterlyB3;
+
+  /// No description provided for @expElevateRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Intern Flutter Developer'**
+  String get expElevateRole;
+
+  /// No description provided for @expElevateCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevate'**
+  String get expElevateCompany;
+
+  /// No description provided for @expElevateB1.
+  ///
+  /// In en, this message translates to:
+  /// **'Built Flutter features with Clean Architecture, BLoC/Cubit, MVVM in an Agile environment'**
+  String get expElevateB1;
+
+  /// No description provided for @expElevateB2.
+  ///
+  /// In en, this message translates to:
+  /// **'Integrated REST APIs with Dio and Retrofit; Firebase Auth, Firestore, FCM'**
+  String get expElevateB2;
+
+  /// No description provided for @expElevateB3.
+  ///
+  /// In en, this message translates to:
+  /// **'Used Git/GitHub and Jira, took part in code reviews, improved code quality and architecture'**
+  String get expElevateB3;
+
+  /// No description provided for @projGatherUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GatherUp'**
+  String get projGatherUpTitle;
+
+  /// No description provided for @projGatherUpTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Social Events & Booking Platform'**
+  String get projGatherUpTagline;
+
+  /// No description provided for @projGatherUpSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover, join, and manage local events with booking, maps, real-time chat, FCM, REST APIs, JWT auth, local caching, and Clean Architecture with Provider.'**
+  String get projGatherUpSummary;
+
+  /// No description provided for @projAwwaabTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Awwaab'**
+  String get projAwwaabTitle;
+
+  /// No description provided for @projAwwaabTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic Lifestyle & Quran App'**
+  String get projAwwaabTagline;
+
+  /// No description provided for @projAwwaabSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer times, Quran, and lifestyle services with geolocation, WorkManager, and local notifications. Clean Architecture with BLoC. Live on Google Play.'**
+  String get projAwwaabSummary;
+
+  /// No description provided for @projElmohandesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Elmohandes'**
+  String get projElmohandesTitle;
+
+  /// No description provided for @projElmohandesTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice & Sales Management'**
+  String get projElmohandesTagline;
+
+  /// No description provided for @projElmohandesSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Freelance invoicing app for Android and Desktop — products, PDF generation, sales analytics, secure auth, and responsive UI. Clean Architecture, BLoC, Dio/Retrofit.'**
+  String get projElmohandesSummary;
+
+  /// No description provided for @projFloweryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Flowery'**
+  String get projFloweryTitle;
+
+  /// No description provided for @projFloweryTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'E-Commerce Flower App'**
+  String get projFloweryTagline;
+
+  /// No description provided for @projFlowerySummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse, order, and track flower purchases with auth, cart, order management, and REST APIs. Clean Architecture, BLoC, Dio.'**
+  String get projFlowerySummary;
+
+  /// No description provided for @projServiceXTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ServiceX'**
+  String get projServiceXTitle;
+
+  /// No description provided for @projServiceXTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Home Repair Services Platform'**
+  String get projServiceXTagline;
+
+  /// No description provided for @projServiceXSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Graduation project (2025) — mobile home-repair services platform.'**
+  String get projServiceXSummary;
+
+  /// No description provided for @skillCoreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Core Flutter'**
+  String get skillCoreTitle;
+
+  /// No description provided for @skillApiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'APIs & Backend'**
+  String get skillApiTitle;
+
+  /// No description provided for @skillStorageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage & Data'**
+  String get skillStorageTitle;
+
+  /// No description provided for @skillUiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'UI / UX'**
+  String get skillUiTitle;
+
+  /// No description provided for @skillQaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Testing & DevOps'**
+  String get skillQaTitle;
+
+  /// No description provided for @skillAiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'AI & Tooling'**
+  String get skillAiTitle;
+
+  /// No description provided for @courseIti.
+  ///
+  /// In en, this message translates to:
+  /// **'UI/UX (Front-end) Developer Track'**
+  String get courseIti;
+
+  /// No description provided for @courseItiOrg.
+  ///
+  /// In en, this message translates to:
+  /// **'ITI Tech-Leaps'**
+  String get courseItiOrg;
+
+  /// No description provided for @courseElevate.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Developer Internship'**
+  String get courseElevate;
+
+  /// No description provided for @courseElevateOrg.
+  ///
+  /// In en, this message translates to:
+  /// **'ELEVATE'**
+  String get courseElevateOrg;
+
+  /// No description provided for @courseUdemy.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Flutter Development (7 courses: MVVM, BLoC, Clean Architecture, responsive design, full-stack Dart)'**
+  String get courseUdemy;
+
+  /// No description provided for @courseUdemyOrg.
+  ///
+  /// In en, this message translates to:
+  /// **'Udemy'**
+  String get courseUdemyOrg;
+
+  /// No description provided for @coursePayments.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced feature integration (Google Maps, Stripe, PayPal)'**
+  String get coursePayments;
+
+  /// No description provided for @courseCenterly.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Developer Internship'**
+  String get courseCenterly;
+
+  /// No description provided for @courseCenterlyOrg.
+  ///
+  /// In en, this message translates to:
+  /// **'CENTERLY'**
+  String get courseCenterlyOrg;
+
+  /// No description provided for @caseGatherUpOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpOverview;
+
+  /// No description provided for @caseGatherUpProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpProblem;
+
+  /// No description provided for @caseGatherUpSolution.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpSolution;
+
+  /// No description provided for @caseGatherUpO1.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpO1;
+
+  /// No description provided for @caseGatherUpO2.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpO2;
+
+  /// No description provided for @langArabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic (Native)'**
+  String get langArabic;
+
+  /// No description provided for @langEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English (Professional)'**
+  String get langEnglish;
 }
 
 class _AppLocalizationsDelegate

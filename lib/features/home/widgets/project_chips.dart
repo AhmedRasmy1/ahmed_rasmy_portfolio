@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 
 class ProjectChips extends StatelessWidget {
@@ -16,10 +17,21 @@ class ProjectChips extends StatelessWidget {
   final bool reduceMotion;
   final bool customCursor;
 
+  static String _label(AppLocalizations l10n, String slug) {
+    return switch (slug) {
+      'gatherup' => l10n.chipGatherUp,
+      'awwaab' => l10n.chipAwwaab,
+      'elmohandes' => l10n.chipElmohandes,
+      'flowery' => l10n.chipFlowery,
+      'servicex' => l10n.chipServiceX,
+      _ => slug.toUpperCase(),
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final chips = [l10n.chip1, l10n.chip2, l10n.chip3, l10n.chip4, l10n.chip5];
+    final slugs = PortfolioData.heroChipSlugs;
     final angles = [0.03, -0.04, 0.05, -0.02, 0.035];
 
     return Wrap(
@@ -27,10 +39,11 @@ class ProjectChips extends StatelessWidget {
       spacing: 10,
       runSpacing: 10,
       children: [
-        for (var i = 0; i < chips.length; i++)
+        for (var i = 0; i < slugs.length; i++)
           _Chip(
-            label: chips[i],
-            angle: reduceMotion ? 0 : angles[i],
+            label: _label(l10n, slugs[i]),
+            slug: slugs[i],
+            angle: reduceMotion ? 0 : angles[i % angles.length],
             reduceMotion: reduceMotion,
             delayMs: 900 + i * 70,
             customCursor: customCursor,
@@ -43,6 +56,7 @@ class ProjectChips extends StatelessWidget {
 class _Chip extends StatefulWidget {
   const _Chip({
     required this.label,
+    required this.slug,
     required this.angle,
     required this.reduceMotion,
     required this.delayMs,
@@ -50,6 +64,7 @@ class _Chip extends StatefulWidget {
   });
 
   final String label;
+  final String slug;
   final double angle;
   final bool reduceMotion;
   final int delayMs;
@@ -74,32 +89,36 @@ class _ChipState extends State<_Chip> {
           : SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 220),
-        curve: Curves.easeOutCubic,
-        transformAlignment: Alignment.center,
-        transform: Matrix4.rotationZ(_hover ? -0.02 : widget.angle)
-          ..setTranslationRaw(0, _hover ? -6.0 : 0, 0),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.circular(999),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.navyInk.withValues(alpha: _hover ? 0.25 : 0.12),
-              blurRadius: _hover ? 10 : 5,
-              offset: Offset(0, _hover ? 7 : 3),
+      child: GestureDetector(
+        onTap: () => PortfolioScrollTargets.scrollToProject(widget.slug),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 220),
+          curve: Curves.easeOutCubic,
+          transformAlignment: Alignment.center,
+          transform: Matrix4.rotationZ(_hover ? -0.02 : widget.angle)
+            ..setTranslationRaw(0, _hover ? -6.0 : 0, 0),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: BorderRadius.circular(999),
+            boxShadow: [
+              BoxShadow(
+                color:
+                    AppColors.navyInk.withValues(alpha: _hover ? 0.25 : 0.12),
+                blurRadius: _hover ? 10 : 5,
+                offset: Offset(0, _hover ? 7 : 3),
+              ),
+            ],
+          ),
+          child: Text(
+            widget.label,
+            style: GoogleFonts.spaceMono(
+              fontSize: 10,
+              letterSpacing: 1.2,
+              fontWeight: FontWeight.w700,
+              color: fg,
+              decoration: TextDecoration.none,
             ),
-          ],
-        ),
-        child: Text(
-          widget.label,
-          style: GoogleFonts.spaceMono(
-            fontSize: 10,
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w700,
-            color: fg,
-            decoration: TextDecoration.none,
           ),
         ),
       ),
