@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
@@ -7,8 +8,12 @@ import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
+import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
+import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_layout.dart';
 
 /// Lazy-init muted looping video. Poster until play; dispose when off-screen.
+/// Hover plays on desktop; tap toggles everywhere (touch equivalent).
 class LazyHoverVideo extends StatefulWidget {
   const LazyHoverVideo({
     super.key,
@@ -57,6 +62,9 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
     _playing = false;
   }
 
+  bool get _isCompact =>
+      MediaQuery.sizeOf(context).width < CaseLayout.mobileBreakpoint;
+
   void _onScroll() {
     if (!mounted) return;
     final box = context.findRenderObject() as RenderBox?;
@@ -69,7 +77,7 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
     if (near == _near) {
       if (near &&
           !_playing &&
-          MediaQuery.sizeOf(context).width < 700 &&
+          _isCompact &&
           _controller != null &&
           _controller!.value.isInitialized) {
         _play();
@@ -80,7 +88,7 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
     setState(() => _near = near);
     if (near) {
       _ensureInit();
-      if (MediaQuery.sizeOf(context).width < 700) {
+      if (_isCompact) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted) _play();
         });
@@ -94,7 +102,12 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
 
   Future<void> _ensureInit() async {
     final path = widget.card.videoAsset;
-    if (path == null || isTodo(path) || _failed || _initing || _controller != null) {
+    if (path == null ||
+        isTodo(path) ||
+        !AssetChecker.has(path) ||
+        _failed ||
+        _initing ||
+        _controller != null) {
       return;
     }
     _initing = true;
@@ -134,27 +147,52 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
     if (mounted) setState(() => _playing = false);
   }
 
+  void _toggleTap() {
+    if (_playing) {
+      _pause();
+    } else {
+      _play();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final mobile = MediaQuery.sizeOf(context).width < 700;
+    final compact = _isCompact;
     final caption = CaseStudyCopy.t(l10n, widget.card.captionKey);
-    final poster = widget.card.posterAsset;
+    final posterPath = widget.card.posterAsset;
+    final hasPoster = posterPath != null &&
+        !isTodo(posterPath) &&
+        AssetChecker.has(posterPath);
+    final hasVideo = widget.card.videoAsset != null &&
+        !isTodo(widget.card.videoAsset) &&
+        AssetChecker.has(widget.card.videoAsset);
     final ready = _controller != null &&
         _controller!.value.isInitialized &&
         !_failed;
 
+    // Hide entire card if neither video nor poster exists in the manifest.
+    if (!hasVideo && !hasPoster && !kDebugMode) {
+      return const SizedBox.shrink();
+    }
+    if (_failed && !hasPoster && !kDebugMode) {
+      return const SizedBox.shrink();
+    }
+
     Widget media = Stack(
       fit: StackFit.expand,
       children: [
-        if (poster != null && !isTodo(poster))
-          Image.asset(
-            poster,
+        if (hasPoster)
+          SafeAssetImage(
+            assetPath: posterPath,
             fit: BoxFit.cover,
-            errorBuilder: (_, _, _) => _PosterFallback(label: caption),
+            showDebugPlaceholder: false,
+            fallback: const ColoredBox(color: AppColors.navy),
           )
+        else if (kDebugMode)
+          _PosterFallback(label: caption)
         else
-          _PosterFallback(label: caption),
+          const ColoredBox(color: AppColors.navy),
         if (ready)
           AnimatedOpacity(
             opacity: _playing ? 1 : 0,
@@ -168,14 +206,15 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
               ),
             ),
           ),
-        if (!_playing && !_failed && widget.card.videoAsset != null)
+        if (hasVideo && !_playing && !_failed)
           Positioned(
             left: 8,
             right: 8,
             bottom: 10,
             child: Text(
-              mobile ? l10n.caseTapToPlay : l10n.caseHoverToPlay,
+              compact ? l10n.caseTapToPlay : l10n.caseHoverToPlay,
               textAlign: TextAlign.center,
+              softWrap: true,
               style: GoogleFonts.spaceMono(
                 fontSize: 9,
                 letterSpacing: 1.4,
@@ -197,19 +236,24 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
     );
 
     if (widget.phoneFrame) {
-      media = Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: AppColors.navyInk,
-          borderRadius: BorderRadius.circular(28),
-          border: Border.all(
-            color: AppColors.navy.withValues(alpha: 0.8),
-            width: 3,
-          ),
+      media = ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.sizeOf(context).width * 0.72,
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: media,
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: AppColors.navyInk,
+            borderRadius: BorderRadius.circular(28),
+            border: Border.all(
+              color: AppColors.navy.withValues(alpha: 0.8),
+              width: 3,
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: media,
+          ),
         ),
       );
     } else {
@@ -219,45 +263,41 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
       );
     }
 
-    return CursorTarget(
-      enabled: widget.customCursor,
-      child: MouseRegion(
-        onEnter: mobile
-            ? null
-            : (_) {
-                _play();
-              },
-        onExit: mobile
-            ? null
-            : (_) {
-                _pause();
-              },
-        child: GestureDetector(
-          onTap: mobile
-              ? () {
-                  if (_playing) {
-                    _pause();
-                  } else {
-                    _play();
-                  }
-                }
-              : null,
-          child: Column(
-            children: [
-              media,
-              const SizedBox(height: 10),
-              Text(
-                caption,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.spaceMono(
-                  fontSize: 11,
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w700,
-                  color: context.zine.ink,
-                  decoration: TextDecoration.none,
+    return RepaintBoundary(
+      child: CursorTarget(
+        enabled: widget.customCursor,
+        child: MouseRegion(
+          onEnter: compact
+              ? null
+              : (_) {
+                  _play();
+                },
+          onExit: compact
+              ? null
+              : (_) {
+                  _pause();
+                },
+          child: GestureDetector(
+            onTap: _toggleTap,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                media,
+                const SizedBox(height: 10),
+                Text(
+                  caption,
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  style: GoogleFonts.spaceMono(
+                    fontSize: 11,
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w700,
+                    color: context.zine.ink,
+                    decoration: TextDecoration.none,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -275,15 +315,19 @@ class _PosterFallback extends StatelessWidget {
     return ColoredBox(
       color: AppColors.navy,
       child: Center(
-        child: Text(
-          label.toUpperCase(),
-          textAlign: TextAlign.center,
-          style: GoogleFonts.spaceMono(
-            fontSize: 11,
-            letterSpacing: 1.4,
-            fontWeight: FontWeight.w700,
-            color: AppColors.flutterLightBlue.withValues(alpha: 0.75),
-            decoration: TextDecoration.none,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Text(
+            label.toUpperCase(),
+            textAlign: TextAlign.center,
+            softWrap: true,
+            style: GoogleFonts.spaceMono(
+              fontSize: 11,
+              letterSpacing: 1.4,
+              fontWeight: FontWeight.w700,
+              color: AppColors.flutterLightBlue.withValues(alpha: 0.75),
+              decoration: TextDecoration.none,
+            ),
           ),
         ),
       ),

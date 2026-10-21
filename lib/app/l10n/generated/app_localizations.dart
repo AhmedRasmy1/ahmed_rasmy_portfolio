@@ -1652,6 +1652,66 @@ abstract class AppLocalizations {
   /// **'DESIGN + CODE'**
   String get caseSecCode;
 
+  /// No description provided for @caseSecIteration.
+  ///
+  /// In en, this message translates to:
+  /// **'ITERATION'**
+  String get caseSecIteration;
+
+  /// No description provided for @caseSecComingNext.
+  ///
+  /// In en, this message translates to:
+  /// **'COMING NEXT'**
+  String get caseSecComingNext;
+
+  /// No description provided for @caseBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'Before'**
+  String get caseBefore;
+
+  /// No description provided for @caseLearned.
+  ///
+  /// In en, this message translates to:
+  /// **'Learned'**
+  String get caseLearned;
+
+  /// No description provided for @caseAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'After'**
+  String get caseAfter;
+
+  /// No description provided for @caseComingSoonSticky.
+  ///
+  /// In en, this message translates to:
+  /// **'COMING SOON'**
+  String get caseComingSoonSticky;
+
+  /// No description provided for @caseClassified.
+  ///
+  /// In en, this message translates to:
+  /// **'CLASSIFIED'**
+  String get caseClassified;
+
+  /// No description provided for @caseStatusInQa.
+  ///
+  /// In en, this message translates to:
+  /// **'IN QA'**
+  String get caseStatusInQa;
+
+  /// No description provided for @caseStatusNextRelease.
+  ///
+  /// In en, this message translates to:
+  /// **'NEXT RELEASE'**
+  String get caseStatusNextRelease;
+
+  /// No description provided for @caseStatusBehindFlag.
+  ///
+  /// In en, this message translates to:
+  /// **'BEHIND A FLAG'**
+  String get caseStatusBehindFlag;
+
   /// No description provided for @caseHoverToPlay.
   ///
   /// In en, this message translates to:
@@ -2243,14 +2303,44 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpStatBookings.
   ///
   /// In en, this message translates to:
-  /// **'Bookings'**
+  /// **'Total bookings'**
   String get caseGatherUpStatBookings;
+
+  /// No description provided for @caseGatherUpStatShowUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Show-up rate'**
+  String get caseGatherUpStatShowUp;
+
+  /// No description provided for @caseGatherUpStatRepeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat rate'**
+  String get caseGatherUpStatRepeat;
 
   /// No description provided for @caseGatherUpStatRating.
   ///
   /// In en, this message translates to:
   /// **'Rating'**
   String get caseGatherUpStatRating;
+
+  /// No description provided for @caseGatherUpBarWhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Where members are'**
+  String get caseGatherUpBarWhere;
+
+  /// No description provided for @caseGatherUpBarInterests.
+  ///
+  /// In en, this message translates to:
+  /// **'Top interests'**
+  String get caseGatherUpBarInterests;
+
+  /// No description provided for @caseGatherUpClosingNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Built and shipped with the GatherUp team.'**
+  String get caseGatherUpClosingNote;
 
   /// No description provided for @caseGatherUpLearn1.
   ///
@@ -2269,6 +2359,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'TODO_REPLACE'**
   String get caseGatherUpLearn3;
+
+  /// No description provided for @caseGatherUpIterHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'What shipping changed.'**
+  String get caseGatherUpIterHeadline;
+
+  /// No description provided for @caseGatherUpIter1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter1Title;
+
+  /// No description provided for @caseGatherUpIter1Before.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter1Before;
+
+  /// No description provided for @caseGatherUpIter1Learned.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter1Learned;
+
+  /// No description provided for @caseGatherUpIter1After.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter1After;
+
+  /// No description provided for @caseGatherUpIter2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter2Title;
+
+  /// No description provided for @caseGatherUpIter2Before.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter2Before;
+
+  /// No description provided for @caseGatherUpIter2Learned.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter2Learned;
+
+  /// No description provided for @caseGatherUpIter2After.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter2After;
+
+  /// No description provided for @caseGatherUpIter3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter3Title;
+
+  /// No description provided for @caseGatherUpIter3Before.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter3Before;
+
+  /// No description provided for @caseGatherUpIter3Learned.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter3Learned;
+
+  /// No description provided for @caseGatherUpIter3After.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpIter3After;
+
+  /// No description provided for @caseGatherUpComingHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Built, not shipped yet.'**
+  String get caseGatherUpComingHeadline;
+
+  /// No description provided for @caseGatherUpFeat1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpFeat1Title;
+
+  /// No description provided for @caseGatherUpFeat1Summary.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpFeat1Summary;
+
+  /// No description provided for @caseGatherUpFeat2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpFeat2Title;
+
+  /// No description provided for @caseGatherUpFeat2Summary.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpFeat2Summary;
+
+  /// No description provided for @caseGatherUpFeat3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpFeat3Title;
+
+  /// No description provided for @caseGatherUpFeat3Summary.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpFeat3Summary;
+
+  /// No description provided for @caseGatherUpResultsHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'After launch.'**
+  String get caseGatherUpResultsHeadline;
 
   /// No description provided for @langArabic.
   ///

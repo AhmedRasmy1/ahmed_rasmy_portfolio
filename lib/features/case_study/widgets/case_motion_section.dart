@@ -9,6 +9,7 @@ import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
+import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_layout.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/lazy_hover_video.dart';
 
 class CaseMotionSection extends StatefulWidget {
@@ -90,10 +91,12 @@ class _CaseMotionSectionState extends State<CaseMotionSection>
             runSpacing: 12,
             children: [
               for (final t in widget.study.motionTimings)
-                _TimingTicket(
-                  timing: t,
-                  elapsed: _elapsed,
-                  reduceMotion: widget.reduceMotion,
+                RepaintBoundary(
+                  child: _TimingTicket(
+                    timing: t,
+                    elapsed: _elapsed,
+                    reduceMotion: widget.reduceMotion,
+                  ),
                 ),
             ],
           ),
@@ -102,25 +105,25 @@ class _CaseMotionSectionState extends State<CaseMotionSection>
           const SizedBox(height: 28),
           LayoutBuilder(
             builder: (context, c) {
-              final narrow = c.maxWidth < 700;
-              if (narrow) {
-                return Column(
-                  children: [
-                    for (final card in widget.study.motionVideos) ...[
-                      LazyHoverVideo(
-                        card: card,
-                        scrollOffset: widget.scrollOffset,
-                        customCursor: widget.customCursor,
-                        aspectRatio: 16 / 10,
-                      ),
-                      const SizedBox(height: 14),
-                    ],
-                  ],
+              final stack = c.maxWidth < CaseLayout.stackBreakpoint;
+              if (stack) {
+                return CaseSnapGallery(
+                  height: 220,
+                  viewportFraction: 0.88,
+                  itemCount: widget.study.motionVideos.length,
+                  itemBuilder: (_, i) => LazyHoverVideo(
+                    card: widget.study.motionVideos[i],
+                    scrollOffset: widget.scrollOffset,
+                    customCursor: widget.customCursor,
+                    aspectRatio: 16 / 10,
+                  ),
                 );
               }
               return Row(
                 children: [
-                  for (var i = 0; i < widget.study.motionVideos.length; i++) ...[
+                  for (var i = 0;
+                      i < widget.study.motionVideos.length;
+                      i++) ...[
                     if (i > 0) const SizedBox(width: 12),
                     Expanded(
                       child: LazyHoverVideo(
@@ -140,6 +143,7 @@ class _CaseMotionSectionState extends State<CaseMotionSection>
           const SizedBox(height: 16),
           Text(
             l10n.caseGatherUpReduceMotion,
+            softWrap: true,
             style: GoogleFonts.spaceMono(
               fontSize: 11,
               letterSpacing: 1.1,
@@ -174,67 +178,73 @@ class _TimingTicket extends StatelessWidget {
         : (elapsed.inMilliseconds % (period * 4)) / (period * 4);
     final bounce = math.sin(t * math.pi * 2);
 
-    return Container(
-      width: 150,
-      padding: const EdgeInsets.fromLTRB(12, 14, 12, 12),
-      decoration: BoxDecoration(
-        color: AppColors.paper,
-        border: Border.all(
-          color: AppColors.flutterBlue.withValues(alpha: 0.25),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 160, minWidth: 120),
+      child: Container(
+        width: 150,
+        padding: const EdgeInsets.fromLTRB(12, 14, 12, 12),
+        decoration: BoxDecoration(
+          color: AppColors.paper,
+          border: Border.all(
+            color: AppColors.flutterBlue.withValues(alpha: 0.25),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.navyInk.withValues(alpha: 0.12),
+              blurRadius: 8,
+              offset: const Offset(1, 3),
+            ),
+          ],
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.navyInk.withValues(alpha: 0.12),
-            blurRadius: 8,
-            offset: const Offset(1, 3),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            CaseStudyCopy.t(l10n, timing.titleKey).toUpperCase(),
-            style: GoogleFonts.spaceMono(
-              fontSize: 11,
-              letterSpacing: 1.2,
-              fontWeight: FontWeight.w700,
-              color: AppColors.flutterBlue,
-              decoration: TextDecoration.none,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              CaseStudyCopy.t(l10n, timing.titleKey).toUpperCase(),
+              softWrap: true,
+              style: GoogleFonts.spaceMono(
+                fontSize: 11,
+                letterSpacing: 1.2,
+                fontWeight: FontWeight.w700,
+                color: AppColors.flutterBlue,
+                decoration: TextDecoration.none,
+              ),
             ),
-          ),
-          Text(
-            timing.durationLabel,
-            style: GoogleFonts.bebasNeue(
-              fontSize: 22,
-              color: AppColors.navyInk,
-              decoration: TextDecoration.none,
+            Text(
+              timing.durationLabel,
+              softWrap: true,
+              style: GoogleFonts.bebasNeue(
+                fontSize: 22,
+                color: AppColors.navyInk,
+                decoration: TextDecoration.none,
+              ),
             ),
-          ),
-          Text(
-            CaseStudyCopy.t(l10n, timing.useKey),
-            style: GoogleFonts.kalam(
-              fontSize: 13,
-              color: AppColors.navyInk.withValues(alpha: 0.75),
-              decoration: TextDecoration.none,
+            Text(
+              CaseStudyCopy.t(l10n, timing.useKey),
+              softWrap: true,
+              style: GoogleFonts.kalam(
+                fontSize: 13,
+                color: AppColors.navyInk.withValues(alpha: 0.75),
+                decoration: TextDecoration.none,
+              ),
             ),
-          ),
-          const SizedBox(height: 12),
-          SizedBox(
-            height: 20,
-            child: Align(
-              alignment: Alignment(bounce, 0),
-              child: Container(
-                width: 10,
-                height: 10,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.flutterLightBlue,
+            const SizedBox(height: 12),
+            SizedBox(
+              height: 20,
+              child: Align(
+                alignment: Alignment(bounce, 0),
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.flutterLightBlue,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

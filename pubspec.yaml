@@ -71,17 +71,18 @@ flutter:
   assets:
     - assets/content/
     - assets/images/
+    - assets/images/about/
+    - assets/images/experience/
+    - assets/images/logos/
     - assets/images/projects/gatherup/
-    - assets/images/projects/gatherup/screens/
     - assets/images/projects/gatherup/story/
+    - assets/images/projects/gatherup/screens/
     - assets/images/projects/gatherup/posters/
-    - assets/videos/gatherup/
     - assets/images/projects/awwaab/
     - assets/images/projects/elmohandes/
     - assets/images/projects/flowery/
     - assets/images/projects/servicex/
-    - assets/images/about/
-    - assets/images/logos/
+    - assets/videos/gatherup/
     - assets/icons/
     - assets/resume/
 

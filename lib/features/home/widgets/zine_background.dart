@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/asset_paths.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/hand_drawn_painter.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
+import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 
 class ZineBackground extends StatelessWidget {
   const ZineBackground({
@@ -76,16 +78,19 @@ class ZineBackground extends StatelessWidget {
               ),
             ),
           ),
-          Opacity(
-            opacity: 0.14,
-            child: Image.asset(
-              AssetPaths.grain,
-              repeat: ImageRepeat.repeat,
-              fit: BoxFit.none,
-              filterQuality: FilterQuality.low,
-              errorBuilder: (_, _, _) => const SizedBox.shrink(),
+          if (AssetChecker.has(AssetPaths.grain))
+            Positioned.fill(
+              child: Opacity(
+                opacity: 0.14,
+                child: SafeAssetImage(
+                  assetPath: AssetPaths.grain,
+                  fit: BoxFit.none,
+                  repeat: ImageRepeat.repeat,
+                  filterQuality: FilterQuality.low,
+                  showDebugPlaceholder: false,
+                ),
+              ),
             ),
-          ),
           child,
         ],
       ),

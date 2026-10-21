@@ -7,7 +7,9 @@ import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/skill_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/navigation/home_sections.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/paper_card.dart';
+import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
 
 class SkillsSection extends StatelessWidget {
@@ -291,13 +293,14 @@ class _SkillIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!AssetChecker.has(path)) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsetsDirectional.only(end: 6),
-      child: Image.asset(
-        path,
+      child: SafeAssetImage(
+        assetPath: path,
         width: 14,
         height: 14,
-        errorBuilder: (_, _, _) => const SizedBox.shrink(),
+        showDebugPlaceholder: false,
       ),
     );
   }

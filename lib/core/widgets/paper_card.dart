@@ -9,6 +9,7 @@ class PaperCard extends StatefulWidget {
     super.key,
     required this.child,
     this.tilt = 0,
+    this.maxTilt,
     this.tapeColor,
     this.padding = const EdgeInsets.fromLTRB(16, 28, 16, 18),
     this.onTap,
@@ -17,6 +18,9 @@ class PaperCard extends StatefulWidget {
 
   final Widget child;
   final double tilt;
+
+  /// When set, clamps [|tilt|] to this value (e.g. ~0.017 ≈ 1° on narrow).
+  final double? maxTilt;
   final Color? tapeColor;
   final EdgeInsetsGeometry padding;
   final VoidCallback? onTap;
@@ -29,11 +33,20 @@ class PaperCard extends StatefulWidget {
 class _PaperCardState extends State<PaperCard> {
   bool _hover = false;
 
+  double get _effectiveTilt {
+    final t = widget.tilt;
+    final max = widget.maxTilt;
+    if (max == null) return t;
+    if (t == 0) return 0;
+    final sign = t.isNegative ? -1.0 : 1.0;
+    return sign * t.abs().clamp(0.0, max);
+  }
+
   @override
   Widget build(BuildContext context) {
     final zine = context.zine;
     final tape = widget.tapeColor ?? zine.tape;
-    final angle = (_hover && widget.enableHover) ? 0.0 : widget.tilt;
+    final angle = (_hover && widget.enableHover) ? 0.0 : _effectiveTilt;
 
     Widget card = MouseRegion(
       cursor: SystemMouseCursors.none,
@@ -80,6 +93,6 @@ class _PaperCardState extends State<PaperCard> {
     if (widget.onTap != null) {
       card = GestureDetector(onTap: widget.onTap, child: card);
     }
-    return card;
+    return RepaintBoundary(child: card);
   }
 }

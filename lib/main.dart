@@ -9,12 +9,14 @@ import 'package:ahmed_rasmy_portfolio/app/app.dart';
 import 'package:ahmed_rasmy_portfolio/app/settings/settings_provider.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_theme.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/asset_paths.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/branded_loader.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Yellow text baselines from debug paint must never ship.
   debugPaintBaselinesEnabled = false;
+  await AssetChecker.init();
   if (kIsWeb) {
     usePathUrlStrategy();
   }
@@ -91,17 +93,25 @@ class _PrecacheShellState extends State<_PrecacheShell> {
     // Decode at ≥2× expected max display width for crisp portraits.
     final portraitWidth = (620 * dpr * 2).round().clamp(1200, 2800);
 
-    await Future.wait([
-      precacheImage(
-        ResizeImage(
-          const AssetImage(AssetPaths.portrait),
-          width: portraitWidth,
+    final futures = <Future<void>>[];
+    if (AssetChecker.has(AssetPaths.portrait)) {
+      futures.add(
+        precacheImage(
+          ResizeImage(
+            const AssetImage(AssetPaths.portrait),
+            width: portraitWidth,
+          ),
+          context,
         ),
-        context,
-      ),
-      precacheImage(const AssetImage(AssetPaths.dash), context),
-      precacheImage(const AssetImage(AssetPaths.grain), context),
-    ]);
+      );
+    }
+    if (AssetChecker.has(AssetPaths.dash)) {
+      futures.add(precacheImage(const AssetImage(AssetPaths.dash), context));
+    }
+    if (AssetChecker.has(AssetPaths.grain)) {
+      futures.add(precacheImage(const AssetImage(AssetPaths.grain), context));
+    }
+    if (futures.isNotEmpty) await Future.wait(futures);
 
     if (mounted) setState(() => _imagesReady = true);
   }

@@ -8,6 +8,7 @@ import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/paper_card.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
+import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_layout.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_story_strip.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/scroll_reveal.dart';
 
@@ -36,7 +37,7 @@ class CaseProblemSection extends StatelessWidget {
     final typical = study.compareTypical;
     final gather = study.compareGatherUp;
     final width = MediaQuery.sizeOf(context).width;
-    final narrow = width < 800;
+    final stack = width < CaseLayout.stackBreakpoint;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +52,7 @@ class CaseProblemSection extends StatelessWidget {
         ),
         if (typical != null && gather != null) ...[
           const SizedBox(height: 28),
-          if (narrow)
+          if (stack)
             Column(
               children: [
                 _CompareCard(
@@ -59,6 +60,7 @@ class CaseProblemSection extends StatelessWidget {
                   scrollOffset: scrollOffset,
                   reduceMotion: reduceMotion,
                   customCursor: customCursor,
+                  maxTilt: CaseLayout.narrowTilt,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -69,6 +71,7 @@ class CaseProblemSection extends StatelessWidget {
                   scrollOffset: scrollOffset,
                   reduceMotion: reduceMotion,
                   customCursor: customCursor,
+                  maxTilt: CaseLayout.narrowTilt,
                 ),
               ],
             )
@@ -85,7 +88,10 @@ class CaseProblemSection extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 48),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 48,
+                  ),
                   child: _VsSticker(label: l10n.caseGatherUpVs),
                 ),
                 Expanded(
@@ -149,23 +155,33 @@ class _CompareCard extends StatelessWidget {
     this.scrollOffset,
     this.reduceMotion = false,
     this.customCursor = false,
+    this.maxTilt,
   });
 
   final CaseStudyCompareSide side;
   final ValueNotifier<double>? scrollOffset;
   final bool reduceMotion;
   final bool customCursor;
+  final double? maxTilt;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final title = CaseStudyCopy.t(l10n, side.titleKey);
     final caption = CaseStudyCopy.t(l10n, side.captionKey);
+    final narrow = CaseLayout.isNarrow(MediaQuery.sizeOf(context).width);
 
     return CursorTarget(
       enabled: customCursor,
       child: PaperCard(
         tilt: side.accentTape ? 0.015 : -0.015,
+        maxTilt: maxTilt,
+        padding: EdgeInsets.fromLTRB(
+          narrow ? 12 : 16,
+          narrow ? 22 : 28,
+          narrow ? 12 : 16,
+          narrow ? 14 : 18,
+        ),
         tapeColor: side.accentTape
             ? AppColors.flutterLightBlue.withValues(alpha: 0.85)
             : null,
@@ -174,6 +190,7 @@ class _CompareCard extends StatelessWidget {
           children: [
             Text(
               title,
+              softWrap: true,
               style: GoogleFonts.bebasNeue(
                 fontSize: 24,
                 color: AppColors.navyInk,
@@ -189,21 +206,27 @@ class _CompareCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: side.accentTape
-                              ? AppColors.flutterLightBlue
-                              : AppColors.flutterBlue.withValues(alpha: 0.5),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Container(
+                          width: 8,
+                          height: 8,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: side.accentTape
+                                ? AppColors.flutterLightBlue
+                                : AppColors.flutterBlue
+                                    .withValues(alpha: 0.5),
+                          ),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           CaseStudyCopy.t(l10n, side.stepKeys[i]),
+                          softWrap: true,
                           style: GoogleFonts.spaceMono(
                             fontSize: 13,
                             letterSpacing: 0.6,
@@ -220,6 +243,7 @@ class _CompareCard extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               caption,
+              softWrap: true,
               style: GoogleFonts.kalam(
                 fontSize: 14,
                 color: AppColors.navyInk.withValues(alpha: 0.7),

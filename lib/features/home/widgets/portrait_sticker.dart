@@ -6,6 +6,8 @@ import 'package:ahmed_rasmy_portfolio/core/animation/idle_ticker.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/asset_paths.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/cursor_controller.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
+import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/comic_burst.dart';
 
 class PortraitSticker extends StatefulWidget {
@@ -165,19 +167,34 @@ class _StickerCutout extends StatelessWidget {
   final bool grayscale;
 
   Widget _raw() {
-    return Image.asset(
-      asset,
-      fit: BoxFit.contain,
-      filterQuality: FilterQuality.high,
-      cacheWidth: cacheWidth,
-      errorBuilder: (_, _, _) => Image.asset(
-        fallback,
+    if (AssetChecker.has(asset)) {
+      return SafeAssetImage(
+        assetPath: asset,
         fit: BoxFit.contain,
         filterQuality: FilterQuality.high,
         cacheWidth: cacheWidth,
-        errorBuilder: (_, _, _) => const SizedBox.shrink(),
-      ),
-    );
+        showDebugPlaceholder: false,
+        fallback: AssetChecker.has(fallback)
+            ? SafeAssetImage(
+                assetPath: fallback,
+                fit: BoxFit.contain,
+                filterQuality: FilterQuality.high,
+                cacheWidth: cacheWidth,
+                showDebugPlaceholder: false,
+              )
+            : const SizedBox.shrink(),
+      );
+    }
+    if (AssetChecker.has(fallback)) {
+      return SafeAssetImage(
+        assetPath: fallback,
+        fit: BoxFit.contain,
+        filterQuality: FilterQuality.high,
+        cacheWidth: cacheWidth,
+        showDebugPlaceholder: false,
+      );
+    }
+    return const SizedBox.shrink();
   }
 
   @override

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/experience_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/navigation/home_sections.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/paper_card.dart';
+import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/widgets/experience_photo_stack.dart';
 
 class ExperienceSection extends StatefulWidget {
   const ExperienceSection({
@@ -258,6 +260,16 @@ class _TimelineEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final existingPhotos =
+        AssetChecker.existing(experience.visiblePhotos).take(3).toList();
+    final photos = existingPhotos.isNotEmpty
+        ? ExperiencePhotoStack(
+            photos: existingPhotos,
+            customCursor: customCursor,
+            reduceMotion: reduceMotion,
+          )
+        : null;
+
     final card = CursorTarget(
       enabled: customCursor,
       child: PaperCard(
@@ -298,15 +310,36 @@ class _TimelineEntry extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          Expanded(child: card),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                card,
+                if (photos != null) ...[
+                  const SizedBox(height: 16),
+                  photos,
+                ],
+              ],
+            ),
+          ),
         ],
       );
     } else {
       final left = index.isEven;
+      final side = Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(child: card),
+          if (photos != null) ...[
+            const SizedBox(width: 16),
+            photos,
+          ],
+        ],
+      );
       entry = Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(child: left ? card : const SizedBox.shrink()),
+          Expanded(child: left ? side : const SizedBox.shrink()),
           SizedBox(
             width: 48,
             child: Padding(
@@ -314,7 +347,7 @@ class _TimelineEntry extends StatelessWidget {
               child: Center(child: node),
             ),
           ),
-          Expanded(child: left ? const SizedBox.shrink() : card),
+          Expanded(child: left ? const SizedBox.shrink() : side),
         ],
       );
     }
@@ -348,7 +381,6 @@ class _ExperienceCardBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final zine = context.zine;
-    final isAr = Localizations.localeOf(context).languageCode == 'ar';
     final company = ExperienceCopy.company(l10n, experience);
     final role = ExperienceCopy.role(l10n, experience);
     final dates = ExperienceCopy.dateRange(l10n, experience);
@@ -365,43 +397,38 @@ class _ExperienceCardBody extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      Expanded(
-                        child: Text(
-                          role,
-                          style: GoogleFonts.bebasNeue(
-                            fontSize: 24,
-                            letterSpacing: 0.8,
-                            color: AppColors.navyInk,
-                            decoration: TextDecoration.none,
-                          ),
+                      Text(
+                        role,
+                        style: AppTypography.headline(
+                          context,
+                          fontSize: 24,
+                          color: AppColors.navyInk,
                         ),
                       ),
-                      if (experience.isCurrent) ...[
-                        const SizedBox(width: 8),
-                        _NowStamp(label: l10n.expNow),
-                      ],
+                      if (experience.isCurrent) _NowStamp(label: l10n.expNow),
                     ],
                   ),
                   Text(
                     company,
-                    style: GoogleFonts.spaceMono(
+                    style: AppTypography.label(
+                      context,
                       fontSize: 12,
-                      letterSpacing: 1.1,
-                      fontWeight: FontWeight.w700,
                       color: AppColors.flutterBlue,
-                      decoration: TextDecoration.none,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     dates,
-                    style: GoogleFonts.spaceMono(
+                    style: AppTypography.label(
+                      context,
                       fontSize: 11,
-                      letterSpacing: 0.8,
                       color: zine.inkMuted,
-                      decoration: TextDecoration.none,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ],
@@ -431,18 +458,13 @@ class _ExperienceCardBody extends StatelessWidget {
                 Expanded(
                   child: Text(
                     ExperienceCopy.bullet(l10n, key),
-                    style: (isAr
-                            ? GoogleFonts.cairo(
-                                fontSize: 13,
-                                height: 1.45,
-                                color: AppColors.navyInk.withValues(alpha: 0.85),
-                              )
-                            : GoogleFonts.kalam(
-                                fontSize: 14,
-                                height: 1.4,
-                                color: AppColors.navyInk.withValues(alpha: 0.85),
-                              ))
-                        .copyWith(decoration: TextDecoration.none),
+                    softWrap: true,
+                    style: AppTypography.note(
+                      context,
+                      fontSize: 14,
+                      height: AppTypography.isArabic(context) ? 1.55 : 1.4,
+                      color: AppColors.navyInk.withValues(alpha: 0.85),
+                    ),
                   ),
                 ),
               ],
@@ -470,13 +492,11 @@ class _NowStamp extends StatelessWidget {
           color: AppColors.flutterLightBlue.withValues(alpha: 0.15),
         ),
         child: Text(
-          label,
-          style: GoogleFonts.spaceMono(
+          AppTypography.displayCase(context, label),
+          style: AppTypography.label(
+            context,
             fontSize: 10,
-            letterSpacing: 1.6,
-            fontWeight: FontWeight.w700,
             color: AppColors.flutterBlue,
-            decoration: TextDecoration.none,
           ),
         ),
       ),
@@ -502,16 +522,17 @@ class _LogoSlot extends StatelessWidget {
         ),
       ),
       clipBehavior: Clip.antiAlias,
-      child: Image.asset(
-        path,
+      child: SafeAssetImage(
+        assetPath: path,
         fit: BoxFit.contain,
-        errorBuilder: (_, _, _) => Center(
+        showDebugPlaceholder: false,
+        fallback: Center(
           child: Text(
-            label.isNotEmpty ? label[0].toUpperCase() : '?',
-            style: GoogleFonts.bebasNeue(
+            label.isNotEmpty ? String.fromCharCode(label.runes.first) : '?',
+            style: AppTypography.headline(
+              context,
               fontSize: 22,
               color: AppColors.flutterBlue,
-              decoration: TextDecoration.none,
             ),
           ),
         ),

@@ -811,6 +811,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String get caseSecCode => 'تصميم + كود';
 
   @override
+  String get caseSecIteration => 'التكرار';
+
+  @override
+  String get caseSecComingNext => 'التالي';
+
+  @override
+  String get caseBefore => 'قبل';
+
+  @override
+  String get caseLearned => 'تعلّمت';
+
+  @override
+  String get caseAfter => 'بعد';
+
+  @override
+  String get caseComingSoonSticky => 'قريبًا';
+
+  @override
+  String get caseClassified => 'سري';
+
+  @override
+  String get caseStatusInQa => 'قيد الاختبار';
+
+  @override
+  String get caseStatusNextRelease => 'الإصدار التالي';
+
+  @override
+  String get caseStatusBehindFlag => 'خلف علم';
+
+  @override
   String get caseHoverToPlay => 'مرّر للتشغيل';
 
   @override
@@ -1112,10 +1142,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get caseGatherUpStatUsers => 'المستخدمون';
 
   @override
-  String get caseGatherUpStatBookings => 'الحجوزات';
+  String get caseGatherUpStatBookings => 'إجمالي الحجوزات';
+
+  @override
+  String get caseGatherUpStatShowUp => 'نسبة الحضور';
+
+  @override
+  String get caseGatherUpStatRepeat => 'نسبة التكرار';
 
   @override
   String get caseGatherUpStatRating => 'التقييم';
+
+  @override
+  String get caseGatherUpBarWhere => 'أين الأعضاء';
+
+  @override
+  String get caseGatherUpBarInterests => 'أبرز الاهتمامات';
+
+  @override
+  String get caseGatherUpClosingNote => 'بُني وأُطلق مع فريق GatherUp.';
 
   @override
   String get caseGatherUpLearn1 => 'TODO_REPLACE';
@@ -1125,6 +1170,69 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get caseGatherUpLearn3 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIterHeadline => 'ما تغيّر عند الإطلاق.';
+
+  @override
+  String get caseGatherUpIter1Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter1Before => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter1Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter1After => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2Before => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2After => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3Before => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3After => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpComingHeadline => 'مبني، ولم يُطلق بعد.';
+
+  @override
+  String get caseGatherUpFeat1Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat1Summary => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat2Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat2Summary => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat3Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat3Summary => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpResultsHeadline => 'بعد الإطلاق.';
 
   @override
   String get langArabic => 'العربية (لغة أم)';

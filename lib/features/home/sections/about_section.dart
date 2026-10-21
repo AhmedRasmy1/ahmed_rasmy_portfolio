@@ -1,11 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/navigation/home_sections.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/tape_painter.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
+import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
 
 class AboutSection extends StatelessWidget {
@@ -26,20 +29,12 @@ class AboutSection extends StatelessWidget {
     final zine = context.zine;
     final width = MediaQuery.sizeOf(context).width;
     final narrow = width < 900;
-    final isAr = Localizations.localeOf(context).languageCode == 'ar';
-
-    final bodyStyle = (isAr
-            ? GoogleFonts.cairo(
-                fontSize: 15,
-                height: 1.55,
-                color: zine.inkMuted,
-              )
-            : GoogleFonts.kalam(
-                fontSize: 16,
-                height: 1.5,
-                color: zine.inkMuted,
-              ))
-        .copyWith(decoration: TextDecoration.none);
+    final bodyStyle = AppTypography.body(
+      context,
+      fontSize: 15,
+      height: AppTypography.isArabic(context) ? 1.6 : 1.5,
+      color: zine.inkMuted,
+    );
 
     final copy = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,11 +90,11 @@ class AboutSection extends StatelessWidget {
               collage,
             ] else
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(flex: 5, child: copy),
                   const SizedBox(width: 36),
-                  Expanded(flex: 5, child: collage),
+                  Expanded(flex: 6, child: collage),
                 ],
               ),
           ],
@@ -119,12 +114,10 @@ class _FactChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       label,
-      style: GoogleFonts.spaceMono(
+      style: AppTypography.label(
+        context,
         fontSize: 11,
-        letterSpacing: 1.4,
-        fontWeight: FontWeight.w700,
         color: accent ? AppColors.flutterLightBlue : context.zine.ink,
-        decoration: TextDecoration.none,
       ),
     );
   }
@@ -135,10 +128,11 @@ class _Dot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '·',
-      style: GoogleFonts.spaceMono(
+      style: AppTypography.label(
+        context,
         fontSize: 14,
         color: context.zine.inkMuted,
-        decoration: TextDecoration.none,
+        fontWeight: FontWeight.w400,
       ),
     );
   }
@@ -160,7 +154,7 @@ class _PolaroidCollage extends StatelessWidget {
     'assets/images/about/about_04.jpg',
   ];
 
-  static const _tilts = [-0.06, 0.05, -0.04, 0.07];
+  static const _tilts = [-0.045, 0.04, -0.035, 0.05];
   static const _tapeColors = [
     Color(0xE6A8C8E0),
     Color(0xE613B9FD),
@@ -170,20 +164,31 @@ class _PolaroidCollage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final visible = <int>[
+      for (var i = 0; i < _assets.length; i++)
+        if (AssetChecker.has(_assets[i]) || kDebugMode) i,
+    ];
+    if (visible.isEmpty) return const SizedBox.shrink();
+
     return LayoutBuilder(
       builder: (context, constraints) {
-        final w = constraints.maxWidth.clamp(260.0, 480.0);
-        final cardW = w * 0.42;
+        final w = constraints.maxWidth.clamp(260.0, 520.0);
+        final cardW = w * 0.40;
+        // Fixed height from width — no IntrinsicHeight parent.
         return SizedBox(
-          height: w * 0.92,
+          height: w * 0.98,
           width: w,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              for (var i = 0; i < 4; i++)
+              for (final i in visible)
                 Positioned(
-                  left: i.isEven ? w * (0.02 + i * 0.04) : w * (0.48 - (i - 1) * 0.03),
-                  top: i < 2 ? w * (0.02 + i * 0.06) : w * (0.42 + (i - 2) * 0.05),
+                  left: i.isEven
+                      ? w * (0.00 + (i == 2 ? 0.06 : 0.02))
+                      : w * (0.52 + (i == 3 ? 0.02 : 0.0)),
+                  top: i < 2
+                      ? w * (0.00 + i * 0.04)
+                      : w * (0.48 + (i - 2) * 0.04),
                   child: CursorTarget(
                     enabled: customCursor,
                     child: _Polaroid(
@@ -227,7 +232,21 @@ class _PolaroidState extends State<_Polaroid> {
 
   @override
   Widget build(BuildContext context) {
+    if (!AssetChecker.has(widget.assetPath) && !kDebugMode) {
+      return const SizedBox.shrink();
+    }
+
     final angle = _hover ? 0.0 : widget.tilt;
+    final dpr = MediaQuery.devicePixelRatioOf(context);
+    final cacheW = (widget.width * dpr * 2).round().clamp(400, 1600);
+
+    final imageChild = SafeAssetImage(
+      assetPath: widget.assetPath,
+      fit: BoxFit.cover,
+      filterQuality: FilterQuality.high,
+      cacheWidth: cacheW,
+      debugLabel: widget.caption,
+    );
 
     return MouseRegion(
       cursor: SystemMouseCursors.none,
@@ -261,22 +280,16 @@ class _PolaroidState extends State<_Polaroid> {
                 children: [
                   AspectRatio(
                     aspectRatio: 1,
-                    child: Image.asset(
-                      widget.assetPath,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, _, _) => _PhotoPlaceholder(
-                        label: widget.caption,
-                      ),
-                    ),
+                    child: ClipRect(child: imageChild),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     widget.caption,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.kalam(
+                    style: AppTypography.note(
+                      context,
                       fontSize: 13,
                       color: AppColors.navyInk,
-                      decoration: TextDecoration.none,
                     ),
                   ),
                 ],
@@ -299,54 +312,4 @@ class _PolaroidState extends State<_Polaroid> {
       ),
     );
   }
-}
-
-class _PhotoPlaceholder extends StatelessWidget {
-  const _PhotoPlaceholder({required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.navy,
-      child: CustomPaint(
-        painter: const _GridPainter(),
-        child: Center(
-          child: Text(
-            label.toUpperCase(),
-            textAlign: TextAlign.center,
-            style: GoogleFonts.spaceMono(
-              fontSize: 10,
-              letterSpacing: 1.5,
-              fontWeight: FontWeight.w700,
-              color: AppColors.flutterLightBlue.withValues(alpha: 0.8),
-              decoration: TextDecoration.none,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _GridPainter extends CustomPainter {
-  const _GridPainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final grid = Paint()
-      ..color = AppColors.flutterLightBlue.withValues(alpha: 0.12)
-      ..strokeWidth = 1;
-    const step = 14.0;
-    for (var x = 0.0; x < size.width; x += step) {
-      canvas.drawLine(Offset(x, 0), Offset(x, size.height), grid);
-    }
-    for (var y = 0.0; y < size.height; y += step) {
-      canvas.drawLine(Offset(0, y), Offset(size.width, y), grid);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

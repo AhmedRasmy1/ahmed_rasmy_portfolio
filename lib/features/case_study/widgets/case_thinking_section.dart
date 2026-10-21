@@ -8,6 +8,7 @@ import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/tape_painter.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
+import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_layout.dart';
 
 class CaseThinkingSection extends StatefulWidget {
   const CaseThinkingSection({
@@ -47,6 +48,9 @@ class _CaseThinkingSectionState extends State<CaseThinkingSection> {
       if (!isTodo(raw)) answer = raw;
     }
 
+    final width = MediaQuery.sizeOf(context).width;
+    final pad = width < CaseLayout.stackBreakpoint ? 14.0 : 20.0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -83,6 +87,8 @@ class _CaseThinkingSectionState extends State<CaseThinkingSection> {
                   child: _StickyAnswer(
                     key: ValueKey(_selected),
                     text: answer,
+                    tilt: CaseLayout.tilt(-0.02, width: width),
+                    padding: pad,
                   ),
                 ),
         ),
@@ -114,6 +120,7 @@ class _QuestionChip extends StatelessWidget {
           onTap: onSelect,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
+            constraints: const BoxConstraints(maxWidth: 420),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
               color: selected
@@ -126,6 +133,7 @@ class _QuestionChip extends StatelessWidget {
             ),
             child: Text(
               label,
+              softWrap: true,
               style: GoogleFonts.spaceMono(
                 fontSize: 11,
                 letterSpacing: 0.6,
@@ -142,21 +150,28 @@ class _QuestionChip extends StatelessWidget {
 }
 
 class _StickyAnswer extends StatelessWidget {
-  const _StickyAnswer({super.key, required this.text});
+  const _StickyAnswer({
+    super.key,
+    required this.text,
+    required this.tilt,
+    required this.padding,
+  });
 
   final String text;
+  final double tilt;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {
     return Transform.rotate(
-      angle: -0.02,
+      angle: tilt,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Container(
             width: double.infinity,
-            constraints: const BoxConstraints(minHeight: 120),
-            padding: const EdgeInsets.fromLTRB(20, 28, 20, 22),
+            constraints: const BoxConstraints(minHeight: 100),
+            padding: EdgeInsets.fromLTRB(padding, 28, padding, 22),
             decoration: BoxDecoration(
               color: AppColors.stickyYellow,
               boxShadow: [
@@ -169,6 +184,7 @@ class _StickyAnswer extends StatelessWidget {
             ),
             child: Text(
               text,
+              softWrap: true,
               style: GoogleFonts.kalam(
                 fontSize: 18,
                 height: 1.4,

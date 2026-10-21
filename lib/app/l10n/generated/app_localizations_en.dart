@@ -820,6 +820,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get caseSecCode => 'DESIGN + CODE';
 
   @override
+  String get caseSecIteration => 'ITERATION';
+
+  @override
+  String get caseSecComingNext => 'COMING NEXT';
+
+  @override
+  String get caseBefore => 'Before';
+
+  @override
+  String get caseLearned => 'Learned';
+
+  @override
+  String get caseAfter => 'After';
+
+  @override
+  String get caseComingSoonSticky => 'COMING SOON';
+
+  @override
+  String get caseClassified => 'CLASSIFIED';
+
+  @override
+  String get caseStatusInQa => 'IN QA';
+
+  @override
+  String get caseStatusNextRelease => 'NEXT RELEASE';
+
+  @override
+  String get caseStatusBehindFlag => 'BEHIND A FLAG';
+
+  @override
   String get caseHoverToPlay => 'HOVER TO PLAY';
 
   @override
@@ -1123,10 +1153,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get caseGatherUpStatUsers => 'Users';
 
   @override
-  String get caseGatherUpStatBookings => 'Bookings';
+  String get caseGatherUpStatBookings => 'Total bookings';
+
+  @override
+  String get caseGatherUpStatShowUp => 'Show-up rate';
+
+  @override
+  String get caseGatherUpStatRepeat => 'Repeat rate';
 
   @override
   String get caseGatherUpStatRating => 'Rating';
+
+  @override
+  String get caseGatherUpBarWhere => 'Where members are';
+
+  @override
+  String get caseGatherUpBarInterests => 'Top interests';
+
+  @override
+  String get caseGatherUpClosingNote =>
+      'Built and shipped with the GatherUp team.';
 
   @override
   String get caseGatherUpLearn1 => 'TODO_REPLACE';
@@ -1136,6 +1182,69 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get caseGatherUpLearn3 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIterHeadline => 'What shipping changed.';
+
+  @override
+  String get caseGatherUpIter1Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter1Before => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter1Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter1After => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2Before => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter2After => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3Before => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3Learned => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpIter3After => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpComingHeadline => 'Built, not shipped yet.';
+
+  @override
+  String get caseGatherUpFeat1Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat1Summary => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat2Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat2Summary => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat3Title => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpFeat3Summary => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpResultsHeadline => 'After launch.';
 
   @override
   String get langArabic => 'Arabic (Native)';

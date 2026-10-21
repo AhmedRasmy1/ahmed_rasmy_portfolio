@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 
-/// Project image with blueprint placeholder when the asset is missing.
+/// Project image with graceful missing-asset handling (hide in release;
+/// optional blueprint in debug).
 class ProjectImageSlot extends StatelessWidget {
   const ProjectImageSlot({
     super.key,
@@ -20,44 +23,50 @@ class ProjectImageSlot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final image = Image.asset(
-      assetPath,
-      fit: BoxFit.cover,
-      filterQuality: FilterQuality.medium,
-      errorBuilder: (_, _, _) => _BlueprintPlaceholder(label: label),
-    );
+    final placeholder = kDebugMode
+        ? _BlueprintPlaceholder(label: label)
+        : null;
 
-    Widget content = AspectRatio(
-      aspectRatio: aspectRatio,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(phoneFrame ? 18 : 4),
-        child: image,
-      ),
-    );
-
-    if (!phoneFrame) return content;
-
-    return AspectRatio(
-      aspectRatio: 9 / 16,
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: AppColors.navyInk,
-          borderRadius: BorderRadius.circular(28),
-          border: Border.all(color: AppColors.navy.withValues(alpha: 0.8), width: 3),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.flutterLightBlue.withValues(alpha: 0.2),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
+    return OptionalAssetFrame(
+      assetPath: assetPath,
+      debugPlaceholder: placeholder,
+      builder: (context, image) {
+        if (!phoneFrame) {
+          return AspectRatio(
+            aspectRatio: aspectRatio,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: image,
             ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: image,
-        ),
-      ),
+          );
+        }
+
+        return AspectRatio(
+          aspectRatio: 9 / 16,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: AppColors.navyInk,
+              borderRadius: BorderRadius.circular(28),
+              border: Border.all(
+                color: AppColors.navy.withValues(alpha: 0.8),
+                width: 3,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.flutterLightBlue.withValues(alpha: 0.2),
+                  blurRadius: 16,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: image,
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -77,6 +86,7 @@ class _BlueprintPlaceholder extends StatelessWidget {
           child: Text(
             label.toUpperCase(),
             textAlign: TextAlign.center,
+            softWrap: true,
             style: GoogleFonts.spaceMono(
               fontSize: 12,
               letterSpacing: 2,

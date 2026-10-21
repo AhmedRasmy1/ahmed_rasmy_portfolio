@@ -49,46 +49,55 @@ class CaseStudyNav extends StatelessWidget {
             child: mobile
                 ? Row(
                     children: [
-                      CursorTarget(
-                        enabled: customCursor,
-                        child: TextButton(
-                          onPressed: () => _goHome(context),
-                          style: TextButton.styleFrom(
-                            foregroundColor: AppColors.flutterLightBlue,
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                          ),
-                          child: Text(
-                            l10n.caseBackToPortfolio,
-                            style: GoogleFonts.spaceMono(
-                              fontSize: 11,
-                              letterSpacing: 1,
-                              fontWeight: FontWeight.w700,
-                              decoration: TextDecoration.none,
+                      Flexible(
+                        child: CursorTarget(
+                          enabled: customCursor,
+                          child: TextButton(
+                            onPressed: () => _goHome(context),
+                            style: TextButton.styleFrom(
+                              foregroundColor: AppColors.flutterLightBlue,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                            ),
+                            child: Text(
+                              l10n.caseBackToPortfolio,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.spaceMono(
+                                fontSize: 11,
+                                letterSpacing: 1,
+                                fontWeight: FontWeight.w700,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      const Spacer(),
                       const ThemeLocaleToggles(),
                     ],
                   )
                 : Row(
                     children: [
-                      CursorTarget(
-                        enabled: customCursor,
-                        child: TextButton(
-                          onPressed: () => _goHome(context),
-                          style: TextButton.styleFrom(
-                            foregroundColor: AppColors.flutterLightBlue,
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                          ),
-                          child: Text(
-                            l10n.caseBackToPortfolio,
-                            style: GoogleFonts.spaceMono(
-                              fontSize: 11,
-                              letterSpacing: 1.1,
-                              fontWeight: FontWeight.w700,
-                              decoration: TextDecoration.none,
+                      Flexible(
+                        flex: 0,
+                        child: CursorTarget(
+                          enabled: customCursor,
+                          child: TextButton(
+                            onPressed: () => _goHome(context),
+                            style: TextButton.styleFrom(
+                              foregroundColor: AppColors.flutterLightBlue,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                            ),
+                            child: Text(
+                              l10n.caseBackToPortfolio,
+                              softWrap: true,
+                              style: GoogleFonts.spaceMono(
+                                fontSize: 11,
+                                letterSpacing: 1.1,
+                                fontWeight: FontWeight.w700,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
                           ),
                         ),
@@ -102,12 +111,14 @@ class CaseStudyNav extends StatelessWidget {
                           children: [
                             _Link(
                               label: l10n.navWork,
-                              onTap: () => _goHome(context, HomeSection.work),
+                              onTap: () =>
+                                  _goHome(context, HomeSection.work),
                               customCursor: customCursor,
                             ),
                             _Link(
                               label: l10n.navAbout,
-                              onTap: () => _goHome(context, HomeSection.about),
+                              onTap: () =>
+                                  _goHome(context, HomeSection.about),
                               customCursor: customCursor,
                             ),
                             _Link(
@@ -118,7 +129,8 @@ class CaseStudyNav extends StatelessWidget {
                             ),
                             _Link(
                               label: l10n.navSkills,
-                              onTap: () => _goHome(context, HomeSection.skills),
+                              onTap: () =>
+                                  _goHome(context, HomeSection.skills),
                               customCursor: customCursor,
                             ),
                             _Link(
@@ -135,13 +147,18 @@ class CaseStudyNav extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Text(
-                        title,
-                        style: GoogleFonts.bebasNeue(
-                          fontSize: 18,
-                          letterSpacing: 1,
-                          color: zine.ink.withValues(alpha: 0.55),
-                          decoration: TextDecoration.none,
+                      Flexible(
+                        child: Text(
+                          title,
+                          softWrap: true,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.end,
+                          style: GoogleFonts.bebasNeue(
+                            fontSize: 18,
+                            letterSpacing: 1,
+                            color: zine.ink.withValues(alpha: 0.55),
+                            decoration: TextDecoration.none,
+                          ),
                         ),
                       ),
                       const SizedBox(width: 12),

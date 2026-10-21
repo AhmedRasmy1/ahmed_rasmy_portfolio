@@ -7,6 +7,7 @@ import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/paper_card.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
+import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_layout.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/lazy_hover_video.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/scroll_reveal.dart';
 
@@ -78,12 +79,17 @@ class CaseSystemSection extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 10),
                 child: PaperCard(
                   tilt: ((i % 2 == 0) ? -1 : 1) * 0.01,
+                  maxTilt: CaseLayout.isNarrow(
+                          MediaQuery.sizeOf(context).width)
+                      ? CaseLayout.narrowTilt
+                      : null,
                   padding: const EdgeInsets.fromLTRB(14, 22, 14, 12),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         CaseStudyCopy.t(l10n, study.designTiers[i].titleKey),
+                        softWrap: true,
                         style: GoogleFonts.bebasNeue(
                           fontSize: 20,
                           color: AppColors.navyInk,
@@ -109,6 +115,7 @@ class CaseSystemSection extends StatelessWidget {
                               ),
                               child: Text(
                                 CaseStudyCopy.t(l10n, chip),
+                                softWrap: true,
                                 style: GoogleFonts.spaceMono(
                                   fontSize: 9,
                                   letterSpacing: 0.6,
@@ -128,80 +135,99 @@ class CaseSystemSection extends StatelessWidget {
         ],
         if (study.colorSwatches.isNotEmpty) ...[
           const SizedBox(height: 20),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: [
-              for (var i = 0; i < study.colorSwatches.length; i++)
-                Transform.rotate(
-                  angle: ((i % 2 == 0) ? -1 : 1) * 0.04,
-                  child: Container(
-                    width: 120,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: AppColors.paper,
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.navyInk.withValues(alpha: 0.16),
-                          blurRadius: 8,
-                          offset: const Offset(1, 4),
+          LayoutBuilder(
+            builder: (context, c) {
+              final w = MediaQuery.sizeOf(context).width;
+              return Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: [
+                  for (var i = 0; i < study.colorSwatches.length; i++)
+                    Transform.rotate(
+                      angle: CaseLayout.tilt(
+                        ((i % 2 == 0) ? -1 : 1) * 0.04,
+                        width: w,
+                      ),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: c.maxWidth < CaseLayout.stackBreakpoint
+                              ? (c.maxWidth - 12) / 2
+                              : 120,
+                          minWidth: 96,
                         ),
-                      ],
+                        child: Container(
+                          width: 120,
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: AppColors.paper,
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.navyInk
+                                    .withValues(alpha: 0.16),
+                                blurRadius: 8,
+                                offset: const Offset(1, 4),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 48,
+                                width: double.infinity,
+                                color: _parseHex(
+                                        study.colorSwatches[i].hex) ??
+                                    AppColors.flutterBlue,
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                CaseStudyCopy.t(
+                                  l10n,
+                                  study.colorSwatches[i].labelKey,
+                                ),
+                                softWrap: true,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.kalam(
+                                  fontSize: 13,
+                                  color: AppColors.navyInk,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                              Text(
+                                study.colorSwatches[i].hex,
+                                softWrap: true,
+                                style: GoogleFonts.spaceMono(
+                                  fontSize: 10,
+                                  color: AppColors.flutterBlue,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 48,
-                          width: double.infinity,
-                          color: _parseHex(study.colorSwatches[i].hex) ??
-                              AppColors.flutterBlue,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          CaseStudyCopy.t(
-                            l10n,
-                            study.colorSwatches[i].labelKey,
-                          ),
-                          style: GoogleFonts.kalam(
-                            fontSize: 13,
-                            color: AppColors.navyInk,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                        Text(
-                          study.colorSwatches[i].hex,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 10,
-                            color: AppColors.flutterBlue,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-            ],
+                ],
+              );
+            },
           ),
         ],
         if (study.themeMedia.isNotEmpty) ...[
           const SizedBox(height: 28),
           LayoutBuilder(
             builder: (context, c) {
-              final narrow = c.maxWidth < 700;
+              final stack = c.maxWidth < CaseLayout.stackBreakpoint;
               final cards = study.themeMedia;
-              if (narrow) {
-                return Column(
-                  children: [
-                    for (final card in cards) ...[
-                      LazyHoverVideo(
-                        card: card,
-                        scrollOffset: scrollOffset,
-                        customCursor: customCursor,
-                        aspectRatio: 16 / 10,
-                      ),
-                      const SizedBox(height: 14),
-                    ],
-                  ],
+              if (stack) {
+                return CaseSnapGallery(
+                  height: 220,
+                  viewportFraction: 0.88,
+                  itemCount: cards.length,
+                  itemBuilder: (_, i) => LazyHoverVideo(
+                    card: cards[i],
+                    scrollOffset: scrollOffset,
+                    customCursor: customCursor,
+                    aspectRatio: 16 / 10,
+                  ),
                 );
               }
               return Wrap(
@@ -227,8 +253,8 @@ class CaseSystemSection extends StatelessWidget {
           const SizedBox(height: 24),
           LayoutBuilder(
             builder: (context, c) {
-              final narrow = c.maxWidth < 700;
-              if (narrow) {
+              final stack = c.maxWidth < CaseLayout.stackBreakpoint;
+              if (stack) {
                 return Column(
                   children: [
                     for (var i = 0; i < study.typeSpecimens.length; i++) ...[
@@ -256,20 +282,18 @@ class CaseSystemSection extends StatelessWidget {
           const SizedBox(height: 28),
           LayoutBuilder(
             builder: (context, c) {
-              final narrow = c.maxWidth < 700;
-              if (narrow) {
-                return Column(
-                  children: [
-                    for (final card in study.componentCards) ...[
-                      LazyHoverVideo(
-                        card: card,
-                        scrollOffset: scrollOffset,
-                        customCursor: customCursor,
-                        aspectRatio: 16 / 10,
-                      ),
-                      const SizedBox(height: 14),
-                    ],
-                  ],
+              final stack = c.maxWidth < CaseLayout.stackBreakpoint;
+              if (stack) {
+                return CaseSnapGallery(
+                  height: 220,
+                  viewportFraction: 0.88,
+                  itemCount: study.componentCards.length,
+                  itemBuilder: (_, i) => LazyHoverVideo(
+                    card: study.componentCards[i],
+                    scrollOffset: scrollOffset,
+                    customCursor: customCursor,
+                    aspectRatio: 16 / 10,
+                  ),
                 );
               }
               return Row(
@@ -307,15 +331,20 @@ class _TypeCard extends StatelessWidget {
     final sample = CaseStudyCopy.t(l10n, specimen.sampleKey);
     if (isTodo(sample)) return const SizedBox.shrink();
 
+    final width = MediaQuery.sizeOf(context).width;
+
     return Directionality(
       textDirection: specimen.rtl ? TextDirection.rtl : TextDirection.ltr,
       child: PaperCard(
         tilt: specimen.rtl ? 0.015 : -0.015,
+        maxTilt:
+            CaseLayout.isNarrow(width) ? CaseLayout.narrowTilt : null,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               label.toUpperCase(),
+              softWrap: true,
               style: GoogleFonts.spaceMono(
                 fontSize: 10,
                 letterSpacing: 1.4,
@@ -327,6 +356,7 @@ class _TypeCard extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               sample,
+              softWrap: true,
               style: specimen.rtl
                   ? GoogleFonts.reemKufi(
                       fontSize: 22,

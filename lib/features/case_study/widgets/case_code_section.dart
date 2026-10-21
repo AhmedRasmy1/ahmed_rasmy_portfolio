@@ -7,6 +7,7 @@ import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/paper_card.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
+import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_layout.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/scroll_reveal.dart';
 
 class CaseCodeSection extends StatefulWidget {
@@ -94,7 +95,7 @@ class _CaseCodeSectionState extends State<CaseCodeSection> {
           const SizedBox(height: 28),
           LayoutBuilder(
             builder: (context, c) {
-              final narrow = c.maxWidth < 720;
+              final narrow = c.maxWidth < CaseLayout.stackBreakpoint;
               if (narrow) {
                 return Column(
                   children: [
@@ -154,6 +155,7 @@ class _CaseCodeSectionState extends State<CaseCodeSection> {
           const SizedBox(height: 24),
           Text(
             closing,
+            softWrap: true,
             style: GoogleFonts.kalam(
               fontSize: 16,
               color: context.zine.inkMuted,
@@ -174,13 +176,17 @@ class _StepCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final width = MediaQuery.sizeOf(context).width;
+
     return PaperCard(
       tilt: 0.01,
+      maxTilt: CaseLayout.isNarrow(width) ? CaseLayout.narrowTilt : null,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             CaseStudyCopy.t(l10n, step.titleKey),
+            softWrap: true,
             style: GoogleFonts.bebasNeue(
               fontSize: 22,
               color: AppColors.navyInk,
@@ -190,6 +196,7 @@ class _StepCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             CaseStudyCopy.t(l10n, step.bodyKey),
+            softWrap: true,
             style: GoogleFonts.kalam(
               fontSize: 14,
               height: 1.4,

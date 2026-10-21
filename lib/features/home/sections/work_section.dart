@@ -11,6 +11,7 @@ import 'package:ahmed_rasmy_portfolio/core/l10n/project_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/navigation/home_sections.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/paper_card.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
+import 'package:ahmed_rasmy_portfolio/features/home/widgets/featured_hero_visual.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/project_image_slot.dart';
 
 class WorkSection extends StatefulWidget {
@@ -90,6 +91,7 @@ class _WorkSectionState extends State<WorkSection> {
                         child: _FeaturedCard(
                           project: project,
                           customCursor: widget.customCursor,
+                          reduceMotion: widget.reduceMotion,
                         ),
                       ),
                       const SizedBox(height: 28),
@@ -221,17 +223,23 @@ class _FeaturedCard extends StatelessWidget {
   const _FeaturedCard({
     required this.project,
     required this.customCursor,
+    this.reduceMotion = false,
   });
 
   final Project project;
   final bool customCursor;
+  final bool reduceMotion;
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    final title = ProjectCopy.title(l10n, project);
     final width = MediaQuery.sizeOf(context).width;
     final narrow = width < 900;
+    final hero = FeaturedHeroVisual(
+      assetPath: project.heroImagePath,
+      isMockup: project.heroIsMockup,
+      reduceMotion: reduceMotion,
+      maxWidth: narrow ? 150 : 180,
+    );
 
     return CursorTarget(
       enabled: customCursor,
@@ -243,16 +251,7 @@ class _FeaturedCard extends StatelessWidget {
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: SizedBox(
-                      width: 160,
-                      child: ProjectImageSlot(
-                        assetPath: project.heroImagePath,
-                        label: title,
-                        phoneFrame: true,
-                      ),
-                    ),
-                  ),
+                  Center(child: hero),
                   const SizedBox(height: 20),
                   _FeaturedCopy(project: project, customCursor: customCursor),
                 ],
@@ -260,14 +259,7 @@ class _FeaturedCard extends StatelessWidget {
             : Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 180,
-                    child: ProjectImageSlot(
-                      assetPath: project.heroImagePath,
-                      label: title,
-                      phoneFrame: true,
-                    ),
-                  ),
+                  hero,
                   const SizedBox(width: 28),
                   Expanded(
                     child: _FeaturedCopy(

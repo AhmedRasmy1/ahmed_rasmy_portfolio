@@ -81,3 +81,52 @@ class CaseStudyProgressRail extends StatelessWidget {
     );
   }
 }
+
+/// Thin top bar reflecting scroll progress through case-study sections.
+/// Shown when the right-rail dots are hidden (width &lt; 900).
+class CaseStudyTopProgressBar extends StatelessWidget {
+  const CaseStudyTopProgressBar({
+    super.key,
+    required this.anchors,
+    required this.activeId,
+  });
+
+  final List<CaseStudySectionAnchor> anchors;
+  final ValueNotifier<CaseStudySectionId?> activeId;
+
+  @override
+  Widget build(BuildContext context) {
+    final total = anchors.length;
+    if (total == 0) return const SizedBox.shrink();
+
+    return ValueListenableBuilder<CaseStudySectionId?>(
+      valueListenable: activeId,
+      builder: (context, active, _) {
+        var index = 0;
+        if (active != null) {
+          final i = anchors.indexWhere((a) => a.id == active);
+          if (i >= 0) index = i;
+        }
+        final progress = ((index + 1) / total).clamp(0.0, 1.0);
+
+        return SizedBox(
+          height: 3,
+          width: double.infinity,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              ColoredBox(
+                color: AppColors.flutterBlue.withValues(alpha: 0.12),
+              ),
+              FractionallySizedBox(
+                alignment: AlignmentDirectional.centerStart,
+                widthFactor: progress,
+                child: const ColoredBox(color: AppColors.flutterLightBlue),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

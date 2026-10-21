@@ -20,6 +20,8 @@ class Experience {
     required this.start,
     this.end,
     required this.bulletKeys,
+    this.photos = const [],
+    this.logo,
   });
 
   final String id;
@@ -29,9 +31,17 @@ class Experience {
   final String? end;
   final List<String> bulletKeys;
 
+  /// Up to 3 polaroid photos. Missing files hide gracefully.
+  final List<String> photos;
+
+  /// Optional logo override; defaults to `assets/images/logos/{id}.png`.
+  final String? logo;
+
   bool get isCurrent => end == null;
 
-  String get logoImagePath => 'assets/images/logos/$id.png';
+  String get logoImagePath => logo ?? 'assets/images/logos/$id.png';
+
+  List<String> get visiblePhotos => photos.take(3).toList(growable: false);
 }
 
 enum ProjectFilter { all, mobile, web, desktop }
@@ -50,6 +60,7 @@ class Project {
     this.websiteUrl,
     this.featured = false,
     this.hasCaseStudy = false,
+    this.heroIsMockup = false,
   });
 
   final String id;
@@ -64,6 +75,10 @@ class Project {
   final String? websiteUrl;
   final bool featured;
   final bool hasCaseStudy;
+
+  /// When true, hero.png is a transparent mockup (no phone frame).
+  /// When false, wrap raw screenshot in a drawn phone frame.
+  final bool heroIsMockup;
 
   String get heroImagePath => 'assets/images/projects/$slug/hero.png';
   String get coverImagePath => 'assets/images/projects/$slug/cover.png';
@@ -248,6 +263,88 @@ class CaseStudyCodeStep {
   final String bodyKey;
 }
 
+enum CaseStudyIterationVisual { valueChange, snackbar }
+
+class CaseStudyIteration {
+  const CaseStudyIteration({
+    required this.titleKey,
+    required this.beforeKey,
+    required this.learnedKey,
+    required this.afterKey,
+    this.visual,
+  });
+
+  final String titleKey;
+  final String beforeKey;
+  final String learnedKey;
+  final String afterKey;
+  final CaseStudyIterationVisual? visual;
+}
+
+enum FeatureVisibility { full, teaser, hidden }
+
+class UpcomingFeature {
+  const UpcomingFeature({
+    required this.titleKey,
+    required this.summaryKey,
+    this.highlightKeys = const [],
+    this.tech = const [],
+    this.media,
+    this.teaserPreviewAsset,
+    this.teaserLineKey,
+    required this.visibility,
+    this.statusKey,
+  });
+
+  final String titleKey;
+  final String summaryKey;
+  final List<String> highlightKeys;
+  final List<String> tech;
+  final String? media;
+  final String? teaserPreviewAsset;
+  final String? teaserLineKey;
+  final FeatureVisibility visibility;
+  final String? statusKey;
+}
+
+class CaseStudyStat {
+  const CaseStudyStat({
+    required this.labelKey,
+    this.value,
+    this.suffix = '',
+    this.decimals = 0,
+  });
+
+  final String labelKey;
+
+  /// Null → sticker hidden. Never invent numbers.
+  final num? value;
+  final String suffix;
+  final int decimals;
+}
+
+class CaseStudyBarItem {
+  const CaseStudyBarItem({
+    required this.labelKey,
+    required this.fraction,
+  });
+
+  final String labelKey;
+
+  /// 0–1 share of the bar.
+  final double fraction;
+}
+
+class CaseStudyBarList {
+  const CaseStudyBarList({
+    required this.titleKey,
+    this.items = const [],
+  });
+
+  final String titleKey;
+  final List<CaseStudyBarItem> items;
+}
+
 /// Full case-study content for `/work/:slug`.
 /// Later sub-steps add optional section payloads; null/TODO blocks hide themselves.
 class CaseStudy {
@@ -285,6 +382,15 @@ class CaseStudy {
     this.codeHeadlineKey,
     this.codeSteps = const [],
     this.codeClosingKey,
+    this.iterationHeadlineKey,
+    this.iterations = const [],
+    this.comingNextHeadlineKey,
+    this.upcomingFeatures = const [],
+    this.resultsHeadlineKey,
+    this.resultStats = const [],
+    this.resultBarLists = const [],
+    this.closingNoteKey,
+    this.closingIconAsset,
     this.nextSlug,
   });
 
@@ -329,6 +435,17 @@ class CaseStudy {
   final String? codeHeadlineKey;
   final List<CaseStudyCodeStep> codeSteps;
   final String? codeClosingKey;
+
+  // ── 7D ──
+  final String? iterationHeadlineKey;
+  final List<CaseStudyIteration> iterations;
+  final String? comingNextHeadlineKey;
+  final List<UpcomingFeature> upcomingFeatures;
+  final String? resultsHeadlineKey;
+  final List<CaseStudyStat> resultStats;
+  final List<CaseStudyBarList> resultBarLists;
+  final String? closingNoteKey;
+  final String? closingIconAsset;
 
   final String? nextSlug;
 
@@ -404,6 +521,12 @@ abstract final class PortfolioData {
         'expGatherUpB3',
         'expGatherUpB4',
       ],
+      photos: [
+        'assets/images/experience/gatherup_01.jpg',
+        'assets/images/experience/gatherup_02.jpg',
+        'assets/images/experience/gatherup_03.jpg',
+      ],
+      logo: 'assets/images/logos/gatherup.png',
     ),
     Experience(
       id: 'centerly',
@@ -416,6 +539,12 @@ abstract final class PortfolioData {
         'expCenterlyB2',
         'expCenterlyB3',
       ],
+      photos: [
+        'assets/images/experience/centerly_01.jpg',
+        'assets/images/experience/centerly_02.jpg',
+        'assets/images/experience/centerly_03.jpg',
+      ],
+      logo: 'assets/images/logos/centerly.png',
     ),
     Experience(
       id: 'elevate',
@@ -428,6 +557,12 @@ abstract final class PortfolioData {
         'expElevateB2',
         'expElevateB3',
       ],
+      photos: [
+        'assets/images/experience/elevate_01.jpg',
+        'assets/images/experience/elevate_02.jpg',
+        'assets/images/experience/elevate_03.jpg',
+      ],
+      logo: 'assets/images/logos/elevate.png',
     ),
   ];
 
@@ -936,6 +1071,61 @@ abstract final class PortfolioData {
         ),
       ],
       codeClosingKey: 'caseGatherUpCodeClosing',
+      iterationHeadlineKey: 'caseGatherUpIterHeadline',
+      iterations: [
+        CaseStudyIteration(
+          titleKey: 'caseGatherUpIter1Title',
+          beforeKey: 'caseGatherUpIter1Before',
+          learnedKey: 'caseGatherUpIter1Learned',
+          afterKey: 'caseGatherUpIter1After',
+          visual: CaseStudyIterationVisual.valueChange,
+        ),
+        CaseStudyIteration(
+          titleKey: 'caseGatherUpIter2Title',
+          beforeKey: 'caseGatherUpIter2Before',
+          learnedKey: 'caseGatherUpIter2Learned',
+          afterKey: 'caseGatherUpIter2After',
+          visual: CaseStudyIterationVisual.snackbar,
+        ),
+        CaseStudyIteration(
+          titleKey: 'caseGatherUpIter3Title',
+          beforeKey: 'caseGatherUpIter3Before',
+          learnedKey: 'caseGatherUpIter3Learned',
+          afterKey: 'caseGatherUpIter3After',
+        ),
+      ],
+      comingNextHeadlineKey: 'caseGatherUpComingHeadline',
+      upcomingFeatures: [
+        // Placeholders — visibility.hidden until you fill real features.
+        UpcomingFeature(
+          titleKey: 'caseGatherUpFeat1Title',
+          summaryKey: 'caseGatherUpFeat1Summary',
+          visibility: FeatureVisibility.hidden,
+        ),
+        UpcomingFeature(
+          titleKey: 'caseGatherUpFeat2Title',
+          summaryKey: 'caseGatherUpFeat2Summary',
+          visibility: FeatureVisibility.hidden,
+        ),
+        UpcomingFeature(
+          titleKey: 'caseGatherUpFeat3Title',
+          summaryKey: 'caseGatherUpFeat3Summary',
+          visibility: FeatureVisibility.hidden,
+        ),
+      ],
+      resultsHeadlineKey: 'caseGatherUpResultsHeadline',
+      resultStats: [
+        CaseStudyStat(labelKey: 'caseGatherUpStatUsers'),
+        CaseStudyStat(labelKey: 'caseGatherUpStatBookings'),
+        CaseStudyStat(labelKey: 'caseGatherUpStatShowUp', suffix: '%'),
+        CaseStudyStat(labelKey: 'caseGatherUpStatRepeat', suffix: '%'),
+      ],
+      resultBarLists: [
+        CaseStudyBarList(titleKey: 'caseGatherUpBarWhere'),
+        CaseStudyBarList(titleKey: 'caseGatherUpBarInterests'),
+      ],
+      closingNoteKey: 'caseGatherUpClosingNote',
+      closingIconAsset: 'assets/images/logos/gatherup.png',
       nextSlug: 'awwaab',
     ),
   ];
