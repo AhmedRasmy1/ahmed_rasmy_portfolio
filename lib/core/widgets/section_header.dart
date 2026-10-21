@@ -95,25 +95,27 @@ class _SectionHeaderState extends State<SectionHeader> {
                     ))
               .copyWith(decoration: TextDecoration.none),
         ),
-        const SizedBox(height: 10),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 520),
-          child: Text(
-            widget.intro,
-            style: (isAr
-                    ? GoogleFonts.cairo(
-                        fontSize: 15,
-                        height: 1.45,
-                        color: zine.inkMuted,
-                      )
-                    : GoogleFonts.kalam(
-                        fontSize: 16,
-                        height: 1.4,
-                        color: zine.inkMuted,
-                      ))
-                .copyWith(decoration: TextDecoration.none),
+        if (widget.intro.trim().isNotEmpty) ...[
+          const SizedBox(height: 10),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 520),
+            child: Text(
+              widget.intro,
+              style: (isAr
+                      ? GoogleFonts.cairo(
+                          fontSize: 15,
+                          height: 1.45,
+                          color: zine.inkMuted,
+                        )
+                      : GoogleFonts.kalam(
+                          fontSize: 16,
+                          height: 1.4,
+                          color: zine.inkMuted,
+                        ))
+                  .copyWith(decoration: TextDecoration.none),
+            ),
           ),
-        ),
+        ],
       ],
     );
 

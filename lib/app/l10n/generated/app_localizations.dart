@@ -1046,11 +1046,11 @@ abstract class AppLocalizations {
   /// **'CASE STUDY'**
   String get caseStudyLabel;
 
-  /// No description provided for @caseMetaRole.
+  /// No description provided for @caseMetaMarket.
   ///
   /// In en, this message translates to:
-  /// **'Role'**
-  String get caseMetaRole;
+  /// **'Market'**
+  String get caseMetaMarket;
 
   /// No description provided for @caseMetaPlatform.
   ///
@@ -1058,17 +1058,77 @@ abstract class AppLocalizations {
   /// **'Platform'**
   String get caseMetaPlatform;
 
-  /// No description provided for @caseMetaPeriod.
+  /// No description provided for @caseMetaLocale.
   ///
   /// In en, this message translates to:
-  /// **'Period'**
-  String get caseMetaPeriod;
+  /// **'Locale'**
+  String get caseMetaLocale;
 
   /// No description provided for @caseMetaStack.
   ///
   /// In en, this message translates to:
   /// **'Stack'**
   String get caseMetaStack;
+
+  /// No description provided for @caseNavProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Problem'**
+  String get caseNavProblem;
+
+  /// No description provided for @caseNavProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Product'**
+  String get caseNavProduct;
+
+  /// No description provided for @caseNavThinking.
+  ///
+  /// In en, this message translates to:
+  /// **'Thinking'**
+  String get caseNavThinking;
+
+  /// No description provided for @caseNavExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get caseNavExperience;
+
+  /// No description provided for @caseNavSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get caseNavSystem;
+
+  /// No description provided for @caseNavMotion.
+  ///
+  /// In en, this message translates to:
+  /// **'Motion'**
+  String get caseNavMotion;
+
+  /// No description provided for @caseNavCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get caseNavCode;
+
+  /// No description provided for @caseNavIteration.
+  ///
+  /// In en, this message translates to:
+  /// **'Iteration'**
+  String get caseNavIteration;
+
+  /// No description provided for @caseNavComingNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming Next'**
+  String get caseNavComingNext;
+
+  /// No description provided for @caseNavResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get caseNavResults;
 
   /// No description provided for @caseSecProduct.
   ///
@@ -1280,17 +1340,23 @@ abstract class AppLocalizations {
   /// **'Meet through shared interests, not profiles.'**
   String get caseGatherUpHeroTagline;
 
+  /// No description provided for @caseGatherUpBrush.
+  ///
+  /// In en, this message translates to:
+  /// **'social'**
+  String get caseGatherUpBrush;
+
   /// No description provided for @caseGatherUpCredit.
   ///
   /// In en, this message translates to:
-  /// **'Product & design by the GatherUp team (TODO: add names). I built Flutter features for the mobile app.'**
+  /// **'Product & design: TODO_NAMES. I built Flutter features for the mobile app.'**
   String get caseGatherUpCredit;
 
-  /// No description provided for @caseGatherUpRoleMeta.
+  /// No description provided for @caseGatherUpMarketMeta.
   ///
   /// In en, this message translates to:
-  /// **'Junior Flutter Developer'**
-  String get caseGatherUpRoleMeta;
+  /// **'Social events · Local discovery'**
+  String get caseGatherUpMarketMeta;
 
   /// No description provided for @caseGatherUpPlatformMeta.
   ///
@@ -1298,29 +1364,125 @@ abstract class AppLocalizations {
   /// **'iOS · Android · Web'**
   String get caseGatherUpPlatformMeta;
 
-  /// No description provided for @caseGatherUpPeriodMeta.
+  /// No description provided for @caseGatherUpLocaleMeta.
   ///
   /// In en, this message translates to:
-  /// **'06/2026 to present'**
-  String get caseGatherUpPeriodMeta;
+  /// **'EN + AR · RTL'**
+  String get caseGatherUpLocaleMeta;
 
   /// No description provided for @caseGatherUpStackMeta.
   ///
   /// In en, this message translates to:
-  /// **'Flutter · REST · Firebase (FCM) · Google Maps'**
+  /// **'Flutter · REST · Firebase · Google Maps'**
   String get caseGatherUpStackMeta;
 
-  /// No description provided for @caseGatherUpProductP1.
+  /// No description provided for @caseGatherUpProblemHeadline.
   ///
   /// In en, this message translates to:
-  /// **'GatherUp is a social app for discovering, joining, and managing local events around shared interests.'**
-  String get caseGatherUpProductP1;
+  /// **'Meeting people shouldn\'t start with a profile.'**
+  String get caseGatherUpProblemHeadline;
 
-  /// No description provided for @caseGatherUpProductP2.
+  /// No description provided for @caseGatherUpCompareTypicalTitle.
   ///
   /// In en, this message translates to:
-  /// **'People meet through what they care about — hobbies, scenes, and nearby gatherings — not through static profiles alone.'**
-  String get caseGatherUpProductP2;
+  /// **'Typical social apps'**
+  String get caseGatherUpCompareTypicalTitle;
+
+  /// No description provided for @caseGatherUpCompareTypicalCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Faces first. Plans optional.'**
+  String get caseGatherUpCompareTypicalCaption;
+
+  /// No description provided for @caseGatherUpCompareTypicalS1.
+  ///
+  /// In en, this message translates to:
+  /// **'01 Profile'**
+  String get caseGatherUpCompareTypicalS1;
+
+  /// No description provided for @caseGatherUpCompareTypicalS2.
+  ///
+  /// In en, this message translates to:
+  /// **'02 Swipe'**
+  String get caseGatherUpCompareTypicalS2;
+
+  /// No description provided for @caseGatherUpCompareTypicalS3.
+  ///
+  /// In en, this message translates to:
+  /// **'03 Maybe meet'**
+  String get caseGatherUpCompareTypicalS3;
+
+  /// No description provided for @caseGatherUpCompareGuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GatherUp'**
+  String get caseGatherUpCompareGuTitle;
+
+  /// No description provided for @caseGatherUpCompareGuCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest list private until after.'**
+  String get caseGatherUpCompareGuCaption;
+
+  /// No description provided for @caseGatherUpCompareGuS1.
+  ///
+  /// In en, this message translates to:
+  /// **'01 Interest'**
+  String get caseGatherUpCompareGuS1;
+
+  /// No description provided for @caseGatherUpCompareGuS2.
+  ///
+  /// In en, this message translates to:
+  /// **'02 Book'**
+  String get caseGatherUpCompareGuS2;
+
+  /// No description provided for @caseGatherUpCompareGuS3.
+  ///
+  /// In en, this message translates to:
+  /// **'03 Meet'**
+  String get caseGatherUpCompareGuS3;
+
+  /// No description provided for @caseGatherUpCompareGuS4.
+  ///
+  /// In en, this message translates to:
+  /// **'04 Faces unlock'**
+  String get caseGatherUpCompareGuS4;
+
+  /// No description provided for @caseGatherUpVs.
+  ///
+  /// In en, this message translates to:
+  /// **'VS'**
+  String get caseGatherUpVs;
+
+  /// No description provided for @caseGatherUpStory1.
+  ///
+  /// In en, this message translates to:
+  /// **'The Problem'**
+  String get caseGatherUpStory1;
+
+  /// No description provided for @caseGatherUpStory2.
+  ///
+  /// In en, this message translates to:
+  /// **'The Struggle'**
+  String get caseGatherUpStory2;
+
+  /// No description provided for @caseGatherUpStory3.
+  ///
+  /// In en, this message translates to:
+  /// **'The Turning Point'**
+  String get caseGatherUpStory3;
+
+  /// No description provided for @caseGatherUpStory4.
+  ///
+  /// In en, this message translates to:
+  /// **'A Better Reality'**
+  String get caseGatherUpStory4;
+
+  /// No description provided for @caseGatherUpProductHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'The loop.'**
+  String get caseGatherUpProductHeadline;
 
   /// No description provided for @caseGatherUpLoopDiscover.
   ///
@@ -1331,7 +1493,7 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpLoopDiscoverD.
   ///
   /// In en, this message translates to:
-  /// **'Browse local events filtered by interest and place.'**
+  /// **'Activities near you this week.'**
   String get caseGatherUpLoopDiscoverD;
 
   /// No description provided for @caseGatherUpLoopJoin.
@@ -1343,7 +1505,7 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpLoopJoinD.
   ///
   /// In en, this message translates to:
-  /// **'Book a spot and confirm attendance in-flow.'**
+  /// **'Book free or pay.'**
   String get caseGatherUpLoopJoinD;
 
   /// No description provided for @caseGatherUpLoopMeet.
@@ -1355,7 +1517,7 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpLoopMeetD.
   ///
   /// In en, this message translates to:
-  /// **'Show up with maps, timing, and event context.'**
+  /// **'Small groups by default.'**
   String get caseGatherUpLoopMeetD;
 
   /// No description provided for @caseGatherUpLoopConnect.
@@ -1367,8 +1529,518 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpLoopConnectD.
   ///
   /// In en, this message translates to:
-  /// **'Chat and stay linked with people you meet.'**
+  /// **'Chat unlocks, faces after.'**
   String get caseGatherUpLoopConnectD;
+
+  /// No description provided for @caseGatherUpThinkingHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Product questions came first.'**
+  String get caseGatherUpThinkingHeadline;
+
+  /// No description provided for @caseGatherUpQ1.
+  ///
+  /// In en, this message translates to:
+  /// **'Who is this for?'**
+  String get caseGatherUpQ1;
+
+  /// No description provided for @caseGatherUpA1.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpA1;
+
+  /// No description provided for @caseGatherUpQ2.
+  ///
+  /// In en, this message translates to:
+  /// **'Why join?'**
+  String get caseGatherUpQ2;
+
+  /// No description provided for @caseGatherUpA2.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpA2;
+
+  /// No description provided for @caseGatherUpQ3.
+  ///
+  /// In en, this message translates to:
+  /// **'What lowers anxiety?'**
+  String get caseGatherUpQ3;
+
+  /// No description provided for @caseGatherUpA3.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpA3;
+
+  /// No description provided for @caseGatherUpQ4.
+  ///
+  /// In en, this message translates to:
+  /// **'What does a host need?'**
+  String get caseGatherUpQ4;
+
+  /// No description provided for @caseGatherUpA4.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpA4;
+
+  /// No description provided for @caseGatherUpQ5.
+  ///
+  /// In en, this message translates to:
+  /// **'What brings people back?'**
+  String get caseGatherUpQ5;
+
+  /// No description provided for @caseGatherUpA5.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpA5;
+
+  /// No description provided for @caseGatherUpQ6.
+  ///
+  /// In en, this message translates to:
+  /// **'How do they pay?'**
+  String get caseGatherUpQ6;
+
+  /// No description provided for @caseGatherUpA6.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpA6;
+
+  /// No description provided for @caseSecProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'PROBLEM'**
+  String get caseSecProblem;
+
+  /// No description provided for @caseSecProductEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'PRODUCT'**
+  String get caseSecProductEyebrow;
+
+  /// No description provided for @caseSecThinking.
+  ///
+  /// In en, this message translates to:
+  /// **'THINKING'**
+  String get caseSecThinking;
+
+  /// No description provided for @caseSecExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'EXPERIENCE'**
+  String get caseSecExperience;
+
+  /// No description provided for @caseSecSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'DESIGN SYSTEM'**
+  String get caseSecSystem;
+
+  /// No description provided for @caseSecMotion.
+  ///
+  /// In en, this message translates to:
+  /// **'MOTION'**
+  String get caseSecMotion;
+
+  /// No description provided for @caseSecCode.
+  ///
+  /// In en, this message translates to:
+  /// **'DESIGN + CODE'**
+  String get caseSecCode;
+
+  /// No description provided for @caseHoverToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'HOVER TO PLAY'**
+  String get caseHoverToPlay;
+
+  /// No description provided for @caseTapToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'TAP TO PLAY'**
+  String get caseTapToPlay;
+
+  /// No description provided for @caseGatherUpExpHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Making meeting strangers feel easy.'**
+  String get caseGatherUpExpHeadline;
+
+  /// No description provided for @caseGatherUpExpDiscover.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover'**
+  String get caseGatherUpExpDiscover;
+
+  /// No description provided for @caseGatherUpExpContext.
+  ///
+  /// In en, this message translates to:
+  /// **'Context'**
+  String get caseGatherUpExpContext;
+
+  /// No description provided for @caseGatherUpExpBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get caseGatherUpExpBook;
+
+  /// No description provided for @caseGatherUpExpConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get caseGatherUpExpConnect;
+
+  /// No description provided for @caseGatherUpSysHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'One system. Multiple surfaces.'**
+  String get caseGatherUpSysHeadline;
+
+  /// No description provided for @caseGatherUpSysCredit.
+  ///
+  /// In en, this message translates to:
+  /// **'Design by TODO_NAMES · Implemented in Flutter by me'**
+  String get caseGatherUpSysCredit;
+
+  /// No description provided for @caseGatherUpTierPrimitives.
+  ///
+  /// In en, this message translates to:
+  /// **'Primitives'**
+  String get caseGatherUpTierPrimitives;
+
+  /// No description provided for @caseGatherUpTierFoundations.
+  ///
+  /// In en, this message translates to:
+  /// **'Foundations'**
+  String get caseGatherUpTierFoundations;
+
+  /// No description provided for @caseGatherUpTierCore.
+  ///
+  /// In en, this message translates to:
+  /// **'Core components'**
+  String get caseGatherUpTierCore;
+
+  /// No description provided for @caseGatherUpTierSurfaces.
+  ///
+  /// In en, this message translates to:
+  /// **'Surfaces'**
+  String get caseGatherUpTierSurfaces;
+
+  /// No description provided for @caseGatherUpTierPatterns.
+  ///
+  /// In en, this message translates to:
+  /// **'Patterns'**
+  String get caseGatherUpTierPatterns;
+
+  /// No description provided for @caseGatherUpChipColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get caseGatherUpChipColor;
+
+  /// No description provided for @caseGatherUpChipSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Space'**
+  String get caseGatherUpChipSpace;
+
+  /// No description provided for @caseGatherUpChipRadius.
+  ///
+  /// In en, this message translates to:
+  /// **'Radius'**
+  String get caseGatherUpChipRadius;
+
+  /// No description provided for @caseGatherUpChipType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get caseGatherUpChipType;
+
+  /// No description provided for @caseGatherUpChipIcon.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon'**
+  String get caseGatherUpChipIcon;
+
+  /// No description provided for @caseGatherUpChipElevation.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevation'**
+  String get caseGatherUpChipElevation;
+
+  /// No description provided for @caseGatherUpChipButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Button'**
+  String get caseGatherUpChipButton;
+
+  /// No description provided for @caseGatherUpChipInput.
+  ///
+  /// In en, this message translates to:
+  /// **'Input'**
+  String get caseGatherUpChipInput;
+
+  /// No description provided for @caseGatherUpChipChip.
+  ///
+  /// In en, this message translates to:
+  /// **'Chip'**
+  String get caseGatherUpChipChip;
+
+  /// No description provided for @caseGatherUpChipCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get caseGatherUpChipCard;
+
+  /// No description provided for @caseGatherUpChipSheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheet'**
+  String get caseGatherUpChipSheet;
+
+  /// No description provided for @caseGatherUpChipNav.
+  ///
+  /// In en, this message translates to:
+  /// **'Nav'**
+  String get caseGatherUpChipNav;
+
+  /// No description provided for @caseGatherUpChipBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking'**
+  String get caseGatherUpChipBooking;
+
+  /// No description provided for @caseGatherUpChipChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get caseGatherUpChipChat;
+
+  /// No description provided for @caseGatherUpChipMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get caseGatherUpChipMap;
+
+  /// No description provided for @caseGatherUpColorGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand gold'**
+  String get caseGatherUpColorGold;
+
+  /// No description provided for @caseGatherUpColorNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Night'**
+  String get caseGatherUpColorNight;
+
+  /// No description provided for @caseGatherUpColorChalk.
+  ///
+  /// In en, this message translates to:
+  /// **'Chalk'**
+  String get caseGatherUpColorChalk;
+
+  /// No description provided for @caseGatherUpThemeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get caseGatherUpThemeLight;
+
+  /// No description provided for @caseGatherUpThemeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get caseGatherUpThemeDark;
+
+  /// No description provided for @caseGatherUpThemeEn.
+  ///
+  /// In en, this message translates to:
+  /// **'EN'**
+  String get caseGatherUpThemeEn;
+
+  /// No description provided for @caseGatherUpThemeAr.
+  ///
+  /// In en, this message translates to:
+  /// **'AR'**
+  String get caseGatherUpThemeAr;
+
+  /// No description provided for @caseGatherUpTypeEnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get caseGatherUpTypeEnLabel;
+
+  /// No description provided for @caseGatherUpTypeEnSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Meet through shared interests, not profiles.'**
+  String get caseGatherUpTypeEnSample;
+
+  /// No description provided for @caseGatherUpTypeArLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get caseGatherUpTypeArLabel;
+
+  /// No description provided for @caseGatherUpTypeArSample.
+  ///
+  /// In en, this message translates to:
+  /// **'التعارف عبر الاهتمامات المشتركة، لا الملفات الشخصية.'**
+  String get caseGatherUpTypeArSample;
+
+  /// No description provided for @caseGatherUpCompButtons.
+  ///
+  /// In en, this message translates to:
+  /// **'Buttons — press states that feel native'**
+  String get caseGatherUpCompButtons;
+
+  /// No description provided for @caseGatherUpCompChips.
+  ///
+  /// In en, this message translates to:
+  /// **'Chips — filters you can scan at a glance'**
+  String get caseGatherUpCompChips;
+
+  /// No description provided for @caseGatherUpCompSheets.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheets — context without losing place'**
+  String get caseGatherUpCompSheets;
+
+  /// No description provided for @caseGatherUpMotionHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared motion language.'**
+  String get caseGatherUpMotionHeadline;
+
+  /// No description provided for @caseGatherUpMotionMicro.
+  ///
+  /// In en, this message translates to:
+  /// **'Micro'**
+  String get caseGatherUpMotionMicro;
+
+  /// No description provided for @caseGatherUpMotionMicroUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Press'**
+  String get caseGatherUpMotionMicroUse;
+
+  /// No description provided for @caseGatherUpMotionQuick.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick'**
+  String get caseGatherUpMotionQuick;
+
+  /// No description provided for @caseGatherUpMotionQuickUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Tab, chip'**
+  String get caseGatherUpMotionQuickUse;
+
+  /// No description provided for @caseGatherUpMotionStandard.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard'**
+  String get caseGatherUpMotionStandard;
+
+  /// No description provided for @caseGatherUpMotionStandardUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheet'**
+  String get caseGatherUpMotionStandardUse;
+
+  /// No description provided for @caseGatherUpMotionScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen'**
+  String get caseGatherUpMotionScreen;
+
+  /// No description provided for @caseGatherUpMotionScreenUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Push'**
+  String get caseGatherUpMotionScreenUse;
+
+  /// No description provided for @caseGatherUpMotionTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Tab'**
+  String get caseGatherUpMotionTab;
+
+  /// No description provided for @caseGatherUpMotionPush.
+  ///
+  /// In en, this message translates to:
+  /// **'Push'**
+  String get caseGatherUpMotionPush;
+
+  /// No description provided for @caseGatherUpMotionSheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheet'**
+  String get caseGatherUpMotionSheet;
+
+  /// No description provided for @caseGatherUpMotionPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy'**
+  String get caseGatherUpMotionPrivacy;
+
+  /// No description provided for @caseGatherUpReduceMotion.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce Motion respected'**
+  String get caseGatherUpReduceMotion;
+
+  /// No description provided for @caseGatherUpCodeHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'From design to shipped Flutter code.'**
+  String get caseGatherUpCodeHeadline;
+
+  /// No description provided for @caseGatherUpCodeDesign.
+  ///
+  /// In en, this message translates to:
+  /// **'01 Design'**
+  String get caseGatherUpCodeDesign;
+
+  /// No description provided for @caseGatherUpCodeDesignBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tokens and surfaces from the product system — wired into Flutter themes and constants.'**
+  String get caseGatherUpCodeDesignBody;
+
+  /// No description provided for @caseGatherUpCodeCode.
+  ///
+  /// In en, this message translates to:
+  /// **'02 Code'**
+  String get caseGatherUpCodeCode;
+
+  /// No description provided for @caseGatherUpCodeCodeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Reusable widgets for booking, chat, maps, and auth — Clean Architecture with Provider.'**
+  String get caseGatherUpCodeCodeBody;
+
+  /// No description provided for @caseGatherUpCodeShip.
+  ///
+  /// In en, this message translates to:
+  /// **'03 Ship'**
+  String get caseGatherUpCodeShip;
+
+  /// No description provided for @caseGatherUpCodeShipBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipped mobile features on iOS, Android, and web with responsive layouts.'**
+  String get caseGatherUpCodeShipBody;
+
+  /// No description provided for @caseGatherUpCodeClosing.
+  ///
+  /// In en, this message translates to:
+  /// **'TODO_REPLACE'**
+  String get caseGatherUpCodeClosing;
 
   /// No description provided for @caseGatherUpRoleBooking.
   ///

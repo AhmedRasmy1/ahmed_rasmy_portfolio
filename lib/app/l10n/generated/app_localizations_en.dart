@@ -508,16 +508,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String get caseStudyLabel => 'CASE STUDY';
 
   @override
-  String get caseMetaRole => 'Role';
+  String get caseMetaMarket => 'Market';
 
   @override
   String get caseMetaPlatform => 'Platform';
 
   @override
-  String get caseMetaPeriod => 'Period';
+  String get caseMetaLocale => 'Locale';
 
   @override
   String get caseMetaStack => 'Stack';
+
+  @override
+  String get caseNavProblem => 'Problem';
+
+  @override
+  String get caseNavProduct => 'Product';
+
+  @override
+  String get caseNavThinking => 'Thinking';
+
+  @override
+  String get caseNavExperience => 'Experience';
+
+  @override
+  String get caseNavSystem => 'System';
+
+  @override
+  String get caseNavMotion => 'Motion';
+
+  @override
+  String get caseNavCode => 'Code';
+
+  @override
+  String get caseNavIteration => 'Iteration';
+
+  @override
+  String get caseNavComingNext => 'Coming Next';
+
+  @override
+  String get caseNavResults => 'Results';
 
   @override
   String get caseSecProduct => 'PRODUCT';
@@ -631,57 +661,366 @@ class AppLocalizationsEn extends AppLocalizations {
       'Meet through shared interests, not profiles.';
 
   @override
-  String get caseGatherUpCredit =>
-      'Product & design by the GatherUp team (TODO: add names). I built Flutter features for the mobile app.';
+  String get caseGatherUpBrush => 'social';
 
   @override
-  String get caseGatherUpRoleMeta => 'Junior Flutter Developer';
+  String get caseGatherUpCredit =>
+      'Product & design: TODO_NAMES. I built Flutter features for the mobile app.';
+
+  @override
+  String get caseGatherUpMarketMeta => 'Social events · Local discovery';
 
   @override
   String get caseGatherUpPlatformMeta => 'iOS · Android · Web';
 
   @override
-  String get caseGatherUpPeriodMeta => '06/2026 to present';
+  String get caseGatherUpLocaleMeta => 'EN + AR · RTL';
 
   @override
-  String get caseGatherUpStackMeta =>
-      'Flutter · REST · Firebase (FCM) · Google Maps';
+  String get caseGatherUpStackMeta => 'Flutter · REST · Firebase · Google Maps';
 
   @override
-  String get caseGatherUpProductP1 =>
-      'GatherUp is a social app for discovering, joining, and managing local events around shared interests.';
+  String get caseGatherUpProblemHeadline =>
+      'Meeting people shouldn\'t start with a profile.';
 
   @override
-  String get caseGatherUpProductP2 =>
-      'People meet through what they care about — hobbies, scenes, and nearby gatherings — not through static profiles alone.';
+  String get caseGatherUpCompareTypicalTitle => 'Typical social apps';
+
+  @override
+  String get caseGatherUpCompareTypicalCaption =>
+      'Faces first. Plans optional.';
+
+  @override
+  String get caseGatherUpCompareTypicalS1 => '01 Profile';
+
+  @override
+  String get caseGatherUpCompareTypicalS2 => '02 Swipe';
+
+  @override
+  String get caseGatherUpCompareTypicalS3 => '03 Maybe meet';
+
+  @override
+  String get caseGatherUpCompareGuTitle => 'GatherUp';
+
+  @override
+  String get caseGatherUpCompareGuCaption => 'Guest list private until after.';
+
+  @override
+  String get caseGatherUpCompareGuS1 => '01 Interest';
+
+  @override
+  String get caseGatherUpCompareGuS2 => '02 Book';
+
+  @override
+  String get caseGatherUpCompareGuS3 => '03 Meet';
+
+  @override
+  String get caseGatherUpCompareGuS4 => '04 Faces unlock';
+
+  @override
+  String get caseGatherUpVs => 'VS';
+
+  @override
+  String get caseGatherUpStory1 => 'The Problem';
+
+  @override
+  String get caseGatherUpStory2 => 'The Struggle';
+
+  @override
+  String get caseGatherUpStory3 => 'The Turning Point';
+
+  @override
+  String get caseGatherUpStory4 => 'A Better Reality';
+
+  @override
+  String get caseGatherUpProductHeadline => 'The loop.';
 
   @override
   String get caseGatherUpLoopDiscover => 'Discover';
 
   @override
-  String get caseGatherUpLoopDiscoverD =>
-      'Browse local events filtered by interest and place.';
+  String get caseGatherUpLoopDiscoverD => 'Activities near you this week.';
 
   @override
   String get caseGatherUpLoopJoin => 'Join';
 
   @override
-  String get caseGatherUpLoopJoinD =>
-      'Book a spot and confirm attendance in-flow.';
+  String get caseGatherUpLoopJoinD => 'Book free or pay.';
 
   @override
   String get caseGatherUpLoopMeet => 'Meet';
 
   @override
-  String get caseGatherUpLoopMeetD =>
-      'Show up with maps, timing, and event context.';
+  String get caseGatherUpLoopMeetD => 'Small groups by default.';
 
   @override
   String get caseGatherUpLoopConnect => 'Connect';
 
   @override
-  String get caseGatherUpLoopConnectD =>
-      'Chat and stay linked with people you meet.';
+  String get caseGatherUpLoopConnectD => 'Chat unlocks, faces after.';
+
+  @override
+  String get caseGatherUpThinkingHeadline => 'Product questions came first.';
+
+  @override
+  String get caseGatherUpQ1 => 'Who is this for?';
+
+  @override
+  String get caseGatherUpA1 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ2 => 'Why join?';
+
+  @override
+  String get caseGatherUpA2 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ3 => 'What lowers anxiety?';
+
+  @override
+  String get caseGatherUpA3 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ4 => 'What does a host need?';
+
+  @override
+  String get caseGatherUpA4 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ5 => 'What brings people back?';
+
+  @override
+  String get caseGatherUpA5 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ6 => 'How do they pay?';
+
+  @override
+  String get caseGatherUpA6 => 'TODO_REPLACE';
+
+  @override
+  String get caseSecProblem => 'PROBLEM';
+
+  @override
+  String get caseSecProductEyebrow => 'PRODUCT';
+
+  @override
+  String get caseSecThinking => 'THINKING';
+
+  @override
+  String get caseSecExperience => 'EXPERIENCE';
+
+  @override
+  String get caseSecSystem => 'DESIGN SYSTEM';
+
+  @override
+  String get caseSecMotion => 'MOTION';
+
+  @override
+  String get caseSecCode => 'DESIGN + CODE';
+
+  @override
+  String get caseHoverToPlay => 'HOVER TO PLAY';
+
+  @override
+  String get caseTapToPlay => 'TAP TO PLAY';
+
+  @override
+  String get caseGatherUpExpHeadline => 'Making meeting strangers feel easy.';
+
+  @override
+  String get caseGatherUpExpDiscover => 'Discover';
+
+  @override
+  String get caseGatherUpExpContext => 'Context';
+
+  @override
+  String get caseGatherUpExpBook => 'Book';
+
+  @override
+  String get caseGatherUpExpConnect => 'Connect';
+
+  @override
+  String get caseGatherUpSysHeadline => 'One system. Multiple surfaces.';
+
+  @override
+  String get caseGatherUpSysCredit =>
+      'Design by TODO_NAMES · Implemented in Flutter by me';
+
+  @override
+  String get caseGatherUpTierPrimitives => 'Primitives';
+
+  @override
+  String get caseGatherUpTierFoundations => 'Foundations';
+
+  @override
+  String get caseGatherUpTierCore => 'Core components';
+
+  @override
+  String get caseGatherUpTierSurfaces => 'Surfaces';
+
+  @override
+  String get caseGatherUpTierPatterns => 'Patterns';
+
+  @override
+  String get caseGatherUpChipColor => 'Color';
+
+  @override
+  String get caseGatherUpChipSpace => 'Space';
+
+  @override
+  String get caseGatherUpChipRadius => 'Radius';
+
+  @override
+  String get caseGatherUpChipType => 'Type';
+
+  @override
+  String get caseGatherUpChipIcon => 'Icon';
+
+  @override
+  String get caseGatherUpChipElevation => 'Elevation';
+
+  @override
+  String get caseGatherUpChipButton => 'Button';
+
+  @override
+  String get caseGatherUpChipInput => 'Input';
+
+  @override
+  String get caseGatherUpChipChip => 'Chip';
+
+  @override
+  String get caseGatherUpChipCard => 'Card';
+
+  @override
+  String get caseGatherUpChipSheet => 'Sheet';
+
+  @override
+  String get caseGatherUpChipNav => 'Nav';
+
+  @override
+  String get caseGatherUpChipBooking => 'Booking';
+
+  @override
+  String get caseGatherUpChipChat => 'Chat';
+
+  @override
+  String get caseGatherUpChipMap => 'Map';
+
+  @override
+  String get caseGatherUpColorGold => 'Brand gold';
+
+  @override
+  String get caseGatherUpColorNight => 'Night';
+
+  @override
+  String get caseGatherUpColorChalk => 'Chalk';
+
+  @override
+  String get caseGatherUpThemeLight => 'Light';
+
+  @override
+  String get caseGatherUpThemeDark => 'Dark';
+
+  @override
+  String get caseGatherUpThemeEn => 'EN';
+
+  @override
+  String get caseGatherUpThemeAr => 'AR';
+
+  @override
+  String get caseGatherUpTypeEnLabel => 'English';
+
+  @override
+  String get caseGatherUpTypeEnSample =>
+      'Meet through shared interests, not profiles.';
+
+  @override
+  String get caseGatherUpTypeArLabel => 'Arabic';
+
+  @override
+  String get caseGatherUpTypeArSample =>
+      'التعارف عبر الاهتمامات المشتركة، لا الملفات الشخصية.';
+
+  @override
+  String get caseGatherUpCompButtons =>
+      'Buttons — press states that feel native';
+
+  @override
+  String get caseGatherUpCompChips =>
+      'Chips — filters you can scan at a glance';
+
+  @override
+  String get caseGatherUpCompSheets => 'Sheets — context without losing place';
+
+  @override
+  String get caseGatherUpMotionHeadline => 'Shared motion language.';
+
+  @override
+  String get caseGatherUpMotionMicro => 'Micro';
+
+  @override
+  String get caseGatherUpMotionMicroUse => 'Press';
+
+  @override
+  String get caseGatherUpMotionQuick => 'Quick';
+
+  @override
+  String get caseGatherUpMotionQuickUse => 'Tab, chip';
+
+  @override
+  String get caseGatherUpMotionStandard => 'Standard';
+
+  @override
+  String get caseGatherUpMotionStandardUse => 'Sheet';
+
+  @override
+  String get caseGatherUpMotionScreen => 'Screen';
+
+  @override
+  String get caseGatherUpMotionScreenUse => 'Push';
+
+  @override
+  String get caseGatherUpMotionTab => 'Tab';
+
+  @override
+  String get caseGatherUpMotionPush => 'Push';
+
+  @override
+  String get caseGatherUpMotionSheet => 'Sheet';
+
+  @override
+  String get caseGatherUpMotionPrivacy => 'Privacy';
+
+  @override
+  String get caseGatherUpReduceMotion => 'Reduce Motion respected';
+
+  @override
+  String get caseGatherUpCodeHeadline => 'From design to shipped Flutter code.';
+
+  @override
+  String get caseGatherUpCodeDesign => '01 Design';
+
+  @override
+  String get caseGatherUpCodeDesignBody =>
+      'Tokens and surfaces from the product system — wired into Flutter themes and constants.';
+
+  @override
+  String get caseGatherUpCodeCode => '02 Code';
+
+  @override
+  String get caseGatherUpCodeCodeBody =>
+      'Reusable widgets for booking, chat, maps, and auth — Clean Architecture with Provider.';
+
+  @override
+  String get caseGatherUpCodeShip => '03 Ship';
+
+  @override
+  String get caseGatherUpCodeShipBody =>
+      'Shipped mobile features on iOS, Android, and web with responsive layouts.';
+
+  @override
+  String get caseGatherUpCodeClosing => 'TODO_REPLACE';
 
   @override
   String get caseGatherUpRoleBooking => 'Event booking flow';

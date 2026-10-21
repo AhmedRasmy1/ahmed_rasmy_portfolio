@@ -117,6 +117,47 @@ class Course {
   final String? url;
 }
 
+/// Scroll-rail sections for a case study (progress dots).
+enum CaseStudySectionId {
+  problem,
+  product,
+  thinking,
+  experience,
+  system,
+  motion,
+  code,
+  iteration,
+  comingNext,
+  results,
+}
+
+class CaseStudyCompareSide {
+  const CaseStudyCompareSide({
+    required this.titleKey,
+    required this.captionKey,
+    required this.stepKeys,
+    this.accentTape = false,
+  });
+
+  final String titleKey;
+  final String captionKey;
+  final List<String> stepKeys;
+  final bool accentTape;
+}
+
+class CaseStudyStoryPanel {
+  const CaseStudyStoryPanel({
+    required this.index,
+    required this.captionKey,
+  });
+
+  final int index;
+  final String captionKey;
+
+  String assetPath(String slug) =>
+      'assets/images/projects/$slug/story/${index.toString().padLeft(2, '0')}.jpg';
+}
+
 class CaseStudyLoopStep {
   const CaseStudyLoopStep({
     required this.titleKey,
@@ -127,95 +168,168 @@ class CaseStudyLoopStep {
   final String detailKey;
 }
 
-class CaseStudyRoleNote {
-  const CaseStudyRoleNote({
+class CaseStudyQuestion {
+  const CaseStudyQuestion({
+    required this.questionKey,
+    required this.answerKey,
+  });
+
+  final String questionKey;
+  final String answerKey;
+}
+
+class CaseStudyMediaCard {
+  const CaseStudyMediaCard({
+    required this.id,
+    required this.captionKey,
+    this.videoAsset,
+    this.posterAsset,
+  });
+
+  final String id;
+  final String captionKey;
+  final String? videoAsset;
+  final String? posterAsset;
+}
+
+class CaseStudyDesignTier {
+  const CaseStudyDesignTier({
     required this.titleKey,
-    required this.icon,
-    this.detailKey,
+    required this.chipKeys,
   });
 
   final String titleKey;
-  final String icon;
-  final String? detailKey;
+  final List<String> chipKeys;
 }
 
-class CaseStudyScreen {
-  const CaseStudyScreen({
-    required this.index,
-    required this.captionKey,
-  });
-
-  final int index;
-  final String captionKey;
-
-  String assetPath(String slug) =>
-      'assets/images/projects/$slug/screens/${index.toString().padLeft(2, '0')}.png';
-}
-
-class CaseStudyChallenge {
-  const CaseStudyChallenge({
-    required this.problemKey,
-    required this.solutionKey,
-    required this.learnedKey,
-  });
-
-  final String problemKey;
-  final String solutionKey;
-  final String learnedKey;
-}
-
-class CaseStudyStat {
-  const CaseStudyStat({
+class CaseStudyColorSwatch {
+  const CaseStudyColorSwatch({
     required this.labelKey,
-    this.value,
+    required this.hex,
   });
 
   final String labelKey;
-
-  /// Null / TODO → sticker stays hidden.
-  final String? value;
+  final String hex;
 }
 
-/// Full case-study content for `/work/:slug`. Add a new entry + images to ship another.
+class CaseStudyTypeSpecimen {
+  const CaseStudyTypeSpecimen({
+    required this.labelKey,
+    required this.sampleKey,
+    this.rtl = false,
+  });
+
+  final String labelKey;
+  final String sampleKey;
+  final bool rtl;
+}
+
+class CaseStudyMotionTiming {
+  const CaseStudyMotionTiming({
+    required this.titleKey,
+    required this.durationLabel,
+    required this.useKey,
+    required this.durationMs,
+  });
+
+  final String titleKey;
+  final String durationLabel;
+  final String useKey;
+  final int durationMs;
+}
+
+class CaseStudyCodeStep {
+  const CaseStudyCodeStep({
+    required this.titleKey,
+    required this.bodyKey,
+  });
+
+  final String titleKey;
+  final String bodyKey;
+}
+
+/// Full case-study content for `/work/:slug`.
+/// Later sub-steps add optional section payloads; null/TODO blocks hide themselves.
 class CaseStudy {
   const CaseStudy({
     required this.projectSlug,
     required this.heroTaglineKey,
-    required this.heroTags,
-    required this.creditKey,
-    required this.roleMetaKey,
-    required this.platformMetaKey,
-    required this.periodMetaKey,
-    required this.stackMetaKey,
-    required this.productP1Key,
-    required this.productP2Key,
-    required this.loopSteps,
-    required this.roleNotes,
-    required this.architectureWhyKey,
-    required this.screens,
-    this.challenges = const [],
-    this.stats = const [],
-    this.learningKeys = const [],
+    this.heroBrushKey,
+    this.heroTags = const [],
+    this.creditKey,
+    this.marketMetaKey,
+    this.platformMetaKey,
+    this.localeMetaKey,
+    this.stackMetaKey,
+    this.problemHeadlineKey,
+    this.compareTypical,
+    this.compareGatherUp,
+    this.storyPanels = const [],
+    this.productHeadlineKey,
+    this.loopSteps = const [],
+    this.thinkingHeadlineKey,
+    this.thinkingQuestions = const [],
+    this.experienceHeadlineKey,
+    this.experienceCards = const [],
+    this.systemHeadlineKey,
+    this.systemCreditKey,
+    this.designTiers = const [],
+    this.colorSwatches = const [],
+    this.themeMedia = const [],
+    this.typeSpecimens = const [],
+    this.componentCards = const [],
+    this.motionHeadlineKey,
+    this.motionTimings = const [],
+    this.motionVideos = const [],
+    this.respectsReduceMotion = false,
+    this.codeHeadlineKey,
+    this.codeSteps = const [],
+    this.codeClosingKey,
     this.nextSlug,
   });
 
   final String projectSlug;
   final String heroTaglineKey;
+
+  /// Blue brush/script word under the condensed title (optional).
+  final String? heroBrushKey;
   final List<String> heroTags;
-  final String creditKey;
-  final String roleMetaKey;
-  final String platformMetaKey;
-  final String periodMetaKey;
-  final String stackMetaKey;
-  final String productP1Key;
-  final String productP2Key;
+  final String? creditKey;
+  final String? marketMetaKey;
+  final String? platformMetaKey;
+
+  /// Hide sticker when null (e.g. no EN/AR · RTL work).
+  final String? localeMetaKey;
+  final String? stackMetaKey;
+
+  // ── 7B ──
+  final String? problemHeadlineKey;
+  final CaseStudyCompareSide? compareTypical;
+  final CaseStudyCompareSide? compareGatherUp;
+  final List<CaseStudyStoryPanel> storyPanels;
+  final String? productHeadlineKey;
   final List<CaseStudyLoopStep> loopSteps;
-  final List<CaseStudyRoleNote> roleNotes;
-  final String architectureWhyKey;
-  final List<CaseStudyScreen> screens;
-  final List<CaseStudyChallenge> challenges;
-  final List<CaseStudyStat> stats;
-  final List<String> learningKeys;
+  final String? thinkingHeadlineKey;
+  final List<CaseStudyQuestion> thinkingQuestions;
+
+  // ── 7C ──
+  final String? experienceHeadlineKey;
+  final List<CaseStudyMediaCard> experienceCards;
+  final String? systemHeadlineKey;
+  final String? systemCreditKey;
+  final List<CaseStudyDesignTier> designTiers;
+  final List<CaseStudyColorSwatch> colorSwatches;
+  final List<CaseStudyMediaCard> themeMedia;
+  final List<CaseStudyTypeSpecimen> typeSpecimens;
+  final List<CaseStudyMediaCard> componentCards;
+  final String? motionHeadlineKey;
+  final List<CaseStudyMotionTiming> motionTimings;
+  final List<CaseStudyMediaCard> motionVideos;
+  final bool respectsReduceMotion;
+  final String? codeHeadlineKey;
+  final List<CaseStudyCodeStep> codeSteps;
+  final String? codeClosingKey;
+
   final String? nextSlug;
 
   String get heroImagePath => 'assets/images/projects/$projectSlug/hero.png';
@@ -524,20 +638,46 @@ abstract final class PortfolioData {
     CaseStudy(
       projectSlug: 'gatherup',
       heroTaglineKey: 'caseGatherUpHeroTagline',
+      heroBrushKey: 'caseGatherUpBrush',
       heroTags: [
+        'Product',
         'Flutter',
         'Clean Architecture',
         'Provider',
-        'REST',
-        'FCM',
       ],
       creditKey: 'caseGatherUpCredit',
-      roleMetaKey: 'caseGatherUpRoleMeta',
+      marketMetaKey: 'caseGatherUpMarketMeta',
       platformMetaKey: 'caseGatherUpPlatformMeta',
-      periodMetaKey: 'caseGatherUpPeriodMeta',
+      localeMetaKey: 'caseGatherUpLocaleMeta',
       stackMetaKey: 'caseGatherUpStackMeta',
-      productP1Key: 'caseGatherUpProductP1',
-      productP2Key: 'caseGatherUpProductP2',
+      problemHeadlineKey: 'caseGatherUpProblemHeadline',
+      compareTypical: CaseStudyCompareSide(
+        titleKey: 'caseGatherUpCompareTypicalTitle',
+        captionKey: 'caseGatherUpCompareTypicalCaption',
+        stepKeys: [
+          'caseGatherUpCompareTypicalS1',
+          'caseGatherUpCompareTypicalS2',
+          'caseGatherUpCompareTypicalS3',
+        ],
+      ),
+      compareGatherUp: CaseStudyCompareSide(
+        titleKey: 'caseGatherUpCompareGuTitle',
+        captionKey: 'caseGatherUpCompareGuCaption',
+        stepKeys: [
+          'caseGatherUpCompareGuS1',
+          'caseGatherUpCompareGuS2',
+          'caseGatherUpCompareGuS3',
+          'caseGatherUpCompareGuS4',
+        ],
+        accentTape: true,
+      ),
+      storyPanels: [
+        CaseStudyStoryPanel(index: 1, captionKey: 'caseGatherUpStory1'),
+        CaseStudyStoryPanel(index: 2, captionKey: 'caseGatherUpStory2'),
+        CaseStudyStoryPanel(index: 3, captionKey: 'caseGatherUpStory3'),
+        CaseStudyStoryPanel(index: 4, captionKey: 'caseGatherUpStory4'),
+      ],
+      productHeadlineKey: 'caseGatherUpProductHeadline',
       loopSteps: [
         CaseStudyLoopStep(
           titleKey: 'caseGatherUpLoopDiscover',
@@ -556,84 +696,246 @@ abstract final class PortfolioData {
           detailKey: 'caseGatherUpLoopConnectD',
         ),
       ],
-      roleNotes: [
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleBooking',
-          icon: 'event',
-          detailKey: 'caseGatherUpRoleBookingD',
+      thinkingHeadlineKey: 'caseGatherUpThinkingHeadline',
+      thinkingQuestions: [
+        CaseStudyQuestion(
+          questionKey: 'caseGatherUpQ1',
+          answerKey: 'caseGatherUpA1',
         ),
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleAuth',
-          icon: 'lock',
-          detailKey: 'caseGatherUpRoleAuthD',
+        CaseStudyQuestion(
+          questionKey: 'caseGatherUpQ2',
+          answerKey: 'caseGatherUpA2',
         ),
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleRest',
-          icon: 'api',
-          detailKey: 'caseGatherUpRoleRestD',
+        CaseStudyQuestion(
+          questionKey: 'caseGatherUpQ3',
+          answerKey: 'caseGatherUpA3',
         ),
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleCache',
-          icon: 'storage',
-          detailKey: 'caseGatherUpRoleCacheD',
+        CaseStudyQuestion(
+          questionKey: 'caseGatherUpQ4',
+          answerKey: 'caseGatherUpA4',
         ),
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleMaps',
-          icon: 'map',
-          detailKey: 'caseGatherUpRoleMapsD',
+        CaseStudyQuestion(
+          questionKey: 'caseGatherUpQ5',
+          answerKey: 'caseGatherUpA5',
         ),
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleFcm',
-          icon: 'notifications',
-          detailKey: 'caseGatherUpRoleFcmD',
-        ),
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleChat',
-          icon: 'chat',
-          detailKey: 'caseGatherUpRoleChatD',
-        ),
-        CaseStudyRoleNote(
-          titleKey: 'caseGatherUpRoleUi',
-          icon: 'devices',
-          detailKey: 'caseGatherUpRoleUiD',
+        CaseStudyQuestion(
+          questionKey: 'caseGatherUpQ6',
+          answerKey: 'caseGatherUpA6',
         ),
       ],
-      architectureWhyKey: 'caseGatherUpArchWhy',
-      screens: [
-        CaseStudyScreen(index: 1, captionKey: 'caseGatherUpScrDiscover'),
-        CaseStudyScreen(index: 2, captionKey: 'caseGatherUpScrDetails'),
-        CaseStudyScreen(index: 3, captionKey: 'caseGatherUpScrBook'),
-        CaseStudyScreen(index: 4, captionKey: 'caseGatherUpScrChat'),
-        CaseStudyScreen(index: 5, captionKey: 'caseGatherUpScrMap'),
-        CaseStudyScreen(index: 6, captionKey: 'caseGatherUpScrNotif'),
-      ],
-      challenges: [
-        CaseStudyChallenge(
-          problemKey: 'caseGatherUpCh1Problem',
-          solutionKey: 'caseGatherUpCh1Solution',
-          learnedKey: 'caseGatherUpCh1Learned',
+      experienceHeadlineKey: 'caseGatherUpExpHeadline',
+      experienceCards: [
+        CaseStudyMediaCard(
+          id: 'discover',
+          captionKey: 'caseGatherUpExpDiscover',
+          videoAsset: 'assets/videos/gatherup/showcase-discover.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/discover.png',
         ),
-        CaseStudyChallenge(
-          problemKey: 'caseGatherUpCh2Problem',
-          solutionKey: 'caseGatherUpCh2Solution',
-          learnedKey: 'caseGatherUpCh2Learned',
+        CaseStudyMediaCard(
+          id: 'context',
+          captionKey: 'caseGatherUpExpContext',
+          videoAsset: 'assets/videos/gatherup/showcase-context.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/context.png',
         ),
-        CaseStudyChallenge(
-          problemKey: 'caseGatherUpCh3Problem',
-          solutionKey: 'caseGatherUpCh3Solution',
-          learnedKey: 'caseGatherUpCh3Learned',
+        CaseStudyMediaCard(
+          id: 'book',
+          captionKey: 'caseGatherUpExpBook',
+          videoAsset: 'assets/videos/gatherup/showcase-book.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/book.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'connect',
+          captionKey: 'caseGatherUpExpConnect',
+          videoAsset: 'assets/videos/gatherup/showcase-connect.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/connect.png',
         ),
       ],
-      stats: [
-        CaseStudyStat(labelKey: 'caseGatherUpStatUsers', value: null),
-        CaseStudyStat(labelKey: 'caseGatherUpStatBookings', value: null),
-        CaseStudyStat(labelKey: 'caseGatherUpStatRating', value: null),
+      systemHeadlineKey: 'caseGatherUpSysHeadline',
+      systemCreditKey: 'caseGatherUpSysCredit',
+      designTiers: [
+        CaseStudyDesignTier(
+          titleKey: 'caseGatherUpTierPrimitives',
+          chipKeys: [
+            'caseGatherUpChipColor',
+            'caseGatherUpChipSpace',
+            'caseGatherUpChipRadius',
+          ],
+        ),
+        CaseStudyDesignTier(
+          titleKey: 'caseGatherUpTierFoundations',
+          chipKeys: [
+            'caseGatherUpChipType',
+            'caseGatherUpChipIcon',
+            'caseGatherUpChipElevation',
+          ],
+        ),
+        CaseStudyDesignTier(
+          titleKey: 'caseGatherUpTierCore',
+          chipKeys: [
+            'caseGatherUpChipButton',
+            'caseGatherUpChipInput',
+            'caseGatherUpChipChip',
+          ],
+        ),
+        CaseStudyDesignTier(
+          titleKey: 'caseGatherUpTierSurfaces',
+          chipKeys: [
+            'caseGatherUpChipCard',
+            'caseGatherUpChipSheet',
+            'caseGatherUpChipNav',
+          ],
+        ),
+        CaseStudyDesignTier(
+          titleKey: 'caseGatherUpTierPatterns',
+          chipKeys: [
+            'caseGatherUpChipBooking',
+            'caseGatherUpChipChat',
+            'caseGatherUpChipMap',
+          ],
+        ),
       ],
-      learningKeys: [
-        'caseGatherUpLearn1',
-        'caseGatherUpLearn2',
-        'caseGatherUpLearn3',
+      colorSwatches: [
+        CaseStudyColorSwatch(
+          labelKey: 'caseGatherUpColorGold',
+          hex: '#E8C96A',
+        ),
+        CaseStudyColorSwatch(
+          labelKey: 'caseGatherUpColorNight',
+          hex: '#0A1628',
+        ),
+        CaseStudyColorSwatch(
+          labelKey: 'caseGatherUpColorChalk',
+          hex: '#F4F8FC',
+        ),
       ],
+      themeMedia: [
+        CaseStudyMediaCard(
+          id: 'theme-light',
+          captionKey: 'caseGatherUpThemeLight',
+          videoAsset: 'assets/videos/gatherup/theme-light.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/theme-light.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'theme-dark',
+          captionKey: 'caseGatherUpThemeDark',
+          videoAsset: 'assets/videos/gatherup/theme-dark.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/theme-dark.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'theme-en',
+          captionKey: 'caseGatherUpThemeEn',
+          videoAsset: 'assets/videos/gatherup/theme-en.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/theme-en.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'theme-ar',
+          captionKey: 'caseGatherUpThemeAr',
+          videoAsset: 'assets/videos/gatherup/theme-ar.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/theme-ar.png',
+        ),
+      ],
+      typeSpecimens: [
+        CaseStudyTypeSpecimen(
+          labelKey: 'caseGatherUpTypeEnLabel',
+          sampleKey: 'caseGatherUpTypeEnSample',
+        ),
+        CaseStudyTypeSpecimen(
+          labelKey: 'caseGatherUpTypeArLabel',
+          sampleKey: 'caseGatherUpTypeArSample',
+          rtl: true,
+        ),
+      ],
+      componentCards: [
+        CaseStudyMediaCard(
+          id: 'comp-buttons',
+          captionKey: 'caseGatherUpCompButtons',
+          videoAsset: 'assets/videos/gatherup/comp-buttons.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/comp-buttons.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'comp-chips',
+          captionKey: 'caseGatherUpCompChips',
+          videoAsset: 'assets/videos/gatherup/comp-chips.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/comp-chips.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'comp-sheets',
+          captionKey: 'caseGatherUpCompSheets',
+          videoAsset: 'assets/videos/gatherup/comp-sheets.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/comp-sheets.png',
+        ),
+      ],
+      motionHeadlineKey: 'caseGatherUpMotionHeadline',
+      motionTimings: [
+        CaseStudyMotionTiming(
+          titleKey: 'caseGatherUpMotionMicro',
+          durationLabel: '~150ms',
+          useKey: 'caseGatherUpMotionMicroUse',
+          durationMs: 150,
+        ),
+        CaseStudyMotionTiming(
+          titleKey: 'caseGatherUpMotionQuick',
+          durationLabel: '~250ms',
+          useKey: 'caseGatherUpMotionQuickUse',
+          durationMs: 250,
+        ),
+        CaseStudyMotionTiming(
+          titleKey: 'caseGatherUpMotionStandard',
+          durationLabel: '~350ms',
+          useKey: 'caseGatherUpMotionStandardUse',
+          durationMs: 350,
+        ),
+        CaseStudyMotionTiming(
+          titleKey: 'caseGatherUpMotionScreen',
+          durationLabel: '~500ms',
+          useKey: 'caseGatherUpMotionScreenUse',
+          durationMs: 500,
+        ),
+      ],
+      motionVideos: [
+        CaseStudyMediaCard(
+          id: 'motion-tab',
+          captionKey: 'caseGatherUpMotionTab',
+          videoAsset: 'assets/videos/gatherup/motion-tab.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/motion-tab.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'motion-push',
+          captionKey: 'caseGatherUpMotionPush',
+          videoAsset: 'assets/videos/gatherup/motion-push.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/motion-push.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'motion-sheet',
+          captionKey: 'caseGatherUpMotionSheet',
+          videoAsset: 'assets/videos/gatherup/motion-sheet.mp4',
+          posterAsset: 'assets/images/projects/gatherup/posters/motion-sheet.png',
+        ),
+        CaseStudyMediaCard(
+          id: 'motion-privacy',
+          captionKey: 'caseGatherUpMotionPrivacy',
+          videoAsset: 'assets/videos/gatherup/motion-privacy.mp4',
+          posterAsset:
+              'assets/images/projects/gatherup/posters/motion-privacy.png',
+        ),
+      ],
+      respectsReduceMotion: true,
+      codeHeadlineKey: 'caseGatherUpCodeHeadline',
+      codeSteps: [
+        CaseStudyCodeStep(
+          titleKey: 'caseGatherUpCodeDesign',
+          bodyKey: 'caseGatherUpCodeDesignBody',
+        ),
+        CaseStudyCodeStep(
+          titleKey: 'caseGatherUpCodeCode',
+          bodyKey: 'caseGatherUpCodeCodeBody',
+        ),
+        CaseStudyCodeStep(
+          titleKey: 'caseGatherUpCodeShip',
+          bodyKey: 'caseGatherUpCodeShipBody',
+        ),
+      ],
+      codeClosingKey: 'caseGatherUpCodeClosing',
       nextSlug: 'awwaab',
     ),
   ];

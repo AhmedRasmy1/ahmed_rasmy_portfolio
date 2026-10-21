@@ -1,92 +1,83 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
+import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
 
-class CaseStudySectionRef {
-  const CaseStudySectionRef({
-    required this.id,
-    required this.label,
-    required this.key,
-  });
+class CaseStudySectionAnchor {
+  CaseStudySectionAnchor(this.id) : key = GlobalKey(debugLabel: id.name);
 
-  final String id;
-  final String label;
+  final CaseStudySectionId id;
   final GlobalKey key;
 }
 
+/// Right-rail progress dots. Active id comes from a single [ValueNotifier].
 class CaseStudyProgressRail extends StatelessWidget {
   const CaseStudyProgressRail({
     super.key,
-    required this.sections,
+    required this.anchors,
     required this.activeId,
     required this.onSelect,
     this.customCursor = false,
   });
 
-  final List<CaseStudySectionRef> sections;
-  final String? activeId;
-  final ValueChanged<String> onSelect;
+  final List<CaseStudySectionAnchor> anchors;
+  final ValueNotifier<CaseStudySectionId?> activeId;
+  final ValueChanged<CaseStudySectionId> onSelect;
   final bool customCursor;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (final s in sections)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6),
-            child: CursorTarget(
-              enabled: customCursor,
-              child: GestureDetector(
-                onTap: () => onSelect(s.id),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AnimatedContainer(
-                      duration: const Duration(milliseconds: 220),
-                      width: activeId == s.id ? 10 : 7,
-                      height: activeId == s.id ? 10 : 7,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: activeId == s.id
-                            ? AppColors.flutterLightBlue
-                            : AppColors.flutterBlue.withValues(alpha: 0.35),
-                        boxShadow: activeId == s.id
-                            ? [
-                                BoxShadow(
-                                  color: AppColors.flutterLightBlue
-                                      .withValues(alpha: 0.45),
-                                  blurRadius: 8,
-                                ),
-                              ]
-                            : null,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      width: 72,
-                      child: Text(
-                        s.label,
-                        style: GoogleFonts.spaceMono(
-                          fontSize: 9,
-                          letterSpacing: 0.8,
-                          fontWeight: FontWeight.w700,
-                          color: activeId == s.id
+    final l10n = AppLocalizations.of(context);
+
+    return ValueListenableBuilder<CaseStudySectionId?>(
+      valueListenable: activeId,
+      builder: (context, active, _) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final a in anchors)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: CursorTarget(
+                  enabled: customCursor,
+                  child: Tooltip(
+                    message: CaseStudyCopy.sectionTooltip(l10n, a.id),
+                    preferBelow: false,
+                    waitDuration: const Duration(milliseconds: 200),
+                    child: GestureDetector(
+                      onTap: () => onSelect(a.id),
+                      behavior: HitTestBehavior.opaque,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 220),
+                        curve: Curves.easeOutCubic,
+                        width: active == a.id ? 12 : 8,
+                        height: active == a.id ? 12 : 8,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: active == a.id
                               ? AppColors.flutterLightBlue
-                              : context.zine.inkMuted,
-                          decoration: TextDecoration.none,
+                              : AppColors.flutterBlue.withValues(alpha: 0.35),
+                          boxShadow: active == a.id
+                              ? [
+                                  BoxShadow(
+                                    color: AppColors.flutterLightBlue
+                                        .withValues(alpha: 0.45),
+                                    blurRadius: 8,
+                                  ),
+                                ]
+                              : null,
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-      ],
+          ],
+        );
+      },
     );
   }
 }

@@ -501,16 +501,46 @@ class AppLocalizationsAr extends AppLocalizations {
   String get caseStudyLabel => 'دراسة حالة';
 
   @override
-  String get caseMetaRole => 'الدور';
+  String get caseMetaMarket => 'السوق';
 
   @override
   String get caseMetaPlatform => 'المنصة';
 
   @override
-  String get caseMetaPeriod => 'الفترة';
+  String get caseMetaLocale => 'اللغة';
 
   @override
   String get caseMetaStack => 'التقنيات';
+
+  @override
+  String get caseNavProblem => 'المشكلة';
+
+  @override
+  String get caseNavProduct => 'المنتج';
+
+  @override
+  String get caseNavThinking => 'التفكير';
+
+  @override
+  String get caseNavExperience => 'التجربة';
+
+  @override
+  String get caseNavSystem => 'النظام';
+
+  @override
+  String get caseNavMotion => 'الحركة';
+
+  @override
+  String get caseNavCode => 'الكود';
+
+  @override
+  String get caseNavIteration => 'التكرار';
+
+  @override
+  String get caseNavComingNext => 'التالي';
+
+  @override
+  String get caseNavResults => 'النتائج';
 
   @override
   String get caseSecProduct => 'المنتج';
@@ -622,56 +652,364 @@ class AppLocalizationsAr extends AppLocalizations {
       'التعارف عبر الاهتمامات المشتركة، لا الملفات الشخصية.';
 
   @override
-  String get caseGatherUpCredit =>
-      'المنتج والتصميم من فريق GatherUp (TODO: إضافة الأسماء). بنيت ميزات فلاتر لتطبيق الموبايل.';
+  String get caseGatherUpBrush => 'اجتماعي';
 
   @override
-  String get caseGatherUpRoleMeta => 'مطوّر فلاتر مبتدئ';
+  String get caseGatherUpCredit =>
+      'المنتج والتصميم: TODO_NAMES. بنيت ميزات فلاتر لتطبيق الموبايل.';
+
+  @override
+  String get caseGatherUpMarketMeta => 'فعاليات اجتماعية · اكتشاف محلي';
 
   @override
   String get caseGatherUpPlatformMeta => 'iOS · Android · Web';
 
   @override
-  String get caseGatherUpPeriodMeta => '٠٦/٢٠٢٦ حتى الآن';
+  String get caseGatherUpLocaleMeta => 'ع + EN · RTL';
 
   @override
-  String get caseGatherUpStackMeta =>
-      'Flutter · REST · Firebase (FCM) · Google Maps';
+  String get caseGatherUpStackMeta => 'Flutter · REST · Firebase · Google Maps';
 
   @override
-  String get caseGatherUpProductP1 =>
-      'GatherUp تطبيق اجتماعي لاكتشاف والانضمام وإدارة الفعاليات المحلية حول الاهتمامات المشتركة.';
+  String get caseGatherUpProblemHeadline => 'التعارف لا يجب أن يبدأ بملف شخصي.';
 
   @override
-  String get caseGatherUpProductP2 =>
-      'يلتقي الناس عبر ما يهتمون به — هوايات ومشاهد وتجمعات قريبة — لا عبر ملفات ثابتة وحدها.';
+  String get caseGatherUpCompareTypicalTitle => 'تطبيقات اجتماعية تقليدية';
+
+  @override
+  String get caseGatherUpCompareTypicalCaption =>
+      'الوجوه أولًا. الخطط اختيارية.';
+
+  @override
+  String get caseGatherUpCompareTypicalS1 => '01 ملف شخصي';
+
+  @override
+  String get caseGatherUpCompareTypicalS2 => '02 تمرير';
+
+  @override
+  String get caseGatherUpCompareTypicalS3 => '03 ربما لقاء';
+
+  @override
+  String get caseGatherUpCompareGuTitle => 'GatherUp';
+
+  @override
+  String get caseGatherUpCompareGuCaption =>
+      'قائمة الضيوف خاصة حتى بعد اللقاء.';
+
+  @override
+  String get caseGatherUpCompareGuS1 => '01 اهتمام';
+
+  @override
+  String get caseGatherUpCompareGuS2 => '02 احجز';
+
+  @override
+  String get caseGatherUpCompareGuS3 => '03 التقِ';
+
+  @override
+  String get caseGatherUpCompareGuS4 => '04 الوجوه تُفتح';
+
+  @override
+  String get caseGatherUpVs => 'ضد';
+
+  @override
+  String get caseGatherUpStory1 => 'المشكلة';
+
+  @override
+  String get caseGatherUpStory2 => 'الصراع';
+
+  @override
+  String get caseGatherUpStory3 => 'نقطة التحوّل';
+
+  @override
+  String get caseGatherUpStory4 => 'واقع أفضل';
+
+  @override
+  String get caseGatherUpProductHeadline => 'الحلقة.';
 
   @override
   String get caseGatherUpLoopDiscover => 'اكتشف';
 
   @override
-  String get caseGatherUpLoopDiscoverD =>
-      'تصفّح فعاليات محلية حسب الاهتمام والمكان.';
+  String get caseGatherUpLoopDiscoverD => 'أنشطة قريبة منك هذا الأسبوع.';
 
   @override
   String get caseGatherUpLoopJoin => 'انضم';
 
   @override
-  String get caseGatherUpLoopJoinD => 'احجز مقعدًا وأكّد الحضور في التدفق.';
+  String get caseGatherUpLoopJoinD => 'احجز مجانًا أو ادفع.';
 
   @override
   String get caseGatherUpLoopMeet => 'التقِ';
 
   @override
-  String get caseGatherUpLoopMeetD =>
-      'احضر مع الخرائط والتوقيت وسياق الفعالية.';
+  String get caseGatherUpLoopMeetD => 'مجموعات صغيرة افتراضيًا.';
 
   @override
   String get caseGatherUpLoopConnect => 'تواصل';
 
   @override
-  String get caseGatherUpLoopConnectD =>
-      'دردش وابقَ على تواصل مع من التقيت بهم.';
+  String get caseGatherUpLoopConnectD => 'الدردشة تُفتح، والوجوه بعد اللقاء.';
+
+  @override
+  String get caseGatherUpThinkingHeadline => 'أسئلة المنتج جاءت أولًا.';
+
+  @override
+  String get caseGatherUpQ1 => 'لمن هذا؟';
+
+  @override
+  String get caseGatherUpA1 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ2 => 'لماذا ينضمون؟';
+
+  @override
+  String get caseGatherUpA2 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ3 => 'ما الذي يقلل القلق؟';
+
+  @override
+  String get caseGatherUpA3 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ4 => 'ماذا يحتاج المضيف؟';
+
+  @override
+  String get caseGatherUpA4 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ5 => 'ما الذي يُعيدهم؟';
+
+  @override
+  String get caseGatherUpA5 => 'TODO_REPLACE';
+
+  @override
+  String get caseGatherUpQ6 => 'كيف يدفعون؟';
+
+  @override
+  String get caseGatherUpA6 => 'TODO_REPLACE';
+
+  @override
+  String get caseSecProblem => 'المشكلة';
+
+  @override
+  String get caseSecProductEyebrow => 'المنتج';
+
+  @override
+  String get caseSecThinking => 'التفكير';
+
+  @override
+  String get caseSecExperience => 'التجربة';
+
+  @override
+  String get caseSecSystem => 'نظام التصميم';
+
+  @override
+  String get caseSecMotion => 'الحركة';
+
+  @override
+  String get caseSecCode => 'تصميم + كود';
+
+  @override
+  String get caseHoverToPlay => 'مرّر للتشغيل';
+
+  @override
+  String get caseTapToPlay => 'اضغط للتشغيل';
+
+  @override
+  String get caseGatherUpExpHeadline => 'جعل لقاء الغرباء يبدو سهلًا.';
+
+  @override
+  String get caseGatherUpExpDiscover => 'اكتشف';
+
+  @override
+  String get caseGatherUpExpContext => 'السياق';
+
+  @override
+  String get caseGatherUpExpBook => 'احجز';
+
+  @override
+  String get caseGatherUpExpConnect => 'تواصل';
+
+  @override
+  String get caseGatherUpSysHeadline => 'نظام واحد. أسطح متعددة.';
+
+  @override
+  String get caseGatherUpSysCredit =>
+      'التصميم: TODO_NAMES · التنفيذ بفلاتر بواسطتي';
+
+  @override
+  String get caseGatherUpTierPrimitives => 'أساسيات';
+
+  @override
+  String get caseGatherUpTierFoundations => 'أسس';
+
+  @override
+  String get caseGatherUpTierCore => 'مكوّنات أساسية';
+
+  @override
+  String get caseGatherUpTierSurfaces => 'أسطح';
+
+  @override
+  String get caseGatherUpTierPatterns => 'أنماط';
+
+  @override
+  String get caseGatherUpChipColor => 'لون';
+
+  @override
+  String get caseGatherUpChipSpace => 'مسافة';
+
+  @override
+  String get caseGatherUpChipRadius => 'انحناء';
+
+  @override
+  String get caseGatherUpChipType => 'خط';
+
+  @override
+  String get caseGatherUpChipIcon => 'أيقونة';
+
+  @override
+  String get caseGatherUpChipElevation => 'ارتفاع';
+
+  @override
+  String get caseGatherUpChipButton => 'زر';
+
+  @override
+  String get caseGatherUpChipInput => 'إدخال';
+
+  @override
+  String get caseGatherUpChipChip => 'شريحة';
+
+  @override
+  String get caseGatherUpChipCard => 'بطاقة';
+
+  @override
+  String get caseGatherUpChipSheet => 'لوحة';
+
+  @override
+  String get caseGatherUpChipNav => 'تنقّل';
+
+  @override
+  String get caseGatherUpChipBooking => 'حجز';
+
+  @override
+  String get caseGatherUpChipChat => 'دردشة';
+
+  @override
+  String get caseGatherUpChipMap => 'خريطة';
+
+  @override
+  String get caseGatherUpColorGold => 'ذهبي العلامة';
+
+  @override
+  String get caseGatherUpColorNight => 'ليل';
+
+  @override
+  String get caseGatherUpColorChalk => 'طباشير';
+
+  @override
+  String get caseGatherUpThemeLight => 'فاتح';
+
+  @override
+  String get caseGatherUpThemeDark => 'داكن';
+
+  @override
+  String get caseGatherUpThemeEn => 'EN';
+
+  @override
+  String get caseGatherUpThemeAr => 'ع';
+
+  @override
+  String get caseGatherUpTypeEnLabel => 'إنجليزي';
+
+  @override
+  String get caseGatherUpTypeEnSample =>
+      'Meet through shared interests, not profiles.';
+
+  @override
+  String get caseGatherUpTypeArLabel => 'عربي';
+
+  @override
+  String get caseGatherUpTypeArSample =>
+      'التعارف عبر الاهتمامات المشتركة، لا الملفات الشخصية.';
+
+  @override
+  String get caseGatherUpCompButtons => 'أزرار — حالات ضغط تبدو أصلية';
+
+  @override
+  String get caseGatherUpCompChips => 'شرائح — فلاتر تُمسح بنظرة';
+
+  @override
+  String get caseGatherUpCompSheets => 'لوحات — سياق دون فقدان المكان';
+
+  @override
+  String get caseGatherUpMotionHeadline => 'لغة حركة مشتركة.';
+
+  @override
+  String get caseGatherUpMotionMicro => 'دقيق';
+
+  @override
+  String get caseGatherUpMotionMicroUse => 'ضغط';
+
+  @override
+  String get caseGatherUpMotionQuick => 'سريع';
+
+  @override
+  String get caseGatherUpMotionQuickUse => 'تبويب، شريحة';
+
+  @override
+  String get caseGatherUpMotionStandard => 'قياسي';
+
+  @override
+  String get caseGatherUpMotionStandardUse => 'لوحة';
+
+  @override
+  String get caseGatherUpMotionScreen => 'شاشة';
+
+  @override
+  String get caseGatherUpMotionScreenUse => 'انتقال';
+
+  @override
+  String get caseGatherUpMotionTab => 'تبويب';
+
+  @override
+  String get caseGatherUpMotionPush => 'انتقال';
+
+  @override
+  String get caseGatherUpMotionSheet => 'لوحة';
+
+  @override
+  String get caseGatherUpMotionPrivacy => 'خصوصية';
+
+  @override
+  String get caseGatherUpReduceMotion => 'احترام تقليل الحركة';
+
+  @override
+  String get caseGatherUpCodeHeadline => 'من التصميم إلى كود فلاتر مُطلق.';
+
+  @override
+  String get caseGatherUpCodeDesign => '01 تصميم';
+
+  @override
+  String get caseGatherUpCodeDesignBody =>
+      'رموز وأسطح من نظام المنتج — مربوطة بثيمات فلاتر وثوابت.';
+
+  @override
+  String get caseGatherUpCodeCode => '02 كود';
+
+  @override
+  String get caseGatherUpCodeCodeBody =>
+      'ودجات قابلة لإعادة الاستخدام للحجز والدردشة والخرائط والمصادقة — هندسة نظيفة مع Provider.';
+
+  @override
+  String get caseGatherUpCodeShip => '03 إطلاق';
+
+  @override
+  String get caseGatherUpCodeShipBody =>
+      'إطلاق ميزات موبايل على iOS وAndroid والويب بتخطيطات متجاوبة.';
+
+  @override
+  String get caseGatherUpCodeClosing => 'TODO_REPLACE';
 
   @override
   String get caseGatherUpRoleBooking => 'تدفق حجز الفعاليات';
