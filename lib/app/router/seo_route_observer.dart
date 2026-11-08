@@ -36,6 +36,11 @@ class SeoRouteObserver extends NavigatorObserver {
       );
     }
     return switch (path) {
+      'host-venue-mode' => (
+          title: '${AppConstants.siteName} — Host & Venue Mode',
+          description:
+              'Feature deep-dive: Host Mode and Venue Mode operator shells in GatherUp.',
+        ),
       '/projects' => (
           title: '${AppConstants.siteName} — Projects',
           description: 'Selected Flutter and mobile projects by Ahmed Rasmy.',

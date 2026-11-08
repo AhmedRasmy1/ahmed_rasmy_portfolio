@@ -794,6 +794,12 @@ abstract class AppLocalizations {
   /// **'Real-time chat and responsive cross-platform UI'**
   String get expGatherUpB4;
 
+  /// No description provided for @expGatherUpB5.
+  ///
+  /// In en, this message translates to:
+  /// **'Built Host & Venue Mode end-to-end (Flutter)'**
+  String get expGatherUpB5;
+
   /// No description provided for @expCenterlyRole.
   ///
   /// In en, this message translates to:
@@ -2447,13 +2453,13 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpFeat1Title.
   ///
   /// In en, this message translates to:
-  /// **'TODO_REPLACE'**
+  /// **'Host & Venue Mode'**
   String get caseGatherUpFeat1Title;
 
   /// No description provided for @caseGatherUpFeat1Summary.
   ///
   /// In en, this message translates to:
-  /// **'TODO_REPLACE'**
+  /// **'Operator shells for hosts and venues inside the member app — sessions, door, CRM, analytics, and a read-mostly venue diary.'**
   String get caseGatherUpFeat1Summary;
 
   /// No description provided for @caseGatherUpFeat2Title.

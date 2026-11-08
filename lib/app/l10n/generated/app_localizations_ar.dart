@@ -366,6 +366,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get expGatherUpB4 => 'دردشة فورية وواجهة متجاوبة عبر المنصات';
 
   @override
+  String get expGatherUpB5 =>
+      'بناء وضع المضيف والمكان من الطرف إلى الطرف (فلاتر)';
+
+  @override
   String get expCenterlyRole => 'متدرّب مطوّر فلاتر';
 
   @override
@@ -1214,10 +1218,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get caseGatherUpComingHeadline => 'مبني، ولم يُطلق بعد.';
 
   @override
-  String get caseGatherUpFeat1Title => 'TODO_REPLACE';
+  String get caseGatherUpFeat1Title => 'وضع المضيف والمكان';
 
   @override
-  String get caseGatherUpFeat1Summary => 'TODO_REPLACE';
+  String get caseGatherUpFeat1Summary =>
+      'أغلفة تشغيل للمضيفين والأماكن داخل تطبيق الأعضاء — جلسات، باب، إدارة مجتمع، تحليلات، ويوميات مكان للقراءة غالبًا.';
 
   @override
   String get caseGatherUpFeat2Title => 'TODO_REPLACE';

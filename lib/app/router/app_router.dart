@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ahmed_rasmy_portfolio/app/router/seo_route_observer.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/case_study_page.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/home_page.dart';
+import 'package:ahmed_rasmy_portfolio/features/host_venue/host_venue_page.dart';
 import 'package:ahmed_rasmy_portfolio/features/resume/resume_page.dart';
 
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -15,6 +16,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: '/',
         name: 'home',
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: '/work/gatherup/host-venue-mode',
+        name: 'host-venue-mode',
+        builder: (context, state) => const HostVenuePage(),
       ),
       GoRoute(
         path: '/work/:slug',

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
@@ -12,8 +13,10 @@ import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/section_header.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_layout.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/lazy_hover_video.dart';
+import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/owned_feature_card.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/scroll_reveal.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/project_image_slot.dart';
+import 'package:ahmed_rasmy_portfolio/features/host_venue/widgets/status_stamp.dart';
 
 class CaseComingNextSection extends StatelessWidget {
   const CaseComingNextSection({
@@ -42,9 +45,15 @@ class CaseComingNextSection extends StatelessWidget {
         .toList();
     if (features.isEmpty) return const SizedBox.shrink();
 
+    final isGatherUp = study.projectSlug == 'gatherup';
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (isGatherUp) ...[
+          HostVenueOwnedFeatureCard(customCursor: customCursor),
+          const SizedBox(height: 36),
+        ],
         SectionHeader(
           number: '09',
           eyebrow: l10n.caseSecComingNext,
@@ -251,12 +260,14 @@ class _FullCard extends StatelessWidget {
     final media = feature.media;
 
     final width = MediaQuery.sizeOf(context).width;
+    final route = feature.deepDiveRoute;
 
     return CursorTarget(
       enabled: customCursor,
       child: PaperCard(
         tilt: 0.01,
         maxTilt: maxTilt,
+        onTap: route == null ? null : () => context.go(route),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
@@ -373,7 +384,13 @@ class _FullCard extends StatelessWidget {
                 ],
               ],
             ),
-            if (status != null && !isTodo(status))
+            if (feature.showHostVenueStamp)
+              const PositionedDirectional(
+                top: -6,
+                end: -4,
+                child: StatusStamp(),
+              )
+            else if (status != null && !isTodo(status))
               PositionedDirectional(
                 top: -6,
                 end: -4,

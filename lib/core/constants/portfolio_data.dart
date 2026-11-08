@@ -294,6 +294,8 @@ class UpcomingFeature {
     this.teaserLineKey,
     required this.visibility,
     this.statusKey,
+    this.deepDiveRoute,
+    this.showHostVenueStamp = false,
   });
 
   final String titleKey;
@@ -305,6 +307,12 @@ class UpcomingFeature {
   final String? teaserLineKey;
   final FeatureVisibility visibility;
   final String? statusKey;
+
+  /// Optional deep-dive route (e.g. Host & Venue Mode).
+  final String? deepDiveRoute;
+
+  /// When true, overlay [StatusStamp] from host_venue_data.
+  final bool showHostVenueStamp;
 }
 
 class CaseStudyStat {
@@ -520,6 +528,7 @@ abstract final class PortfolioData {
         'expGatherUpB2',
         'expGatherUpB3',
         'expGatherUpB4',
+        'expGatherUpB5',
       ],
       photos: [
         'assets/images/experience/gatherup_01.jpg',
@@ -1096,11 +1105,13 @@ abstract final class PortfolioData {
       ],
       comingNextHeadlineKey: 'caseGatherUpComingHeadline',
       upcomingFeatures: [
-        // Placeholders — visibility.hidden until you fill real features.
         UpcomingFeature(
           titleKey: 'caseGatherUpFeat1Title',
           summaryKey: 'caseGatherUpFeat1Summary',
-          visibility: FeatureVisibility.hidden,
+          tech: ['Flutter', 'Provider', 'REST', 'fl_chart'],
+          visibility: FeatureVisibility.full,
+          deepDiveRoute: '/work/gatherup/host-venue-mode',
+          showHostVenueStamp: true,
         ),
         UpcomingFeature(
           titleKey: 'caseGatherUpFeat2Title',

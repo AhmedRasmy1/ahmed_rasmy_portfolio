@@ -24,6 +24,7 @@ abstract final class ExperienceCopy {
         'expGatherUpB2' => l10n.expGatherUpB2,
         'expGatherUpB3' => l10n.expGatherUpB3,
         'expGatherUpB4' => l10n.expGatherUpB4,
+        'expGatherUpB5' => l10n.expGatherUpB5,
         'expCenterlyB1' => l10n.expCenterlyB1,
         'expCenterlyB2' => l10n.expCenterlyB2,
         'expCenterlyB3' => l10n.expCenterlyB3,

@@ -370,6 +370,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get expGatherUpB4 => 'Real-time chat and responsive cross-platform UI';
 
   @override
+  String get expGatherUpB5 => 'Built Host & Venue Mode end-to-end (Flutter)';
+
+  @override
   String get expCenterlyRole => 'Intern Flutter Developer';
 
   @override
@@ -1226,10 +1229,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get caseGatherUpComingHeadline => 'Built, not shipped yet.';
 
   @override
-  String get caseGatherUpFeat1Title => 'TODO_REPLACE';
+  String get caseGatherUpFeat1Title => 'Host & Venue Mode';
 
   @override
-  String get caseGatherUpFeat1Summary => 'TODO_REPLACE';
+  String get caseGatherUpFeat1Summary =>
+      'Operator shells for hosts and venues inside the member app — sessions, door, CRM, analytics, and a read-mostly venue diary.';
 
   @override
   String get caseGatherUpFeat2Title => 'TODO_REPLACE';
