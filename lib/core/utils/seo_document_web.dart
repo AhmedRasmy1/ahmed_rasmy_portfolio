@@ -15,3 +15,15 @@ void updateMetaDescription(String description) {
   meta.setAttribute('content', description);
   web.document.head?.append(meta);
 }
+
+void updateCanonicalUrl(String url) {
+  final existing = web.document.querySelector('link[rel="canonical"]');
+  if (existing != null) {
+    existing.setAttribute('href', url);
+    return;
+  }
+  final link = web.document.createElement('link');
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', url);
+  web.document.head?.append(link);
+}

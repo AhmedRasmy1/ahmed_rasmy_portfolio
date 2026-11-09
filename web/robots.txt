@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ahmedrasmy.dev/sitemap.xml
+Sitemap: https://ahmedhishamrasmy.me/sitemap.xml

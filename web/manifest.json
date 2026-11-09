@@ -1,11 +1,11 @@
 {
-    "name": "Ahmed Rasmy Portfolio",
+    "name": "Ahmed Hisham Rasmy — Flutter Developer",
     "short_name": "Ahmed Rasmy",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0B1220",
-    "theme_color": "#0B3D91",
-    "description": "Personal portfolio of Ahmed Rasmy, Flutter developer.",
+    "background_color": "#050B18",
+    "theme_color": "#050B18",
+    "description": "Flutter developer in Cairo building mobile, web, and desktop apps with Clean Architecture.",
     "orientation": "any",
     "prefer_related_applications": false,
     "icons": [

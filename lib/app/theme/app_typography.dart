@@ -9,6 +9,7 @@ abstract final class AppTypography {
       Localizations.localeOf(context).languageCode == 'ar';
 
   static Future<void> preload() async {
+    // Primary families only — catch-block fallbacks (rakkas, tajawal) load on demand.
     GoogleFonts.bebasNeue();
     GoogleFonts.permanentMarker();
     GoogleFonts.spaceMono();
@@ -16,9 +17,7 @@ abstract final class AppTypography {
     GoogleFonts.lalezar();
     GoogleFonts.reemKufi();
     GoogleFonts.marhey();
-    GoogleFonts.rakkas();
     GoogleFonts.playpenSans();
-    GoogleFonts.tajawal();
     GoogleFonts.ibmPlexSansArabic();
     GoogleFonts.cairo();
     await GoogleFonts.pendingFonts();

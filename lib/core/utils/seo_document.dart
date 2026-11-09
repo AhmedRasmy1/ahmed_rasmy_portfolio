@@ -7,3 +7,5 @@ void updateDocumentTitle(String title) => seo.updateDocumentTitle(title);
 
 void updateMetaDescription(String description) =>
     seo.updateMetaDescription(description);
+
+void updateCanonicalUrl(String url) => seo.updateCanonicalUrl(url);

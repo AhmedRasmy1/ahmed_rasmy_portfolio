@@ -3,54 +3,54 @@
 <head>
   <!--
     Base href is replaced by `flutter build` via --base-href.
+    Default production base is "/" (custom domain root).
   -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Primary SEO (Phase 1: HTML shell is the brochure; Flutter is the app) -->
-  <title>Ahmed Rasmy — Flutter Developer · Design · Build · Ship</title>
-  <meta name="description" content="Punk-zine portfolio of Ahmed Rasmy, Flutter developer. Mobile & web apps, EN/AR, Cairo · Remote.">
-  <meta name="author" content="Ahmed Rasmy">
-  <link rel="canonical" href="https://ahmedrasmy.dev/">
+  <title>Ahmed Hisham Rasmy — Flutter Developer</title>
+  <meta name="description" content="Flutter developer in Cairo building mobile, web, and desktop apps with Clean Architecture.">
+  <meta name="author" content="Ahmed Hisham Rasmy">
+  <meta name="theme-color" content="#050B18">
+  <link rel="canonical" href="https://ahmedhishamrasmy.me/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ahmedrasmy.dev/">
-  <meta property="og:title" content="Ahmed Rasmy — Flutter Developer Portfolio">
-  <meta property="og:description" content="Personal portfolio of Ahmed Rasmy, Flutter developer. Projects, experience, and contact.">
-  <meta property="og:site_name" content="Ahmed Rasmy">
+  <meta property="og:url" content="https://ahmedhishamrasmy.me/">
+  <meta property="og:title" content="Ahmed Hisham Rasmy — Flutter Developer">
+  <meta property="og:description" content="Flutter developer in Cairo building mobile, web, and desktop apps with Clean Architecture.">
+  <meta property="og:image" content="https://ahmedhishamrasmy.me/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Ahmed Hisham Rasmy">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ar_AR">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Ahmed Rasmy — Flutter Developer Portfolio">
-  <meta name="twitter:description" content="Personal portfolio of Ahmed Rasmy, Flutter developer. Projects, experience, and contact.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ahmed Hisham Rasmy — Flutter Developer">
+  <meta name="twitter:description" content="Flutter developer in Cairo building mobile, web, and desktop apps with Clean Architecture.">
+  <meta name="twitter:image" content="https://ahmedhishamrasmy.me/og-image.png">
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD Person -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://ahmedrasmy.dev/#person",
-        "name": "Ahmed Rasmy",
-        "url": "https://ahmedrasmy.dev/",
-        "jobTitle": "Flutter Developer",
-        "description": "Flutter developer focused on mobile and web craft."
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://ahmedrasmy.dev/#website",
-        "url": "https://ahmedrasmy.dev/",
-        "name": "Ahmed Rasmy Portfolio",
-        "description": "Personal portfolio of Ahmed Rasmy, Flutter developer.",
-        "publisher": { "@id": "https://ahmedrasmy.dev/#person" },
-        "inLanguage": ["en", "ar"]
-      }
+    "@type": "Person",
+    "name": "Ahmed Hisham Rasmy",
+    "jobTitle": "Flutter Developer",
+    "url": "https://ahmedhishamrasmy.me/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cairo",
+      "addressCountry": "EG"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/ahmed-rasmy-340680236",
+      "https://github.com/AhmedRasmy1"
     ]
   }
   </script>
@@ -66,7 +66,6 @@
   <link rel="manifest" href="manifest.json">
 
   <style>
-    /* Minimal first-paint shell before Flutter boots */
     html, body {
       margin: 0;
       height: 100%;
@@ -74,48 +73,79 @@
       color: #F4F8FC;
       font-family: system-ui, sans-serif;
     }
-    .boot-shell {
+    #boot-shell {
       min-height: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
       text-align: center;
+      gap: 1.25rem;
     }
-    .boot-shell h1 {
-      font-size: 1.5rem;
+    .boot-diamond {
+      width: 48px;
+      height: 48px;
+      background: #02569B;
+      transform: rotate(45deg);
+      border-radius: 6px;
+      animation: boot-spin 1.1s linear infinite;
+      box-shadow: 0 0 0 3px #13B9FD33;
+    }
+    @keyframes boot-spin {
+      to { transform: rotate(405deg); }
+    }
+    .boot-copy {
+      max-width: 28rem;
+      opacity: 0.92;
+    }
+    .boot-copy h1 {
+      font-size: 1.35rem;
       font-weight: 600;
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.35rem;
     }
-    .boot-shell p {
-      margin: 0;
-      opacity: 0.8;
-      max-width: 36rem;
+    .boot-copy p {
+      margin: 0.35rem 0;
+      line-height: 1.45;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    .boot-copy a {
+      color: #13B9FD;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .boot-diamond { animation: none; }
     }
   </style>
 </head>
 <body>
-  <div class="boot-shell" id="boot-shell" aria-live="polite">
-    <div>
-      <h1>Ahmed Rasmy</h1>
-      <p>Flutter developer — loading portfolio…</p>
+  <div id="boot-shell" aria-live="polite" aria-busy="true">
+    <div class="boot-diamond" aria-hidden="true"></div>
+    <div class="boot-copy">
+      <h1>Ahmed Hisham Rasmy</h1>
+      <p>Flutter Developer · Cairo, Egypt</p>
+      <p>I build mobile, web, and desktop products with Flutter and Clean Architecture. This portfolio shows shipped work, case studies, and how I think about craft.</p>
+      <p>
+        <a href="https://www.linkedin.com/in/ahmed-rasmy-340680236">LinkedIn</a>
+        ·
+        <a href="https://github.com/AhmedRasmy1">GitHub</a>
+      </p>
     </div>
   </div>
 
   <noscript>
     <main style="max-width:40rem;margin:2rem auto;padding:1rem;font-family:system-ui,sans-serif;color:#111;background:#fff">
-      <h1>Ahmed Rasmy</h1>
-      <p>Flutter developer portfolio. Enable JavaScript to view the interactive site.</p>
+      <h1>Ahmed Hisham Rasmy</h1>
+      <p>Flutter Developer · Cairo, Egypt</p>
+      <p>Enable JavaScript to view the interactive portfolio. I build mobile, web, and desktop apps with Flutter and Clean Architecture.</p>
       <ul>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/ahmed-rasmy-340680236">LinkedIn</a></li>
+        <li><a href="https://github.com/AhmedRasmy1">GitHub</a></li>
       </ul>
     </main>
   </noscript>
 
   <script>
-    // Remove boot shell once Flutter attaches (first frame).
     window.addEventListener('flutter-first-frame', function () {
       var el = document.getElementById('boot-shell');
       if (el) el.remove();
