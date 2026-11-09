@@ -197,10 +197,7 @@ class _HostVenuePageState extends State<HostVenuePage> {
                 ),
               ],
             ),
-            if (customCursor)
-              Positioned.fill(
-                child: CustomCursorOverlay(controller: cursorController),
-              ),
+            // Custom cursor overlay lives in PortfolioApp (_CursorShell).
           ],
         ),
       ),
@@ -240,6 +237,7 @@ class _Hero extends StatelessWidget {
             Expanded(
               child: Text(
                 HostVenueData.heroLabel.t(ar),
+                softWrap: true,
                 style: AppTypography.label(
                   context,
                   fontSize: 11,
@@ -247,7 +245,17 @@ class _Hero extends StatelessWidget {
                 ),
               ),
             ),
-            const StatusStamp(),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: const StatusStamp(),
+                ),
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 12),
@@ -1318,8 +1326,7 @@ class _IsolationSectionState extends State<_IsolationSection> {
                     color: AppColors.navyInk,
                   ),
                 ),
-                if (!HostVenueData.challenges[i].learned.en
-                    .startsWith('TODO_REPLACE')) ...[
+                if (HostVenueData.challenges[i].learned.t(ar).isNotEmpty) ...[
                   const SizedBox(height: 6),
                   Text(
                     '${ar ? 'تعلّمت' : 'Learned'}: ${HostVenueData.challenges[i].learned.t(ar)}',

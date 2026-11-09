@@ -193,9 +193,18 @@ class _MobileNavBarState extends State<_MobileNavBar> {
         Row(
           children: [
             const _LogoMark(),
-            const Spacer(),
-            const ThemeLocaleToggles(),
             const SizedBox(width: 8),
+            Expanded(
+              child: Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: const ThemeLocaleToggles(),
+                ),
+              ),
+            ),
+            const SizedBox(width: 4),
             CursorTarget(
               enabled: widget.customCursor,
               child: IconButton(

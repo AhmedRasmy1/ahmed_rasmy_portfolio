@@ -263,21 +263,29 @@ class _StampChipState extends State<_StampChip> {
                   ]
                 : null,
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (iconPath != null) _SkillIcon(path: iconPath),
-              Text(
-                widget.label,
-                style: GoogleFonts.spaceMono(
-                  fontSize: 10,
-                  letterSpacing: 0.6,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.navyInk,
-                  decoration: TextDecoration.none,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: (MediaQuery.sizeOf(context).width - 80).clamp(120.0, 480.0),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (iconPath != null) _SkillIcon(path: iconPath),
+                Flexible(
+                  child: Text(
+                    widget.label,
+                    softWrap: true,
+                    style: GoogleFonts.spaceMono(
+                      fontSize: 10,
+                      letterSpacing: 0.6,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.navyInk,
+                      decoration: TextDecoration.none,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

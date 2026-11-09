@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:ahmed_rasmy_portfolio/core/constants/social_links.dart';
+
 /// Typed portfolio content — source of truth for structure & IDs.
 /// Display strings live in EN/AR ARB files; this file holds non-localized facts,
 /// slugs, and null/TODO markers (UI must hide TODO / null blocks).
@@ -10,7 +12,7 @@ const String kTodoReplace = 'TODO_REPLACE';
 bool isTodo(String? value) =>
     value == null ||
     value.isEmpty ||
-    value.startsWith('TODO_');
+    value.contains('TODO_');
 
 class Experience {
   const Experience({
@@ -503,10 +505,21 @@ abstract final class PortfolioData {
   /// Hero shipped-apps counter (GatherUp, Awwaab, Elmohandes, Flowery).
   static const shippedAppsCount = 4;
 
-  static const socials = <SocialLink>[
-    SocialLink(id: 'linkedin', labelKey: 'linkLinkedIn', url: kTodoUrl),
-    SocialLink(id: 'github', labelKey: 'linkGitHub', url: kTodoUrl),
-  ];
+  /// Only includes socials whose [SocialLinks] URL is non-null.
+  static List<SocialLink> get socials => [
+        if (SocialLinks.linkedin != null)
+          SocialLink(
+            id: 'linkedin',
+            labelKey: 'linkLinkedIn',
+            url: SocialLinks.linkedin!,
+          ),
+        if (SocialLinks.github != null)
+          SocialLink(
+            id: 'github',
+            labelKey: 'linkGitHub',
+            url: SocialLinks.github!,
+          ),
+      ];
 
   static const education = EducationFact(
     degreeKey: 'eduDegree',
@@ -608,7 +621,7 @@ abstract final class PortfolioData {
         'WorkManager',
         'Local notifications',
       ],
-      playStoreUrl: kTodoUrl,
+      playStoreUrl: SocialLinks.awwaabPlayStore,
     ),
     Project(
       id: 'elmohandes',
@@ -642,6 +655,7 @@ abstract final class PortfolioData {
       taglineKey: 'projServiceXTagline',
       summaryKey: 'projServiceXSummary',
       platforms: ['Mobile'],
+      // Placeholder-only tech lists render no chips via [Project.visibleTech].
       tech: [kTodoReplace],
     ),
   ];
@@ -751,30 +765,31 @@ abstract final class PortfolioData {
       id: 'iti',
       titleKey: 'courseIti',
       orgKey: 'courseItiOrg',
-      url: kTodoUrl,
+      // Null URL → certificate card stays, link affordance hidden.
+      url: null,
     ),
     Course(
       id: 'elevate',
       titleKey: 'courseElevate',
       orgKey: 'courseElevateOrg',
-      url: kTodoUrl,
+      url: null,
     ),
     Course(
       id: 'centerly',
       titleKey: 'courseCenterly',
       orgKey: 'courseCenterlyOrg',
-      url: kTodoUrl,
+      url: null,
     ),
     Course(
       id: 'udemy',
       titleKey: 'courseUdemy',
       orgKey: 'courseUdemyOrg',
-      url: kTodoUrl,
+      url: null,
     ),
     Course(
       id: 'payments',
       titleKey: 'coursePayments',
-      url: kTodoUrl,
+      url: null,
     ),
   ];
 

@@ -1,38 +1,48 @@
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
+import 'package:ahmed_rasmy_portfolio/core/l10n/todo_safe_copy.dart';
 
 abstract final class SkillCopy {
   static String groupTitle(AppLocalizations l10n, SkillGroup g) =>
-      switch (g.titleKey) {
-        'skillCoreTitle' => l10n.skillCoreTitle,
-        'skillApiTitle' => l10n.skillApiTitle,
-        'skillStorageTitle' => l10n.skillStorageTitle,
-        'skillUiTitle' => l10n.skillUiTitle,
-        'skillQaTitle' => l10n.skillQaTitle,
-        'skillAiTitle' => l10n.skillAiTitle,
-        _ => g.titleKey,
-      };
+      TodoSafeCopy.resolve(
+        g.titleKey,
+        switch (g.titleKey) {
+          'skillCoreTitle' => l10n.skillCoreTitle,
+          'skillApiTitle' => l10n.skillApiTitle,
+          'skillStorageTitle' => l10n.skillStorageTitle,
+          'skillUiTitle' => l10n.skillUiTitle,
+          'skillQaTitle' => l10n.skillQaTitle,
+          'skillAiTitle' => l10n.skillAiTitle,
+          _ => g.titleKey,
+        },
+      );
 }
 
 abstract final class CourseCopy {
-  static String title(AppLocalizations l10n, Course c) => switch (c.titleKey) {
-        'courseIti' => l10n.courseIti,
-        'courseElevate' => l10n.courseElevate,
-        'courseCenterly' => l10n.courseCenterly,
-        'courseUdemy' => l10n.courseUdemy,
-        'coursePayments' => l10n.coursePayments,
-        _ => c.titleKey,
-      };
+  static String title(AppLocalizations l10n, Course c) =>
+      TodoSafeCopy.resolve(
+        c.titleKey,
+        switch (c.titleKey) {
+          'courseIti' => l10n.courseIti,
+          'courseElevate' => l10n.courseElevate,
+          'courseCenterly' => l10n.courseCenterly,
+          'courseUdemy' => l10n.courseUdemy,
+          'coursePayments' => l10n.coursePayments,
+          _ => c.titleKey,
+        },
+      );
 
   static String? org(AppLocalizations l10n, Course c) {
     if (c.orgKey == null) return null;
-    return switch (c.orgKey) {
+    final raw = switch (c.orgKey) {
       'courseItiOrg' => l10n.courseItiOrg,
       'courseElevateOrg' => l10n.courseElevateOrg,
       'courseCenterlyOrg' => l10n.courseCenterlyOrg,
       'courseUdemyOrg' => l10n.courseUdemyOrg,
-      _ => c.orgKey,
+      _ => c.orgKey!,
     };
+    final resolved = TodoSafeCopy.resolve(c.orgKey!, raw);
+    return resolved.isEmpty ? null : resolved;
   }
 }
 

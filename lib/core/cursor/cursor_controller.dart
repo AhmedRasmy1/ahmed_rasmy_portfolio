@@ -23,7 +23,12 @@ class CursorController extends ChangeNotifier {
   void setEnabled(bool value) {
     if (enabled == value) return;
     enabled = value;
-    if (!value) visible.value = false;
+    if (!value) {
+      visible.value = false;
+      if (_ticker.isActive) _ticker.stop();
+    } else if (!_ticker.isActive) {
+      _ticker.start();
+    }
     notifyListeners();
   }
 

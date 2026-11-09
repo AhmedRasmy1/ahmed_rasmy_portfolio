@@ -179,7 +179,7 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
       return const SizedBox.shrink();
     }
 
-    Widget media = Stack(
+    final surface = Stack(
       fit: StackFit.expand,
       children: [
         if (hasPoster)
@@ -230,37 +230,34 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
       ],
     );
 
-    media = AspectRatio(
-      aspectRatio: widget.aspectRatio,
-      child: media,
-    );
-
-    if (widget.phoneFrame) {
-      media = ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: MediaQuery.sizeOf(context).width * 0.72,
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: AppColors.navyInk,
-            borderRadius: BorderRadius.circular(28),
-            border: Border.all(
-              color: AppColors.navy.withValues(alpha: 0.8),
-              width: 3,
-            ),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: media,
-          ),
-        ),
-      );
-    } else {
-      media = ClipRRect(
-        borderRadius: BorderRadius.circular(6),
-        child: media,
-      );
+    Widget frameSurface(Widget child, {required bool expand}) {
+      final clipped = widget.phoneFrame
+          ? ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.sizeOf(context).width * 0.72,
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: AppColors.navyInk,
+                  borderRadius: BorderRadius.circular(28),
+                  border: Border.all(
+                    color: AppColors.navy.withValues(alpha: 0.8),
+                    width: 3,
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: child,
+                ),
+              ),
+            )
+          : ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: child,
+            );
+      if (expand) return clipped;
+      return AspectRatio(aspectRatio: widget.aspectRatio, child: clipped);
     }
 
     return RepaintBoundary(
@@ -279,15 +276,17 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
                 },
           child: GestureDetector(
             onTap: _toggleTap,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                media,
-                const SizedBox(height: 10),
-                Text(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final heightBound = constraints.maxHeight.isFinite;
+                final captionText = Text(
                   caption,
                   textAlign: TextAlign.center,
                   softWrap: true,
+                  maxLines: heightBound ? 2 : null,
+                  overflow: heightBound
+                      ? TextOverflow.ellipsis
+                      : TextOverflow.visible,
                   style: GoogleFonts.spaceMono(
                     fontSize: 11,
                     letterSpacing: 1,
@@ -295,8 +294,18 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
                     color: context.zine.ink,
                     decoration: TextDecoration.none,
                   ),
-                ),
-              ],
+                );
+                final media = frameSurface(surface, expand: heightBound);
+                return Column(
+                  mainAxisSize:
+                      heightBound ? MainAxisSize.max : MainAxisSize.min,
+                  children: [
+                    if (heightBound) Expanded(child: media) else media,
+                    const SizedBox(height: 10),
+                    captionText,
+                  ],
+                );
+              },
             ),
           ),
         ),

@@ -67,14 +67,17 @@ class _SectionHeaderState extends State<SectionHeader> {
           children: [
             TapeStrip(color: zine.tape, width: 56, height: 14, angle: -0.08),
             const SizedBox(width: 12),
-            Text(
-              '${widget.number} / ${widget.eyebrow}',
-              style: GoogleFonts.spaceMono(
-                fontSize: 11,
-                letterSpacing: 2.2,
-                fontWeight: FontWeight.w700,
-                color: AppColors.flutterLightBlue,
-                decoration: TextDecoration.none,
+            Expanded(
+              child: Text(
+                '${widget.number} / ${widget.eyebrow}',
+                softWrap: true,
+                style: GoogleFonts.spaceMono(
+                  fontSize: 11,
+                  letterSpacing: 2.2,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.flutterLightBlue,
+                  decoration: TextDecoration.none,
+                ),
               ),
             ),
           ],

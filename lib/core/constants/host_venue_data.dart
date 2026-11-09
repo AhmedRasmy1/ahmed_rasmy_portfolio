@@ -22,7 +22,14 @@ class LocalizedText {
   const LocalizedText(this.en, this.ar);
   final String en;
   final String ar;
-  String t(bool isAr) => isAr ? ar : en;
+
+  /// Empty when the active locale still contains a `TODO_` marker.
+  String t(bool isAr) {
+    final raw = isAr ? ar : en;
+    if (raw.contains('TODO_')) return '';
+    return raw;
+  }
+
   String of(BuildContext context) =>
       t(Localizations.localeOf(context).languageCode == 'ar');
 }

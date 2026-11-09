@@ -1,9 +1,11 @@
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
+import 'package:ahmed_rasmy_portfolio/core/l10n/todo_safe_copy.dart';
 
 /// Resolves case-study ARB keys. Extend when adding studies / sections.
 abstract final class CaseStudyCopy {
-  static String t(AppLocalizations l10n, String key) => switch (key) {
+  static String t(AppLocalizations l10n, String key) {
+    final raw = switch (key) {
         'caseGatherUpHeroTagline' => l10n.caseGatherUpHeroTagline,
         'caseGatherUpBrush' => l10n.caseGatherUpBrush,
         'caseGatherUpCredit' => l10n.caseGatherUpCredit,
@@ -149,6 +151,8 @@ abstract final class CaseStudyCopy {
         'caseStatusBehindFlag' => l10n.caseStatusBehindFlag,
         _ => key,
       };
+    return TodoSafeCopy.resolve(key, raw);
+  }
 
   static String sectionTooltip(
     AppLocalizations l10n,

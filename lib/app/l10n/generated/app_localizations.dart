@@ -227,7 +227,7 @@ abstract class AppLocalizations {
   /// No description provided for @estBadge.
   ///
   /// In en, this message translates to:
-  /// **'EST. 2024 · FLUTTER'**
+  /// **'SINCE 2024 · FLUTTER'**
   String get estBadge;
 
   /// No description provided for @statCardLabel.
@@ -1355,7 +1355,7 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpCredit.
   ///
   /// In en, this message translates to:
-  /// **'Product & design: TODO_NAMES. I built Flutter features for the mobile app.'**
+  /// **'Product and design by the GatherUp team. I built the Flutter implementation.'**
   String get caseGatherUpCredit;
 
   /// No description provided for @caseGatherUpMarketMeta.
@@ -1769,7 +1769,7 @@ abstract class AppLocalizations {
   /// No description provided for @caseGatherUpSysCredit.
   ///
   /// In en, this message translates to:
-  /// **'Design by TODO_NAMES · Implemented in Flutter by me'**
+  /// **'Product and design by the GatherUp team. I built the Flutter implementation.'**
   String get caseGatherUpSysCredit;
 
   /// No description provided for @caseGatherUpTierPrimitives.

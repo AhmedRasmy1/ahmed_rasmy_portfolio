@@ -153,29 +153,25 @@ class _StoryPolaroidState extends State<_StoryPolaroid> {
                       ),
                     ],
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      AspectRatio(
-                        aspectRatio: 3 / 4,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color:
-                                  AppColors.navyInk.withValues(alpha: 0.2),
-                              width: 2,
-                            ),
-                          ),
-                          child: SafeAssetImage(
-                            assetPath: widget.assetPath,
-                            fit: BoxFit.cover,
-                            debugLabel: widget.caption,
-                            showDebugPlaceholder: kDebugMode,
+                  child: LayoutBuilder(
+                    builder: (context, cardConstraints) {
+                      final heightBound = cardConstraints.maxHeight.isFinite;
+                      final frame = Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color:
+                                AppColors.navyInk.withValues(alpha: 0.2),
+                            width: 2,
                           ),
                         ),
-                      ),
-                      AnimatedContainer(
+                        child: SafeAssetImage(
+                          assetPath: widget.assetPath,
+                          fit: BoxFit.cover,
+                          debugLabel: widget.caption,
+                          showDebugPlaceholder: kDebugMode,
+                        ),
+                      );
+                      final caption = AnimatedContainer(
                         duration: const Duration(milliseconds: 240),
                         curve: Curves.easeOutCubic,
                         transformAlignment: Alignment.center,
@@ -189,14 +185,31 @@ class _StoryPolaroidState extends State<_StoryPolaroid> {
                           widget.caption,
                           textAlign: TextAlign.center,
                           softWrap: true,
+                          maxLines: heightBound ? 2 : null,
+                          overflow: heightBound
+                              ? TextOverflow.ellipsis
+                              : TextOverflow.visible,
                           style: GoogleFonts.kalam(
                             fontSize: 14,
                             color: AppColors.navyInk,
                             decoration: TextDecoration.none,
                           ),
                         ),
-                      ),
-                    ],
+                      );
+                      return Column(
+                        mainAxisSize: heightBound
+                            ? MainAxisSize.max
+                            : MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          if (heightBound)
+                            Expanded(child: frame)
+                          else
+                            AspectRatio(aspectRatio: 3 / 4, child: frame),
+                          caption,
+                        ],
+                      );
+                    },
                   ),
                 ),
                 Positioned(

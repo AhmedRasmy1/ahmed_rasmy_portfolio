@@ -233,19 +233,22 @@ class _CertificateTicket extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    if (org != null) ...[
-                      Text(
-                        org.toUpperCase(),
-                        style: GoogleFonts.spaceMono(
-                          fontSize: 11,
-                          letterSpacing: 1.4,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.flutterBlue,
-                          decoration: TextDecoration.none,
+                    if (org != null)
+                      Expanded(
+                        child: Text(
+                          org.toUpperCase(),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.spaceMono(
+                            fontSize: 11,
+                            letterSpacing: 1.4,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.flutterBlue,
+                            decoration: TextDecoration.none,
+                          ),
                         ),
-                      ),
-                      const Spacer(),
-                    ] else
+                      )
+                    else
                       const Spacer(),
                     Transform.rotate(
                       angle: -0.05,

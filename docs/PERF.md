@@ -1,16 +1,16 @@
 # Flutter Web performance baseline
 
-Guidelines locked for this portfolio. Measure before optimizing further.
+Guidelines for this portfolio. Measure before optimizing further.
 
 ## Build targets
 
-Prefer **Wasm (skwasm)** for modern browsers:
+Prefer **Wasm (skwasm)** for modern browsers when targeting capable clients:
 
 ```bash
 flutter build web --wasm --release
 ```
 
-CanvasKit remains the fallback path when Wasm is unavailable:
+CanvasKit remains the default / fallback path:
 
 ```bash
 flutter build web --release
@@ -18,29 +18,28 @@ flutter build web --release
 
 Ship **release** builds for any public demo or Lighthouse run. Profile on throttled 4G.
 
-## Deferred loading
+## Loading strategy (current)
 
-- Project detail UI is loaded via `deferred as` in `lib/app/router/app_router.dart`.
-- Add new heavy modules (case-study media, complex animation packs) the same way.
-- Keep `main.dart` → `PortfolioApp` → home route free of large asset graphs.
+- Routes are registered eagerly in `lib/app/router/app_router.dart` (`/`, `/work/...`, `/resume`).
+- **Deferred library loading is not wired yet.** When adding heavy modules (extra case-study media packs, large animation sets), prefer `deferred as` imports so home stays lean.
+- Keep `main.dart` → `PortfolioApp` → home route free of large optional asset graphs; missing assets already hide via `AssetChecker` / `SafeAssetImage`.
 
 ## Asset & font budget
 
 | Budget | Rule |
 |--------|------|
-| Hero / first viewport images | WebP or AVIF; explicit width/height; no 4K PNG |
-| Fonts | Max 1–2 families; subset weights actually used |
-| Icons | Prefer tree-shaken Material subset or SVG; avoid shipping unused icon fonts |
-| Lottie / video | Not on first viewport; defer with the route that needs them |
-
-Declare fonts in `pubspec.yaml` only when real faces are added. Until then, use the platform/Material defaults to keep download size down.
+| Hero / first viewport images | Prefer compressed formats; explicit cacheWidth where helpful; no 4K PNG |
+| Fonts | Prefer `AppTypography` families; avoid loading unused Google Fonts on first paint |
+| Icons | Prefer tree-shaken Material subset; do not add unused icon font packages |
+| Video | Not on first viewport; only on case-study / deep-dive routes that need them |
 
 ## Runtime
 
 - Watch `settingsProvider` only at `MaterialApp.router` (already done in `lib/app/app.dart`).
 - Features read `Theme.of` / `AppLocalizations.of`, not settings, unless changing settings.
+- Custom cursor overlay is **app-level only** (`_CursorShell` in `app.dart`); detail pages use `CursorTarget` without a second overlay.
 - Add `RepaintBoundary` only after DevTools paint profiling shows thrash.
-- Dispose continuous `AnimationController`s; do not leave tickers running on background tabs.
+- Dispose continuous `AnimationController`s; idle ticker respects reduced motion.
 
 ## Hosting cache
 
@@ -76,4 +75,4 @@ SPA hosts must rewrite all paths to `index.html` so path-based `go_router` URLs 
 
 ## Honest target
 
-Compete on interaction craft. Expect static Astro/Next sites to win raw LCP; keep Flutter competitive with Wasm, deferred routes, and a lean asset/font budget.
+Compete on interaction craft. Expect static Astro/Next sites to win raw LCP; keep Flutter competitive with Wasm (when enabled), lean assets, and a bounded font budget.

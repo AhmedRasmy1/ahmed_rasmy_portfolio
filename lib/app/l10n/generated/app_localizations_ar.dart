@@ -660,7 +660,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get caseGatherUpCredit =>
-      'المنتج والتصميم: TODO_NAMES. بنيت ميزات فلاتر لتطبيق الموبايل.';
+      'المنتج والتصميم بواسطة فريق GatherUp. بنيتُ تنفيذ Flutter.';
 
   @override
   String get caseGatherUpMarketMeta => 'فعاليات اجتماعية · اكتشاف محلي';
@@ -870,7 +870,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get caseGatherUpSysCredit =>
-      'التصميم: TODO_NAMES · التنفيذ بفلاتر بواسطتي';
+      'المنتج والتصميم بواسطة فريق GatherUp. بنيتُ تنفيذ Flutter.';
 
   @override
   String get caseGatherUpTierPrimitives => 'أساسيات';

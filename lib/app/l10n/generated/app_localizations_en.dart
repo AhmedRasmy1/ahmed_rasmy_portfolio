@@ -72,7 +72,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get whoItem5 => 'Arabic / English';
 
   @override
-  String get estBadge => 'EST. 2024 · FLUTTER';
+  String get estBadge => 'SINCE 2024 · FLUTTER';
 
   @override
   String get statCardLabel => 'APPS SHIPPED';
@@ -668,7 +668,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get caseGatherUpCredit =>
-      'Product & design: TODO_NAMES. I built Flutter features for the mobile app.';
+      'Product and design by the GatherUp team. I built the Flutter implementation.';
 
   @override
   String get caseGatherUpMarketMeta => 'Social events · Local discovery';
@@ -878,7 +878,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get caseGatherUpSysCredit =>
-      'Design by TODO_NAMES · Implemented in Flutter by me';
+      'Product and design by the GatherUp team. I built the Flutter implementation.';
 
   @override
   String get caseGatherUpTierPrimitives => 'Primitives';

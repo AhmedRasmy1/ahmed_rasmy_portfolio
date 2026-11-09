@@ -5,7 +5,6 @@ import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart'
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/cursor_controller.dart';
-import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/project_copy.dart';
 import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_closing_section.dart';
@@ -235,10 +234,7 @@ class _CaseStudyPageState extends State<CaseStudyPage> {
                   ),
                 ),
               ),
-            if (customCursor)
-              Positioned.fill(
-                child: CustomCursorOverlay(controller: cursorController),
-              ),
+            // Custom cursor overlay lives in PortfolioApp (_CursorShell).
           ],
         ),
       ),
