@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
@@ -235,12 +235,7 @@ class _StatStickerState extends State<_StatSticker>
                   return Text(
                     _format(t),
                     softWrap: true,
-                    style: GoogleFonts.bebasNeue(
-                      fontSize: 40,
-                      height: 1,
-                      color: AppColors.navyInk,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.headline(context, fontSize: 40, height: 1, color: AppColors.navyInk),
                   );
                 },
               ),
@@ -249,11 +244,7 @@ class _StatStickerState extends State<_StatSticker>
             Text(
               label,
               softWrap: true,
-              style: GoogleFonts.kalam(
-                fontSize: 15,
-                color: AppColors.navyInk.withValues(alpha: 0.8),
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.note(context, fontSize: 15, color: AppColors.navyInk.withValues(alpha: 0.8)),
             ),
           ],
         ),
@@ -342,11 +333,7 @@ class _BarListCardState extends State<_BarListCard>
           Text(
             title,
             softWrap: true,
-            style: GoogleFonts.bebasNeue(
-              fontSize: 20,
-              color: AppColors.navyInk,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.headline(context, fontSize: 20, color: AppColors.navyInk),
           ),
           const SizedBox(height: 14),
           RepaintBoundary(
@@ -398,20 +385,12 @@ class _BarRow extends StatelessWidget {
               child: Text(
                 label,
                 softWrap: true,
-                style: GoogleFonts.kalam(
-                  fontSize: 13,
-                  color: AppColors.navyInk.withValues(alpha: 0.85),
-                  decoration: TextDecoration.none,
-                ),
+                style: AppTypography.note(context, fontSize: 13, color: AppColors.navyInk.withValues(alpha: 0.85)),
               ),
             ),
             Text(
               '${(item.fraction.clamp(0.0, 1.0) * 100 * progress).round()}%',
-              style: GoogleFonts.spaceMono(
-                fontSize: 11,
-                color: AppColors.flutterBlue,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.label(context, fontSize: 11, color: AppColors.flutterBlue),
             ),
           ],
         ),

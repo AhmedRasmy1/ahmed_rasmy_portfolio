@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -189,11 +189,7 @@ class _StoryPolaroidState extends State<_StoryPolaroid> {
                           overflow: heightBound
                               ? TextOverflow.ellipsis
                               : TextOverflow.visible,
-                          style: GoogleFonts.kalam(
-                            fontSize: 14,
-                            color: AppColors.navyInk,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.note(context, fontSize: 14, color: AppColors.navyInk),
                         ),
                       );
                       return Column(

@@ -3,10 +3,15 @@ import 'package:flutter/widgets.dart';
 /// Host & Venue Mode deep-dive — typed content (EN + AR). Flip status when live.
 enum FeatureStatus { inQa, shippingSoon, releasedAndroid, releasedAndroidIos }
 
-const kHostVenueStatus = FeatureStatus.shippingSoon;
+const kHostVenueStatus = FeatureStatus.releasedAndroidIos;
 
 const kHostVenueRoute = '/work/gatherup/host-venue-mode';
 const kHostVenueAssetDir = 'assets/images/projects/gatherup/host-venue';
+
+/// True when Host & Venue is live on at least one store (not Coming Next).
+bool get kHostVenueIsReleased =>
+    kHostVenueStatus == FeatureStatus.releasedAndroid ||
+    kHostVenueStatus == FeatureStatus.releasedAndroidIos;
 
 String featureStatusStamp(FeatureStatus s, {required bool ar}) => switch (s) {
       FeatureStatus.inQa => ar ? 'قيد الاختبار' : 'IN QA',
@@ -17,6 +22,13 @@ String featureStatusStamp(FeatureStatus s, {required bool ar}) => switch (s) {
       FeatureStatus.releasedAndroidIos =>
         ar ? 'مباشر على أندرويد و iOS' : 'LIVE ON ANDROID & iOS',
     };
+
+/// Store links for GatherUp. Null hides the chip entirely.
+class GatherUpLinks {
+  const GatherUpLinks._();
+  static const String? playStore = null;
+  static const String? appStore = null;
+}
 
 class LocalizedText {
   const LocalizedText(this.en, this.ar);
@@ -116,13 +128,20 @@ class RoleCapability {
 class GalleryShot {
   const GalleryShot({
     required this.file,
-    required this.caption,
     required this.mode,
+    required this.captionEn,
+    required this.captionAr,
+    required this.isPublic,
   });
   final String file;
-  final LocalizedText caption;
   final OperatorRole mode;
+  final String captionEn;
+  final String captionAr;
+  final bool isPublic;
+
   String get path => '$kHostVenueAssetDir/$file';
+
+  String caption(bool ar) => ar ? captionAr : captionEn;
 }
 
 class QualityFact {
@@ -308,7 +327,8 @@ abstract final class HostVenueData {
           'لا يدخل أغلفة التشغيل دون صلاحية',
         ),
       ],
-      screenshot: '$kHostVenueAssetDir/01-switch-pill.png',
+      // No member screenshot yet — role phone stays hidden until a file exists.
+      screenshot: '$kHostVenueAssetDir/member-01-home.jpg',
     ),
     RoleCapability(
       role: OperatorRole.host,
@@ -328,7 +348,7 @@ abstract final class HostVenueData {
           'لا يستخدم وضع المكان في الوقت نفسه',
         ),
       ],
-      screenshot: '$kHostVenueAssetDir/03-host-home.png',
+      screenshot: '$kHostVenueAssetDir/host-01-home.jpg',
     ),
     RoleCapability(
       role: OperatorRole.venue,
@@ -347,7 +367,8 @@ abstract final class HostVenueData {
           'لا ينشئ أو يلغي الجلسات ولا يشغّل الباب',
         ),
       ],
-      screenshot: '$kHostVenueAssetDir/09-venue-home.png',
+      // No venue screenshots yet — role phone stays hidden until venue-NN-*.jpg exist.
+      screenshot: '$kHostVenueAssetDir/venue-01-home.jpg',
     ),
   ];
 
@@ -663,83 +684,66 @@ try {
   ];
 
   // ── Gallery ──
+  // Add a screenshot: drop the file under host-venue/ and append one entry.
+  // Venue group stays hidden until venue-NN-*.jpg files exist and are listed.
   static const galleryHeadline = LocalizedText('Screens', 'الشاشات');
 
   static const gallery = <GalleryShot>[
     GalleryShot(
-      file: '01-switch-pill.png',
-      caption: LocalizedText('Mode pill', 'حبة الوضع'),
-      mode: OperatorRole.member,
-    ),
-    GalleryShot(
-      file: '02-chooser.png',
-      caption: LocalizedText('Chooser', 'المختار'),
-      mode: OperatorRole.member,
-    ),
-    GalleryShot(
-      file: '03-host-home.png',
-      caption: LocalizedText('Host home', 'رئيسية المضيف'),
+      file: 'host-01-home.jpg',
       mode: OperatorRole.host,
+      captionEn: 'Home',
+      captionAr: 'الرئيسية',
+      isPublic: false, // greeting shows personal name "Hadeer"
     ),
     GalleryShot(
-      file: '04-host-schedule.png',
-      caption: LocalizedText('Host schedule', 'جدول المضيف'),
+      file: 'host-02-sessions.jpg',
       mode: OperatorRole.host,
+      captionEn: 'Sessions',
+      captionAr: 'الجلسات',
+      isPublic: true,
     ),
     GalleryShot(
-      file: '05-host-create.png',
-      caption: LocalizedText('Create session', 'إنشاء جلسة'),
+      file: 'host-03-create.jpg',
       mode: OperatorRole.host,
+      captionEn: 'Create session',
+      captionAr: 'إنشاء جلسة',
+      isPublic: true,
     ),
     GalleryShot(
-      file: '06-host-door.png',
-      caption: LocalizedText('Door', 'الباب'),
+      file: 'host-04-create-options.jpg',
       mode: OperatorRole.host,
+      captionEn: 'Session options',
+      captionAr: 'خيارات الجلسة',
+      isPublic: true,
     ),
     GalleryShot(
-      file: '07-host-crm.png',
-      caption: LocalizedText('Community CRM', 'إدارة المجتمع'),
+      file: 'host-05-members.jpg',
       mode: OperatorRole.host,
+      captionEn: 'Members',
+      captionAr: 'الأعضاء',
+      isPublic: false, // real member names + profile photos
     ),
     GalleryShot(
-      file: '08-host-analytics.png',
-      caption: LocalizedText('Analytics', 'التحليلات'),
+      file: 'host-06-reviews.jpg',
       mode: OperatorRole.host,
+      captionEn: 'Reviews',
+      captionAr: 'المراجعات',
+      isPublic: false, // reviewer names + profile photos
     ),
     GalleryShot(
-      file: '09-venue-home.png',
-      caption: LocalizedText('Venue home', 'رئيسية المكان'),
-      mode: OperatorRole.venue,
-    ),
-    GalleryShot(
-      file: '10-venue-schedule.png',
-      caption: LocalizedText('Venue schedule', 'جدول المكان'),
-      mode: OperatorRole.venue,
-    ),
-    GalleryShot(
-      file: '11-venue-detail.png',
-      caption: LocalizedText('Gathering detail', 'تفاصيل اللقاء'),
-      mode: OperatorRole.venue,
-    ),
-    GalleryShot(
-      file: '12-venue-visitors.png',
-      caption: LocalizedText('Visitors', 'الزوار'),
-      mode: OperatorRole.venue,
-    ),
-    GalleryShot(
-      file: '13-venue-performance.png',
-      caption: LocalizedText('Performance', 'الأداء'),
-      mode: OperatorRole.venue,
-    ),
-    GalleryShot(
-      file: '14-ar-host-home.png',
-      caption: LocalizedText('Host home · AR', 'رئيسية المضيف · عربي'),
+      file: 'host-07-chats.jpg',
       mode: OperatorRole.host,
+      captionEn: 'Chats',
+      captionAr: 'المحادثات',
+      isPublic: false, // real people's names in chat previews
     ),
     GalleryShot(
-      file: '15-dark-venue-home.png',
-      caption: LocalizedText('Venue home · dark', 'رئيسية المكان · داكن'),
-      mode: OperatorRole.venue,
+      file: 'host-08-insights.jpg',
+      mode: OperatorRole.host,
+      captionEn: 'Insights',
+      captionAr: 'الرؤى',
+      isPublic: false, // money amounts (EGP earnings)
     ),
   ];
 
@@ -755,8 +759,8 @@ try {
 
   // ── Home experience line ──
   static const experienceBullet = LocalizedText(
-    'Built Host & Venue Mode end-to-end (Flutter)',
-    'بناء وضع المضيف والمكان من الطرف إلى الطرف (فلاتر)',
+    'Built Host & Venue modes end-to-end (Flutter), live on Android and iOS.',
+    'بناء وضعَي المضيف والمكان من الطرف إلى الطرف (فلاتر)، مباشران على أندرويد و iOS.',
   );
 
   // ── Architecture note ──

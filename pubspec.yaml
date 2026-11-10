@@ -40,7 +40,6 @@ dependencies:
     sdk: flutter
   intl: ^0.20.2
   web: ^1.1.1
-  google_fonts: ^8.2.1
   flutter_animate: ^4.5.2
   url_launcher: ^6.3.3
   video_player: ^2.10.0
@@ -55,6 +54,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  image: ^4.5.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -81,29 +81,14 @@ flutter:
     - assets/videos/gatherup/
     - assets/icons/
     - assets/resume/
+    - assets/fonts/bebasneue/
+    - assets/fonts/permanentmarker/
+    - assets/fonts/spacemono/
+    - assets/fonts/kalam/
+    - assets/fonts/lalezar/
+    - assets/fonts/marhey/
+    - assets/fonts/playpensansarabic/
+    - assets/fonts/ibmplexsansarabic/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+  # Fonts are registered at runtime via FontLoader (see portfolio_fonts.dart)
+  # so only the active locale is loaded before first paint.

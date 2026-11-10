@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ahmed_rasmy_portfolio/app/app.dart';
 import 'package:ahmed_rasmy_portfolio/app/settings/settings_provider.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_theme.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/portfolio_fonts.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/asset_paths.dart';
 import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/branded_loader.dart';
@@ -42,6 +44,7 @@ class _BootstrapApp extends StatefulWidget {
 
 class _BootstrapAppState extends State<_BootstrapApp> {
   bool _ready = false;
+  bool _currentArabic = false;
 
   @override
   void initState() {
@@ -50,10 +53,19 @@ class _BootstrapAppState extends State<_BootstrapApp> {
   }
 
   Future<void> _prepare() async {
-    // Preload Latin + Arabic fonts to avoid FOUT on first paint / locale switch.
-    await AppTheme.preloadFonts();
+    final prefs = await SharedPreferences.getInstance();
+    final code = prefs.getString('locale_language_code') ?? 'en';
+    _currentArabic = code == 'ar';
+
+    // Load ONLY the active locale before first frame (HTML boot shell stays up).
+    await AppTheme.preloadFonts(Locale(code));
     if (!mounted) return;
     setState(() => _ready = true);
+
+    // Idle-load the other locale after first paint so EN↔AR never flashes.
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      PortfolioFonts.loadOtherLocale(currentIsArabic: _currentArabic);
+    });
   }
 
   @override

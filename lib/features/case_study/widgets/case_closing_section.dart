@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -67,12 +67,7 @@ class CaseClosingSection extends StatelessWidget {
                   note,
                   textAlign: TextAlign.center,
                   softWrap: true,
-                  style: GoogleFonts.kalam(
-                    fontSize: 18,
-                    height: 1.35,
-                    color: zine.ink,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.note(context, fontSize: 18, height: 1.35, color: zine.ink),
                 ),
               ],
               const SizedBox(height: 20),
@@ -86,12 +81,7 @@ class CaseClosingSection extends StatelessWidget {
                   ),
                   child: Text(
                     l10n.caseAllStudies,
-                    style: GoogleFonts.spaceMono(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.6,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.label(context, fontSize: 13, fontWeight: FontWeight.w700, letterSpacing: 0.6),
                   ),
                 ),
               ),
@@ -103,14 +93,8 @@ class CaseClosingSection extends StatelessWidget {
           Align(
             alignment: AlignmentDirectional.centerStart,
             child: Text(
-              l10n.caseNextLabel.toUpperCase(),
-              style: GoogleFonts.spaceMono(
-                fontSize: 11,
-                letterSpacing: 1.4,
-                fontWeight: FontWeight.w700,
-                color: zine.inkMuted,
-                decoration: TextDecoration.none,
-              ),
+              context.caps(l10n.caseNextLabel),
+              style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: zine.inkMuted),
             ),
           ),
           const SizedBox(height: 14),
@@ -145,23 +129,15 @@ class CaseClosingSection extends StatelessWidget {
                         Text(
                           title,
                           softWrap: true,
-                          style: GoogleFonts.bebasNeue(
-                            fontSize: 28,
-                            color: AppColors.navyInk,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.headline(context, fontSize: 28, color: AppColors.navyInk),
                         ),
                         if (!isTodo(tagline)) ...[
                           const SizedBox(height: 6),
                           Text(
                             tagline,
                             softWrap: true,
-                            style: GoogleFonts.kalam(
-                              fontSize: 15,
-                              color:
-                                  AppColors.navyInk.withValues(alpha: 0.8),
-                              decoration: TextDecoration.none,
-                            ),
+                            style: AppTypography.note(context, fontSize: 15, color:
+                                  AppColors.navyInk.withValues(alpha: 0.8)),
                           ),
                         ],
                         if (!next.hasCaseStudy) ...[
@@ -169,11 +145,7 @@ class CaseClosingSection extends StatelessWidget {
                           Text(
                             l10n.caseComingSoon,
                             softWrap: true,
-                            style: GoogleFonts.spaceMono(
-                              fontSize: 11,
-                              color: AppColors.flutterBlue,
-                              decoration: TextDecoration.none,
-                            ),
+                            style: AppTypography.label(context, fontSize: 11, color: AppColors.flutterBlue),
                           ),
                         ],
                       ],
@@ -225,11 +197,7 @@ class _ClosingIcon extends StatelessWidget {
       alignment: Alignment.center,
       child: Text(
         'G',
-        style: GoogleFonts.bebasNeue(
-          fontSize: 36,
-          color: AppColors.flutterLightBlue,
-          decoration: TextDecoration.none,
-        ),
+        style: AppTypography.headline(context, fontSize: 36, color: AppColors.flutterLightBlue),
       ),
     );
 

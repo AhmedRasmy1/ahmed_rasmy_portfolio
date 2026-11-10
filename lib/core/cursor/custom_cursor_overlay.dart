@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/cursor_controller.dart';
 
 /// Top-layer custom cursor. [IgnorePointer] so it never steals hits.
@@ -70,13 +70,7 @@ class CustomCursorOverlay extends StatelessWidget {
                                 ? null
                                 : Text(
                                     label,
-                                    style: GoogleFonts.spaceMono(
-                                      fontSize: 8,
-                                      letterSpacing: 1.2,
-                                      fontWeight: FontWeight.w700,
-                                      color: AppColors.offWhite,
-                                      decoration: TextDecoration.none,
-                                    ),
+                                    style: AppTypography.label(context, fontSize: 8, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: AppColors.offWhite),
                                   ),
                           ),
                   ),

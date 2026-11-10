@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 
 /// Clean Architecture layers — draws in as [progress] goes 0→1.
@@ -27,13 +27,7 @@ class ArchitectureDiagram extends StatelessWidget {
             Widget label(String t, {double size = 11}) => Text(
                   t,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.spaceMono(
-                    fontSize: size,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.offWhite,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.label(context, fontSize: size, letterSpacing: 1, fontWeight: FontWeight.w700, color: AppColors.offWhite),
                 );
 
             return Stack(
@@ -91,13 +85,7 @@ class ArchitectureDiagram extends StatelessWidget {
                         quarterTurns: 1,
                         child: Text(
                           l10n.caseArchProvider,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 9,
-                            letterSpacing: 1.4,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.flutterLightBlue,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: 9, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue),
                         ),
                       ),
                     ),

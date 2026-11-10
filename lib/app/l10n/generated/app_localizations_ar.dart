@@ -161,6 +161,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get linkPlayStore => 'متجر Play';
 
   @override
+  String get linkAppStore => 'متجر App Store';
+
+  @override
   String get linkWebsite => 'الموقع';
 
   @override
@@ -367,7 +370,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get expGatherUpB5 =>
-      'بناء وضع المضيف والمكان من الطرف إلى الطرف (فلاتر)';
+      'بناء وضعَي المضيف والمكان من الطرف إلى الطرف (فلاتر)، مباشران على أندرويد و iOS.';
 
   @override
   String get expCenterlyRole => 'متدرّب مطوّر فلاتر';

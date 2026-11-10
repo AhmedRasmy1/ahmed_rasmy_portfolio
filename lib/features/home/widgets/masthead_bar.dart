@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/theme_locale_toggles.dart';
 
@@ -12,13 +12,7 @@ class MastheadBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final zine = context.zine;
-    final style = GoogleFonts.spaceMono(
-      fontSize: 10,
-      letterSpacing: 2,
-      fontWeight: FontWeight.w700,
-      color: zine.ink.withValues(alpha: 0.85),
-      decoration: TextDecoration.none,
-    );
+    final style = AppTypography.label(context, fontSize: 10, letterSpacing: 2, fontWeight: FontWeight.w700, color: zine.ink.withValues(alpha: 0.85));
     final narrow = MediaQuery.sizeOf(context).width < 720;
 
     return Column(

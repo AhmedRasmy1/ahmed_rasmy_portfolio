@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ahmed_rasmy_portfolio/core/constants/social_links.dart';
+import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
 
 /// Typed portfolio content — source of truth for structure & IDs.
 /// Display strings live in EN/AR ARB files; this file holds non-localized facts,
@@ -83,7 +84,14 @@ class Project {
   final bool heroIsMockup;
 
   String get heroImagePath => 'assets/images/projects/$slug/hero.png';
-  String get coverImagePath => 'assets/images/projects/$slug/cover.png';
+  String get coverImagePathPng => 'assets/images/projects/$slug/cover.png';
+  String get coverImagePathJpg => 'assets/images/projects/$slug/cover.jpg';
+
+  /// Prefer optimized JPEG when present (import tool may write `.jpg`).
+  String get coverImagePath {
+    if (AssetChecker.has(coverImagePathJpg)) return coverImagePathJpg;
+    return coverImagePathPng;
+  }
 
   List<String> get visibleTech =>
       tech.where((t) => !isTodo(t)).toList(growable: false);

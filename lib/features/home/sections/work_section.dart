@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -108,11 +108,7 @@ class _WorkSectionState extends State<WorkSection> {
                         padding: const EdgeInsets.symmetric(vertical: 24),
                         child: Text(
                           l10n.sectionPlaceholder,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 12,
-                            color: context.zine.inkMuted,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: 12, color: context.zine.inkMuted),
                         ),
                       ),
                   ],
@@ -194,15 +190,9 @@ class _FilterTabs extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 label,
-                                style: GoogleFonts.spaceMono(
-                                  fontSize: 11,
-                                  letterSpacing: 1.1,
-                                  fontWeight: FontWeight.w700,
-                                  color: selected == filter
+                                style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.1, fontWeight: FontWeight.w700, color: selected == filter
                                       ? AppColors.offWhite
-                                      : zine.ink,
-                                  decoration: TextDecoration.none,
-                                ),
+                                      : zine.ink),
                               ),
                             ),
                           ),
@@ -295,21 +285,12 @@ class _FeaturedCopy extends StatelessWidget {
       children: [
         Text(
           title,
-          style: GoogleFonts.bebasNeue(
-            fontSize: 36,
-            letterSpacing: 1.2,
-            color: AppColors.navyInk,
-            decoration: TextDecoration.none,
-          ),
+          style: AppTypography.headline(context, fontSize: 36, letterSpacing: 1.2, color: AppColors.navyInk),
         ),
         const SizedBox(height: 6),
         Text(
           tagline,
-          style: GoogleFonts.kalam(
-            fontSize: 16,
-            color: zine.inkMuted,
-            decoration: TextDecoration.none,
-          ),
+          style: AppTypography.note(context, fontSize: 16, color: zine.inkMuted),
         ),
         const SizedBox(height: 14),
         Wrap(
@@ -332,12 +313,7 @@ class _FeaturedCopy extends StatelessWidget {
               ),
               child: Text(
                 l10n.readCaseStudy,
-                style: GoogleFonts.spaceMono(
-                  fontSize: 12,
-                  letterSpacing: 1.4,
-                  fontWeight: FontWeight.w700,
-                  decoration: TextDecoration.none,
-                ),
+                style: AppTypography.label(context, fontSize: 12, letterSpacing: 1.4, fontWeight: FontWeight.w700),
               ),
             ),
           ),
@@ -446,6 +422,7 @@ class _GridCard extends StatelessWidget {
                 assetPath: project.coverImagePath,
                 label: title,
                 aspectRatio: 16 / 10,
+                fit: BoxFit.contain,
               ),
               const SizedBox(height: 12),
               Wrap(
@@ -462,22 +439,14 @@ class _GridCard extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 title,
-                style: GoogleFonts.bebasNeue(
-                  fontSize: 26,
-                  color: AppColors.navyInk,
-                  decoration: TextDecoration.none,
-                ),
+                style: AppTypography.headline(context, fontSize: 26, color: AppColors.navyInk),
               ),
               const SizedBox(height: 4),
               Text(
                 tagline,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.kalam(
-                  fontSize: 14,
-                  color: zine.inkMuted,
-                  decoration: TextDecoration.none,
-                ),
+                style: AppTypography.note(context, fontSize: 14, color: zine.inkMuted),
               ),
               const SizedBox(height: 10),
               Wrap(
@@ -500,13 +469,7 @@ class _GridCard extends StatelessWidget {
                           onTap: () => _open(url),
                           child: Text(
                             label,
-                            style: GoogleFonts.spaceMono(
-                              fontSize: 11,
-                              letterSpacing: 1,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.flutterBlue,
-                              decoration: TextDecoration.none,
-                            ),
+                            style: AppTypography.label(context, fontSize: 11, letterSpacing: 1, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
                           ),
                         ),
                       ),
@@ -542,13 +505,7 @@ class _TagChip extends StatelessWidget {
       ),
       child: Text(
         label,
-        style: GoogleFonts.spaceMono(
-          fontSize: 9,
-          letterSpacing: 0.8,
-          fontWeight: FontWeight.w700,
-          color: AppColors.navyInk,
-          decoration: TextDecoration.none,
-        ),
+        style: AppTypography.label(context, fontSize: 9, letterSpacing: 0.8, fontWeight: FontWeight.w700, color: AppColors.navyInk),
       ),
     );
   }

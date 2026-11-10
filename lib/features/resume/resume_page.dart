@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/asset_paths.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
@@ -30,11 +30,7 @@ class ResumePage extends StatelessWidget {
         elevation: 0,
         title: Text(
           l10n.navResume,
-          style: GoogleFonts.spaceMono(
-            fontSize: 13,
-            letterSpacing: 1.2,
-            decoration: TextDecoration.none,
-          ),
+          style: AppTypography.label(context, fontSize: 13, letterSpacing: 1.2),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -56,46 +52,23 @@ class ResumePage extends StatelessWidget {
                   children: [
                     Text(
                       PortfolioData.fullName,
-                      style: GoogleFonts.bebasNeue(
-                        fontSize: 40,
-                        letterSpacing: 1.4,
-                        color: AppColors.navyInk,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.headline(context, fontSize: 40, letterSpacing: 1.4, color: AppColors.navyInk),
                     ),
                     Text(
                       l10n.resumeHeadline,
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 13,
-                        letterSpacing: 1.4,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.flutterBlue,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.label(context, fontSize: 13, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
                     ),
                     const SizedBox(height: 6),
                     Text(
                       '${PortfolioData.location}  ·  ${PortfolioData.email}  ·  ${PortfolioData.phone}',
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 11,
-                        color: AppColors.navyInk.withValues(alpha: 0.7),
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.label(context, fontSize: 11, color: AppColors.navyInk.withValues(alpha: 0.7)),
                     ),
                     const SizedBox(height: 16),
                     Text(
                       l10n.resumeIntro,
                       style: (isAr
-                              ? GoogleFonts.cairo(
-                                  fontSize: 14,
-                                  height: 1.5,
-                                  color: AppColors.navyInk,
-                                )
-                              : GoogleFonts.kalam(
-                                  fontSize: 16,
-                                  height: 1.45,
-                                  color: AppColors.navyInk,
-                                ))
+                              ? AppTypography.body(context, fontSize: 14, height: 1.5, color: AppColors.navyInk)
+                              : AppTypography.note(context, fontSize: 16, height: 1.45, color: AppColors.navyInk))
                           .copyWith(decoration: TextDecoration.none),
                     ),
                     const SizedBox(height: 22),
@@ -118,12 +91,7 @@ class ResumePage extends StatelessWidget {
                         icon: const Icon(Icons.download_rounded, size: 18),
                         label: Text(
                           l10n.resumeDownload,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 12,
-                            letterSpacing: 1.2,
-                            fontWeight: FontWeight.w700,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: 12, letterSpacing: 1.2, fontWeight: FontWeight.w700),
                         ),
                       ),
                     ),
@@ -135,20 +103,11 @@ class ResumePage extends StatelessWidget {
                     for (final exp in PortfolioData.experiences) ...[
                       Text(
                         '${ExperienceCopy.role(l10n, exp)} — ${ExperienceCopy.company(l10n, exp)}',
-                        style: GoogleFonts.spaceMono(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.navyInk,
-                          decoration: TextDecoration.none,
-                        ),
+                        style: AppTypography.label(context, fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.navyInk),
                       ),
                       Text(
                         ExperienceCopy.dateRange(l10n, exp),
-                        style: GoogleFonts.spaceMono(
-                          fontSize: 11,
-                          color: AppColors.flutterBlue,
-                          decoration: TextDecoration.none,
-                        ),
+                        style: AppTypography.label(context, fontSize: 11, color: AppColors.flutterBlue),
                       ),
                       const SizedBox(height: 6),
                       for (final key in exp.bulletKeys)
@@ -157,18 +116,10 @@ class ResumePage extends StatelessWidget {
                           child: Text(
                             '• ${ExperienceCopy.bullet(l10n, key)}',
                             style: (isAr
-                                    ? GoogleFonts.cairo(
-                                        fontSize: 13,
-                                        height: 1.4,
-                                        color: AppColors.navyInk
-                                            .withValues(alpha: 0.85),
-                                      )
-                                    : GoogleFonts.kalam(
-                                        fontSize: 14,
-                                        height: 1.35,
-                                        color: AppColors.navyInk
-                                            .withValues(alpha: 0.85),
-                                      ))
+                                    ? AppTypography.body(context, fontSize: 13, height: 1.4, color: AppColors.navyInk
+                                            .withValues(alpha: 0.85))
+                                    : AppTypography.note(context, fontSize: 14, height: 1.35, color: AppColors.navyInk
+                                            .withValues(alpha: 0.85)))
                                 .copyWith(decoration: TextDecoration.none),
                           ),
                         ),
@@ -178,28 +129,15 @@ class ResumePage extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       l10n.eduDegree,
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.navyInk,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.label(context, fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.navyInk),
                     ),
                     Text(
                       '${l10n.eduSchool}  ·  ${edu.start} — ${edu.end}',
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 11,
-                        color: AppColors.flutterBlue,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.label(context, fontSize: 11, color: AppColors.flutterBlue),
                     ),
                     Text(
                       '${l10n.eduGrade}  ·  ${l10n.eduProject}',
-                      style: GoogleFonts.kalam(
-                        fontSize: 14,
-                        color: AppColors.navyInk.withValues(alpha: 0.85),
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.note(context, fontSize: 14, color: AppColors.navyInk.withValues(alpha: 0.85)),
                     ),
                     const SizedBox(height: 18),
                     _SectionLabel(l10n.resumeSkillsHeading),
@@ -212,20 +150,11 @@ class ResumePage extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: '${SkillCopy.groupTitle(l10n, g)}: ',
-                                style: GoogleFonts.spaceMono(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.flutterBlue,
-                                  decoration: TextDecoration.none,
-                                ),
+                                style: AppTypography.label(context, fontSize: 11, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
                               ),
                               TextSpan(
                                 text: g.items.join(' · '),
-                                style: GoogleFonts.spaceMono(
-                                  fontSize: 11,
-                                  color: AppColors.navyInk,
-                                  decoration: TextDecoration.none,
-                                ),
+                                style: AppTypography.label(context, fontSize: 11, color: AppColors.navyInk),
                               ),
                             ],
                           ),
@@ -239,11 +168,7 @@ class ResumePage extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 6),
                         child: Text(
                           '${ProjectCopy.title(l10n, p)} — ${ProjectCopy.tagline(l10n, p)}',
-                          style: GoogleFonts.kalam(
-                            fontSize: 14,
-                            color: AppColors.navyInk,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.note(context, fontSize: 14, color: AppColors.navyInk),
                         ),
                       ),
                   ],
@@ -265,14 +190,8 @@ class _SectionLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text.toUpperCase(),
-      style: GoogleFonts.spaceMono(
-        fontSize: 11,
-        letterSpacing: 1.8,
-        fontWeight: FontWeight.w700,
-        color: AppColors.flutterLightBlue,
-        decoration: TextDecoration.none,
-      ),
+      context.caps(text),
+      style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.8, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue),
     );
   }
 }

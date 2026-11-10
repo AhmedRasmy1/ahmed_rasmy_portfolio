@@ -398,6 +398,12 @@ abstract class AppLocalizations {
   /// **'Play Store'**
   String get linkPlayStore;
 
+  /// No description provided for @linkAppStore.
+  ///
+  /// In en, this message translates to:
+  /// **'App Store'**
+  String get linkAppStore;
+
   /// No description provided for @linkWebsite.
   ///
   /// In en, this message translates to:
@@ -797,7 +803,7 @@ abstract class AppLocalizations {
   /// No description provided for @expGatherUpB5.
   ///
   /// In en, this message translates to:
-  /// **'Built Host & Venue Mode end-to-end (Flutter)'**
+  /// **'Built Host & Venue modes end-to-end (Flutter), live on Android and iOS.'**
   String get expGatherUpB5;
 
   /// No description provided for @expCenterlyRole.

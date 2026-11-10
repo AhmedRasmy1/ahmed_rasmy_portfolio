@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 
 class HeroHeadline extends StatelessWidget {
@@ -23,33 +23,16 @@ class HeroHeadline extends StatelessWidget {
     final nameSize = compact ? 28.0 : 40.0;
 
     final primaryStyle = (isAr
-            ? GoogleFonts.reemKufi(
-                fontSize: primarySize,
-                height: 0.95,
-                fontWeight: FontWeight.w700,
-                color: zine.ink,
-              )
-            : GoogleFonts.bebasNeue(
-                fontSize: primarySize,
-                height: 0.9,
-                letterSpacing: 2,
-                color: zine.ink,
-              ))
+            ? AppTypography.headline(context, fontSize: primarySize, height: 0.95, fontWeight: FontWeight.w700, color: zine.ink)
+            : AppTypography.headline(context, fontSize: primarySize, height: 0.9, letterSpacing: 2, color: zine.ink))
         .merge(_noDecor);
 
-    final scriptStyle = (isAr
-            ? GoogleFonts.reemKufi(
-                fontSize: scriptSize,
-                height: 1,
-                fontWeight: FontWeight.w700,
-                color: AppColors.flutterLightBlue,
-              )
-            : GoogleFonts.permanentMarker(
-                fontSize: scriptSize,
-                height: 1,
-                color: AppColors.flutterLightBlue,
-              ))
-        .merge(_noDecor);
+    final scriptStyle = AppTypography.brush(
+      context,
+      fontSize: scriptSize,
+      height: 1,
+      color: AppColors.flutterLightBlue,
+    ).merge(_noDecor);
 
     Widget wrap(Widget child, {required int delayMs}) {
       if (reduceMotion) return child;
@@ -91,33 +74,19 @@ class HeroHeadline extends StatelessWidget {
               Text(
                 l10n.firstName,
                 style: (isAr
-                        ? GoogleFonts.reemKufi(
-                            fontSize: nameSize,
-                            fontWeight: FontWeight.w700,
-                            color: zine.ink,
-                          )
-                        : GoogleFonts.bebasNeue(
-                            fontSize: nameSize,
-                            letterSpacing: 2,
-                            color: zine.ink,
-                          ))
+                        ? AppTypography.headline(context, fontSize: nameSize, fontWeight: FontWeight.w700, color: zine.ink)
+                        : AppTypography.headline(context, fontSize: nameSize, letterSpacing: 2, color: zine.ink))
                     .merge(_noDecor),
               ),
               Transform.rotate(
                 angle: -0.05,
                 child: Text(
                   l10n.lastName,
-                  style: (isAr
-                          ? GoogleFonts.reemKufi(
-                              fontSize: nameSize * 0.9,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.flutterLightBlue,
-                            )
-                          : GoogleFonts.permanentMarker(
-                              fontSize: nameSize * 0.85,
-                              color: AppColors.flutterLightBlue,
-                            ))
-                      .merge(_noDecor),
+                  style: AppTypography.brush(
+                    context,
+                    fontSize: isAr ? nameSize * 0.9 : nameSize * 0.85,
+                    color: AppColors.flutterLightBlue,
+                  ).merge(_noDecor),
                 ),
               ),
             ],
@@ -129,12 +98,7 @@ class HeroHeadline extends StatelessWidget {
           Text(
             l10n.metaTagline,
             textAlign: TextAlign.center,
-            style: GoogleFonts.spaceMono(
-              fontSize: compact ? 9 : 11,
-              letterSpacing: 1.6,
-              color: zine.inkMuted,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: compact ? 9 : 11, letterSpacing: 1.6, color: zine.inkMuted),
           ),
           delayMs: 460,
         ),
@@ -143,17 +107,11 @@ class HeroHeadline extends StatelessWidget {
           Text(
             l10n.redTagline,
             textAlign: TextAlign.center,
-            style: (isAr
-                    ? GoogleFonts.reemKufi(
-                        fontSize: compact ? 18 : 24,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.flutterLightBlue,
-                      )
-                    : GoogleFonts.permanentMarker(
-                        fontSize: compact ? 18 : 24,
-                        color: AppColors.flutterLightBlue,
-                      ))
-                .merge(_noDecor),
+            style: AppTypography.brush(
+              context,
+              fontSize: compact ? 18 : 24,
+              color: AppColors.flutterLightBlue,
+            ).merge(_noDecor),
           ),
           delayMs: 540,
         ),

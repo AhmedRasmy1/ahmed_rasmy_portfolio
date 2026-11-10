@@ -1,137 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/portfolio_fonts.dart';
 
 abstract final class AppTheme {
-  /// Touch font families so [GoogleFonts.pendingFonts] can resolve them.
-  static Future<void> preloadFonts() => AppTypography.preload();
+  /// Loads bundled fonts for [locale] (Latin if null / non-ar).
+  static Future<void> preloadFonts([Locale? locale]) {
+    return PortfolioFonts.loadForLocale(
+      arabic: AppTypography.isArabicLocale(locale),
+    );
+  }
 
   static TextTheme _textTheme(Brightness brightness, {required bool forArabic}) {
     final ink = brightness == Brightness.dark
         ? AppColors.offWhite
         : AppColors.navyInk;
 
-    if (forArabic) {
-      return TextTheme(
-        displayLarge: GoogleFonts.lalezar(
-          fontSize: 96,
-          height: 1.15,
-          letterSpacing: 0,
-          color: ink,
-          fontWeight: FontWeight.w700,
-          decoration: TextDecoration.none,
-        ),
-        displayMedium: GoogleFonts.lalezar(
-          fontSize: 56,
-          height: 1.2,
-          letterSpacing: 0,
-          color: ink,
-          fontWeight: FontWeight.w700,
-          decoration: TextDecoration.none,
-        ),
-        headlineLarge: GoogleFonts.marhey(
-          fontSize: 48,
-          height: 1.2,
-          letterSpacing: 0,
-          color: AppColors.flutterLightBlue,
-          fontWeight: FontWeight.w700,
-          decoration: TextDecoration.none,
-        ),
-        headlineMedium: GoogleFonts.marhey(
-          fontSize: 32,
-          height: 1.2,
-          letterSpacing: 0,
-          color: AppColors.flutterLightBlue,
-          fontWeight: FontWeight.w700,
-          decoration: TextDecoration.none,
-        ),
-        titleMedium: GoogleFonts.ibmPlexSansArabic(
-          fontSize: 18,
-          height: 1.5,
-          letterSpacing: 0,
-          fontWeight: FontWeight.w700,
-          color: ink,
-          decoration: TextDecoration.none,
-        ),
-        bodyLarge: GoogleFonts.ibmPlexSansArabic(
-          fontSize: 16,
-          height: 1.6,
-          letterSpacing: 0,
-          color: ink,
-          decoration: TextDecoration.none,
-        ),
-        bodyMedium: GoogleFonts.ibmPlexSansArabic(
-          fontSize: 12,
-          height: 1.4,
-          letterSpacing: 0,
-          color: ink,
-          decoration: TextDecoration.none,
-        ),
-        labelSmall: GoogleFonts.ibmPlexSansArabic(
-          fontSize: 10,
-          height: 1.35,
-          letterSpacing: 0,
-          fontWeight: FontWeight.w700,
-          color: ink,
-          decoration: TextDecoration.none,
-        ),
-      );
-    }
-
     return TextTheme(
-      displayLarge: GoogleFonts.bebasNeue(
+      displayLarge: AppTypography.headlineFor(
+        arabic: forArabic,
         fontSize: 96,
-        height: 0.9,
-        letterSpacing: 2,
         color: ink,
-        fontWeight: FontWeight.w700,
-        decoration: TextDecoration.none,
+        height: forArabic ? 1.2 : 0.9,
+        letterSpacing: forArabic ? 0 : 2,
       ),
-      displayMedium: GoogleFonts.bebasNeue(
+      displayMedium: AppTypography.headlineFor(
+        arabic: forArabic,
         fontSize: 56,
-        height: 0.95,
         color: ink,
-        fontWeight: FontWeight.w700,
-        decoration: TextDecoration.none,
+        height: forArabic ? 1.25 : 0.95,
       ),
-      headlineLarge: GoogleFonts.permanentMarker(
+      headlineLarge: AppTypography.brushFor(
+        arabic: forArabic,
         fontSize: 48,
         color: AppColors.flutterLightBlue,
-        fontWeight: FontWeight.w700,
-        decoration: TextDecoration.none,
       ),
-      headlineMedium: GoogleFonts.permanentMarker(
+      headlineMedium: AppTypography.brushFor(
+        arabic: forArabic,
         fontSize: 32,
         color: AppColors.flutterLightBlue,
-        fontWeight: FontWeight.w700,
-        decoration: TextDecoration.none,
       ),
-      titleMedium: GoogleFonts.kalam(
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-        color: ink,
-        decoration: TextDecoration.none,
-      ),
-      bodyLarge: GoogleFonts.kalam(
-        fontSize: 16,
-        height: 1.35,
-        color: ink,
-        decoration: TextDecoration.none,
-      ),
-      bodyMedium: GoogleFonts.spaceMono(
+      titleMedium: forArabic
+          ? AppTypography.bodyFor(
+              arabic: true,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: ink,
+              height: 1.5,
+            )
+          : AppTypography.noteFor(
+              arabic: false,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: ink,
+            ),
+      bodyLarge: forArabic
+          ? AppTypography.bodyFor(
+              arabic: true,
+              fontSize: 16,
+              color: ink,
+              height: 1.6,
+            )
+          : AppTypography.noteFor(
+              arabic: false,
+              fontSize: 16,
+              color: ink,
+              height: 1.35,
+            ),
+      bodyMedium: AppTypography.labelFor(
+        arabic: forArabic,
         fontSize: 12,
-        letterSpacing: 1.4,
         color: ink,
-        decoration: TextDecoration.none,
+        fontWeight: FontWeight.w400,
+        letterSpacing: forArabic ? 0 : 1.4,
       ),
-      labelSmall: GoogleFonts.spaceMono(
+      labelSmall: AppTypography.labelFor(
+        arabic: forArabic,
         fontSize: 10,
-        letterSpacing: 2.2,
-        fontWeight: FontWeight.w700,
         color: ink,
-        decoration: TextDecoration.none,
+        fontWeight: FontWeight.w700,
+        letterSpacing: forArabic ? 0 : 2.2,
       ),
     );
   }

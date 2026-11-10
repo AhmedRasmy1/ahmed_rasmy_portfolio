@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
@@ -127,11 +127,7 @@ class _IterationCard extends StatelessWidget {
             Text(
               title,
               softWrap: true,
-              style: GoogleFonts.bebasNeue(
-                fontSize: 22,
-                color: AppColors.navyInk,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.headline(context, fontSize: 22, color: AppColors.navyInk),
             ),
           if (!isTodo(title)) const SizedBox(height: 14),
           _PhaseBlock(
@@ -181,25 +177,14 @@ class _PhaseBlock extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          label.toUpperCase(),
-          style: GoogleFonts.spaceMono(
-            fontSize: 10,
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w700,
-            color: accent,
-            decoration: TextDecoration.none,
-          ),
+          context.caps(label),
+          style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: accent),
         ),
         const SizedBox(height: 4),
         Text(
           body,
           softWrap: true,
-          style: GoogleFonts.kalam(
-            fontSize: 14,
-            height: 1.4,
-            color: AppColors.navyInk.withValues(alpha: 0.88),
-            decoration: TextDecoration.none,
-          ),
+          style: AppTypography.note(context, fontSize: 14, height: 1.4, color: AppColors.navyInk.withValues(alpha: 0.88)),
         ),
       ],
     );
@@ -295,21 +280,12 @@ class _ValueChangeDemo extends StatelessWidget {
         children: [
           Text(
             'VALUE',
-            style: GoogleFonts.spaceMono(
-              fontSize: 10,
-              letterSpacing: 1,
-              color: AppColors.navyInk.withValues(alpha: 0.5),
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 10, letterSpacing: 1, color: AppColors.navyInk.withValues(alpha: 0.5)),
           ),
           const Spacer(),
           Text(
             '$value',
-            style: GoogleFonts.bebasNeue(
-              fontSize: 28,
-              color: AppColors.flutterBlue,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.headline(context, fontSize: 28, color: AppColors.flutterBlue),
           ),
         ],
       ),
@@ -345,11 +321,7 @@ class _SnackbarDemo extends StatelessWidget {
             ),
             child: Text(
               'Saved',
-              style: GoogleFonts.spaceMono(
-                fontSize: 10,
-                color: AppColors.offWhite,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.label(context, fontSize: 10, color: AppColors.offWhite),
             ),
           ),
         ),

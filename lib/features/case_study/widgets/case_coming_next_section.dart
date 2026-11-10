@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/core/constants/host_venue_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
@@ -35,60 +36,69 @@ class CaseComingNextSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final headlineKey = study.comingNextHeadlineKey;
-    if (headlineKey == null) return const SizedBox.shrink();
-    final headline = CaseStudyCopy.t(l10n, headlineKey);
-    if (isTodo(headline)) return const SizedBox.shrink();
-
-    final features = study.upcomingFeatures
-        .where((f) => f.visibility != FeatureVisibility.hidden)
-        .toList();
-    if (features.isEmpty) return const SizedBox.shrink();
-
     final isGatherUp = study.projectSlug == 'gatherup';
+
+    // Status-driven: drop Host & Venue from Coming Next once released.
+    final features = study.upcomingFeatures.where((f) {
+      if (f.visibility == FeatureVisibility.hidden) return false;
+      if (f.showHostVenueStamp && kHostVenueIsReleased) return false;
+      return true;
+    }).toList();
+
+    final headlineKey = study.comingNextHeadlineKey;
+    final headline = headlineKey == null
+        ? null
+        : CaseStudyCopy.t(l10n, headlineKey);
+    final showComingNext = headline != null &&
+        !isTodo(headline) &&
+        features.isNotEmpty;
+
+    if (!isGatherUp && !showComingNext) return const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (isGatherUp) ...[
           HostVenueOwnedFeatureCard(customCursor: customCursor),
-          const SizedBox(height: 36),
+          if (showComingNext) const SizedBox(height: 36),
         ],
-        SectionHeader(
-          number: '09',
-          eyebrow: l10n.caseSecComingNext,
-          title: headline,
-          intro: '',
-          scrollOffset: scrollOffset,
-          reduceMotion: reduceMotion,
-        ),
-        const SizedBox(height: 12),
-        _ComingSoonDecor(label: l10n.caseComingSoonSticky),
-        const SizedBox(height: 24),
-        LayoutBuilder(
-          builder: (context, c) {
-            final stack = c.maxWidth < CaseLayout.stackBreakpoint;
-            return Column(
-              children: [
-                for (var i = 0; i < features.length; i++) ...[
-                  if (i > 0) const SizedBox(height: 28),
-                  ScrollReveal(
-                    scrollOffset: scrollOffset,
-                    reduceMotion: reduceMotion,
-                    delayFraction: i * 0.1,
-                    child: _FeatureRow(
-                      feature: features[i],
-                      index: i,
-                      stack: stack,
+        if (showComingNext) ...[
+          SectionHeader(
+            number: '09',
+            eyebrow: l10n.caseSecComingNext,
+            title: headline,
+            intro: '',
+            scrollOffset: scrollOffset,
+            reduceMotion: reduceMotion,
+          ),
+          const SizedBox(height: 12),
+          _ComingSoonDecor(label: l10n.caseComingSoonSticky),
+          const SizedBox(height: 24),
+          LayoutBuilder(
+            builder: (context, c) {
+              final stack = c.maxWidth < CaseLayout.stackBreakpoint;
+              return Column(
+                children: [
+                  for (var i = 0; i < features.length; i++) ...[
+                    if (i > 0) const SizedBox(height: 28),
+                    ScrollReveal(
                       scrollOffset: scrollOffset,
-                      customCursor: customCursor,
+                      reduceMotion: reduceMotion,
+                      delayFraction: i * 0.1,
+                      child: _FeatureRow(
+                        feature: features[i],
+                        index: i,
+                        stack: stack,
+                        scrollOffset: scrollOffset,
+                        customCursor: customCursor,
+                      ),
                     ),
-                  ),
+                  ],
                 ],
-              ],
-            );
-          },
-        ),
+              );
+            },
+          ),
+        ],
       ],
     );
   }
@@ -128,12 +138,7 @@ class _ComingSoonDecor extends StatelessWidget {
             child: Text(
               label,
               softWrap: true,
-              style: GoogleFonts.kalam(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: AppColors.navyInk,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.note(context, fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.navyInk),
             ),
           ),
         ),
@@ -278,11 +283,7 @@ class _FullCard extends StatelessWidget {
                   Text(
                     title,
                     softWrap: true,
-                    style: GoogleFonts.bebasNeue(
-                      fontSize: 28,
-                      color: AppColors.navyInk,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.headline(context, fontSize: 28, color: AppColors.navyInk),
                   ),
                 if (media != null && !isTodo(media)) ...[
                   const SizedBox(height: 14),
@@ -309,12 +310,7 @@ class _FullCard extends StatelessWidget {
                   Text(
                     summary,
                     softWrap: true,
-                    style: GoogleFonts.kalam(
-                      fontSize: 15,
-                      height: 1.45,
-                      color: AppColors.navyInk.withValues(alpha: 0.88),
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.note(context, fontSize: 15, height: 1.45, color: AppColors.navyInk.withValues(alpha: 0.88)),
                   ),
                 ],
                 if (highlights.isNotEmpty) ...[
@@ -327,22 +323,14 @@ class _FullCard extends StatelessWidget {
                         children: [
                           Text(
                             '→ ',
-                            style: GoogleFonts.spaceMono(
-                              fontSize: 12,
-                              color: AppColors.flutterBlue,
-                              decoration: TextDecoration.none,
-                            ),
+                            style: AppTypography.label(context, fontSize: 12, color: AppColors.flutterBlue),
                           ),
                           Expanded(
                             child: Text(
                               h,
                               softWrap: true,
-                              style: GoogleFonts.kalam(
-                                fontSize: 14,
-                                color: AppColors.navyInk
-                                    .withValues(alpha: 0.85),
-                                decoration: TextDecoration.none,
-                              ),
+                              style: AppTypography.note(context, fontSize: 14, color: AppColors.navyInk
+                                    .withValues(alpha: 0.85)),
                             ),
                           ),
                         ],
@@ -372,11 +360,7 @@ class _FullCard extends StatelessWidget {
                           child: Text(
                             t,
                             softWrap: true,
-                            style: GoogleFonts.spaceMono(
-                              fontSize: 11,
-                              color: AppColors.flutterBlue,
-                              decoration: TextDecoration.none,
-                            ),
+                            style: AppTypography.label(context, fontSize: 11, color: AppColors.flutterBlue),
                           ),
                         ),
                     ],
@@ -412,15 +396,9 @@ class _FullCard extends StatelessWidget {
                       ],
                     ),
                     child: Text(
-                      status.toUpperCase(),
+                      context.caps(status),
                       softWrap: true,
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1,
-                        color: AppColors.navyInk,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.label(context, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1, color: AppColors.navyInk),
                     ),
                   ),
                 ),
@@ -462,11 +440,7 @@ class _TeaserCard extends StatelessWidget {
                 Text(
                   title,
                   softWrap: true,
-                  style: GoogleFonts.bebasNeue(
-                    fontSize: 26,
-                    color: AppColors.navyInk,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.headline(context, fontSize: 26, color: AppColors.navyInk),
                 ),
               if (preview != null && !isTodo(preview)) ...[
                 const SizedBox(height: 12),
@@ -478,12 +452,8 @@ class _TeaserCard extends StatelessWidget {
                           child: Center(
                             child: Text(
                               '??',
-                              style: GoogleFonts.bebasNeue(
-                                fontSize: 40,
-                                color: AppColors.navyInk
-                                    .withValues(alpha: 0.3),
-                                decoration: TextDecoration.none,
-                              ),
+                              style: AppTypography.headline(context, fontSize: 40, color: AppColors.navyInk
+                                    .withValues(alpha: 0.3)),
                             ),
                           ),
                         )
@@ -502,12 +472,7 @@ class _TeaserCard extends StatelessWidget {
                 Text(
                   teaserLine,
                   softWrap: true,
-                  style: GoogleFonts.kalam(
-                    fontSize: 14,
-                    fontStyle: FontStyle.italic,
-                    color: AppColors.navyInk.withValues(alpha: 0.7),
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.note(context, fontSize: 14, fontStyle: FontStyle.italic, color: AppColors.navyInk.withValues(alpha: 0.7)),
                 ),
               ],
             ],
@@ -524,13 +489,7 @@ class _TeaserCard extends StatelessWidget {
                 child: Text(
                   l10n.caseClassified,
                   softWrap: true,
-                  style: GoogleFonts.spaceMono(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.4,
-                    color: AppColors.stickyYellow,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.label(context, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: AppColors.stickyYellow),
                 ),
               ),
             ),

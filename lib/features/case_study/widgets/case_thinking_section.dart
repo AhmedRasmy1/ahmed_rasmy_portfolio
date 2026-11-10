@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -134,13 +134,7 @@ class _QuestionChip extends StatelessWidget {
             child: Text(
               label,
               softWrap: true,
-              style: GoogleFonts.spaceMono(
-                fontSize: 11,
-                letterSpacing: 0.6,
-                fontWeight: FontWeight.w700,
-                color: selected ? AppColors.offWhite : AppColors.navyInk,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.label(context, fontSize: 11, letterSpacing: 0.6, fontWeight: FontWeight.w700, color: selected ? AppColors.offWhite : AppColors.navyInk),
             ),
           ),
         ),
@@ -185,12 +179,7 @@ class _StickyAnswer extends StatelessWidget {
             child: Text(
               text,
               softWrap: true,
-              style: GoogleFonts.kalam(
-                fontSize: 18,
-                height: 1.4,
-                color: AppColors.navyInk,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.note(context, fontSize: 18, height: 1.4, color: AppColors.navyInk),
             ),
           ),
           const Positioned(

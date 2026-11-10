@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/core/widgets/safe_asset_image.dart';
 
 /// Project image with graceful missing-asset handling (hide in release;
@@ -14,6 +14,8 @@ class ProjectImageSlot extends StatelessWidget {
     required this.label,
     this.aspectRatio = 16 / 10,
     this.phoneFrame = false,
+    this.fit = BoxFit.cover,
+    this.matColor,
   });
 
   final String assetPath;
@@ -21,22 +23,34 @@ class ProjectImageSlot extends StatelessWidget {
   final double aspectRatio;
   final bool phoneFrame;
 
+  /// Cover cards use [BoxFit.contain] on paper so promo art is not cropped.
+  final BoxFit fit;
+
+  /// Backdrop behind contained images (matches paper card in both themes).
+  final Color? matColor;
+
   @override
   Widget build(BuildContext context) {
     final placeholder = kDebugMode
         ? _BlueprintPlaceholder(label: label)
         : null;
+    final zine = context.zine;
+    final mat = matColor ?? zine.paper;
 
     return OptionalAssetFrame(
       assetPath: assetPath,
       debugPlaceholder: placeholder,
+      fit: fit,
       builder: (context, image) {
         if (!phoneFrame) {
           return AspectRatio(
             aspectRatio: aspectRatio,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(4),
-              child: image,
+              child: ColoredBox(
+                color: mat,
+                child: SizedBox.expand(child: image),
+              ),
             ),
           );
         }
@@ -84,16 +98,10 @@ class _BlueprintPlaceholder extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Text(
-            label.toUpperCase(),
+            context.caps(label),
             textAlign: TextAlign.center,
             softWrap: true,
-            style: GoogleFonts.spaceMono(
-              fontSize: 12,
-              letterSpacing: 2,
-              fontWeight: FontWeight.w700,
-              color: AppColors.flutterLightBlue.withValues(alpha: 0.85),
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 12, letterSpacing: 2, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue.withValues(alpha: 0.85)),
           ),
         ),
       ),

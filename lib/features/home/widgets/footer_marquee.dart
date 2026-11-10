@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 
 class FooterMarquee extends StatefulWidget {
@@ -48,13 +48,7 @@ class _FooterMarqueeState extends State<FooterMarquee>
     final l10n = AppLocalizations.of(context);
     final zine = context.zine;
     final narrow = MediaQuery.sizeOf(context).width < 800;
-    final style = GoogleFonts.spaceMono(
-      fontSize: 11,
-      letterSpacing: 1.8,
-      fontWeight: FontWeight.w700,
-      color: zine.ink.withValues(alpha: 0.85),
-      decoration: TextDecoration.none,
-    );
+    final style = AppTypography.label(context, fontSize: 11, letterSpacing: 1.8, fontWeight: FontWeight.w700, color: zine.ink.withValues(alpha: 0.85));
     final text = '◆  ${l10n.footerMarquee}  ◆  ';
 
     return Column(

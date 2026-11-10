@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -215,12 +215,13 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
               compact ? l10n.caseTapToPlay : l10n.caseHoverToPlay,
               textAlign: TextAlign.center,
               softWrap: true,
-              style: GoogleFonts.spaceMono(
+              style: AppTypography.label(
+                context,
                 fontSize: 9,
                 letterSpacing: 1.4,
                 fontWeight: FontWeight.w700,
                 color: AppColors.offWhite.withValues(alpha: 0.9),
-                decoration: TextDecoration.none,
+              ).copyWith(
                 shadows: const [
                   Shadow(blurRadius: 6, color: Colors.black54),
                 ],
@@ -287,13 +288,7 @@ class _LazyHoverVideoState extends State<LazyHoverVideo> {
                   overflow: heightBound
                       ? TextOverflow.ellipsis
                       : TextOverflow.visible,
-                  style: GoogleFonts.spaceMono(
-                    fontSize: 11,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.w700,
-                    color: context.zine.ink,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.label(context, fontSize: 11, letterSpacing: 1, fontWeight: FontWeight.w700, color: context.zine.ink),
                 );
                 final media = frameSurface(surface, expand: heightBound);
                 return Column(
@@ -327,16 +322,10 @@ class _PosterFallback extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Text(
-            label.toUpperCase(),
+            context.caps(label),
             textAlign: TextAlign.center,
             softWrap: true,
-            style: GoogleFonts.spaceMono(
-              fontSize: 11,
-              letterSpacing: 1.4,
-              fontWeight: FontWeight.w700,
-              color: AppColors.flutterLightBlue.withValues(alpha: 0.75),
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue.withValues(alpha: 0.75)),
           ),
         ),
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/core/utils/asset_checker.dart';
 
 /// Renders [Image.asset] only when the path exists in the asset manifest.
@@ -127,13 +127,7 @@ class _DebugBlueprint extends StatelessWidget {
               textAlign: TextAlign.center,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.spaceMono(
-                fontSize: 10,
-                letterSpacing: 1.2,
-                fontWeight: FontWeight.w700,
-                color: AppColors.flutterLightBlue.withValues(alpha: 0.85),
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue.withValues(alpha: 0.85)),
             ),
           ),
         ),

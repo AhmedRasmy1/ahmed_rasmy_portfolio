@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -138,11 +138,7 @@ class _VsSticker extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.permanentMarker(
-            fontSize: 18,
-            color: AppColors.flutterBlue,
-            decoration: TextDecoration.none,
-          ),
+          style: AppTypography.brush(context, fontSize: 18, color: AppColors.flutterBlue),
         ),
       ),
     );
@@ -191,11 +187,7 @@ class _CompareCard extends StatelessWidget {
             Text(
               title,
               softWrap: true,
-              style: GoogleFonts.bebasNeue(
-                fontSize: 24,
-                color: AppColors.navyInk,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.headline(context, fontSize: 24, color: AppColors.navyInk),
             ),
             const SizedBox(height: 14),
             for (var i = 0; i < side.stepKeys.length; i++)
@@ -227,13 +219,7 @@ class _CompareCard extends StatelessWidget {
                         child: Text(
                           CaseStudyCopy.t(l10n, side.stepKeys[i]),
                           softWrap: true,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 13,
-                            letterSpacing: 0.6,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.navyInk,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: 13, letterSpacing: 0.6, fontWeight: FontWeight.w700, color: AppColors.navyInk),
                         ),
                       ),
                     ],
@@ -244,11 +230,7 @@ class _CompareCard extends StatelessWidget {
             Text(
               caption,
               softWrap: true,
-              style: GoogleFonts.kalam(
-                fontSize: 14,
-                color: AppColors.navyInk.withValues(alpha: 0.7),
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.note(context, fontSize: 14, color: AppColors.navyInk.withValues(alpha: 0.7)),
             ),
           ],
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/cursor_controller.dart';
@@ -24,6 +24,7 @@ import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/case_thinking_
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/comic_burst.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/project_image_slot.dart';
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/zine_background.dart';
+import 'package:ahmed_rasmy_portfolio/features/host_venue/widgets/store_link_chips.dart';
 
 /// GatherUp (and future) case study. 7A–7D shell through Closing.
 class CaseStudyPage extends StatefulWidget {
@@ -127,11 +128,7 @@ class _CaseStudyPageState extends State<CaseStudyPage> {
                 child: Center(
                   child: Text(
                     l10n.caseComingSoon,
-                    style: GoogleFonts.kalam(
-                      fontSize: 18,
-                      color: zine.inkMuted,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.note(context, fontSize: 18, color: zine.inkMuted),
                   ),
                 ),
               ),
@@ -360,30 +357,13 @@ class _CaseStudyHero extends StatelessWidget {
             : (isAr ? 64.0 : 72.0);
 
     final titleStyle = (isAr
-            ? GoogleFonts.reemKufi(
-                fontSize: titleSize,
-                height: 0.95,
-                fontWeight: FontWeight.w700,
-                color: zine.ink,
-              )
-            : GoogleFonts.bebasNeue(
-                fontSize: titleSize,
-                height: 0.9,
-                letterSpacing: 1.5,
-                color: zine.ink,
-              ))
+            ? AppTypography.headline(context, fontSize: titleSize, height: 0.95, fontWeight: FontWeight.w700, color: zine.ink)
+            : AppTypography.headline(context, fontSize: titleSize, height: 0.9, letterSpacing: 1.5, color: zine.ink))
         .copyWith(decoration: TextDecoration.none);
 
     final brushStyle = (isAr
-            ? GoogleFonts.reemKufi(
-                fontSize: mobile ? 28.0 : 40.0,
-                fontWeight: FontWeight.w700,
-                color: AppColors.flutterLightBlue,
-              )
-            : GoogleFonts.permanentMarker(
-                fontSize: mobile ? 32.0 : 44.0,
-                color: AppColors.flutterLightBlue,
-              ))
+            ? AppTypography.headline(context, fontSize: mobile ? 28.0 : 40.0, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue)
+            : AppTypography.brush(context, fontSize: mobile ? 32.0 : 44.0, color: AppColors.flutterLightBlue))
         .copyWith(decoration: TextDecoration.none);
 
     final copy = Column(
@@ -392,13 +372,7 @@ class _CaseStudyHero extends StatelessWidget {
         Text(
           l10n.caseStudyLabel,
           softWrap: true,
-          style: GoogleFonts.spaceMono(
-            fontSize: 11,
-            letterSpacing: 2.2,
-            fontWeight: FontWeight.w700,
-            color: AppColors.flutterLightBlue,
-            decoration: TextDecoration.none,
-          ),
+          style: AppTypography.label(context, fontSize: 11, letterSpacing: 2.2, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue),
         ),
         const SizedBox(height: 10),
         Wrap(
@@ -419,12 +393,7 @@ class _CaseStudyHero extends StatelessWidget {
           Text(
             tagline,
             softWrap: true,
-            style: GoogleFonts.kalam(
-              fontSize: mobile ? 16 : 18,
-              height: 1.35,
-              color: zine.inkMuted,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.note(context, fontSize: mobile ? 16 : 18, height: 1.35, color: zine.inkMuted),
           ),
         ],
         if (study.heroTags.isNotEmpty) ...[
@@ -432,13 +401,7 @@ class _CaseStudyHero extends StatelessWidget {
           Text(
             study.heroTags.join(' · '),
             softWrap: true,
-            style: GoogleFonts.spaceMono(
-              fontSize: 11,
-              letterSpacing: 1.2,
-              fontWeight: FontWeight.w700,
-              color: zine.ink.withValues(alpha: 0.8),
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: zine.ink.withValues(alpha: 0.8)),
           ),
         ],
         SizedBox(height: narrow ? 16 : 24),
@@ -477,14 +440,11 @@ class _CaseStudyHero extends StatelessWidget {
           Text(
             credit,
             softWrap: true,
-            style: GoogleFonts.spaceMono(
-              fontSize: 11,
-              height: 1.45,
-              color: zine.inkMuted,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 11, height: 1.45, color: zine.inkMuted),
           ),
         ],
+        if (study.projectSlug == 'gatherup')
+          StoreLinkChips(customCursor: customCursor),
       ],
     );
 
@@ -567,24 +527,14 @@ class _MetaSticker extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              label.toUpperCase(),
-              style: GoogleFonts.spaceMono(
-                fontSize: 9,
-                letterSpacing: 1.2,
-                fontWeight: FontWeight.w700,
-                color: AppColors.flutterBlue,
-                decoration: TextDecoration.none,
-              ),
+              context.caps(label),
+              style: AppTypography.label(context, fontSize: 9, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
             ),
             const SizedBox(height: 4),
             Text(
               value,
               softWrap: true,
-              style: GoogleFonts.kalam(
-                fontSize: 13,
-                color: AppColors.navyInk,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.note(context, fontSize: 13, color: AppColors.navyInk),
             ),
           ],
         ),

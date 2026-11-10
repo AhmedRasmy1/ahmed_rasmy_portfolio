@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -180,12 +180,7 @@ class _SkillNote extends StatelessWidget {
           children: [
             Text(
               title,
-              style: GoogleFonts.bebasNeue(
-                fontSize: 22,
-                letterSpacing: 1,
-                color: AppColors.navyInk,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.headline(context, fontSize: 22, letterSpacing: 1, color: AppColors.navyInk),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -275,13 +270,7 @@ class _StampChipState extends State<_StampChip> {
                   child: Text(
                     widget.label,
                     softWrap: true,
-                    style: GoogleFonts.spaceMono(
-                      fontSize: 10,
-                      letterSpacing: 0.6,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.navyInk,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.label(context, fontSize: 10, letterSpacing: 0.6, fontWeight: FontWeight.w700, color: AppColors.navyInk),
                   ),
                 ),
               ],

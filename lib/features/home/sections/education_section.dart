@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -85,12 +85,7 @@ class _DiplomaCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     l10n.eduSchool,
-                    style: GoogleFonts.bebasNeue(
-                      fontSize: 32,
-                      letterSpacing: 1.2,
-                      color: AppColors.navyInk,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.headline(context, fontSize: 32, letterSpacing: 1.2, color: AppColors.navyInk),
                   ),
                 ),
                 Transform.rotate(
@@ -106,13 +101,7 @@ class _DiplomaCard extends StatelessWidget {
                     ),
                     child: Text(
                       l10n.eduCertificateStamp,
-                      style: GoogleFonts.spaceMono(
-                        fontSize: 10,
-                        letterSpacing: 1.8,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.flutterBlue,
-                        decoration: TextDecoration.none,
-                      ),
+                      style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.8, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
                     ),
                   ),
                 ),
@@ -128,15 +117,8 @@ class _DiplomaCard extends StatelessWidget {
             Text(
               l10n.eduDegree,
               style: (isAr
-                      ? GoogleFonts.cairo(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.navyInk,
-                        )
-                      : GoogleFonts.kalam(
-                          fontSize: 18,
-                          color: AppColors.navyInk,
-                        ))
+                      ? AppTypography.body(context, fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.navyInk)
+                      : AppTypography.note(context, fontSize: 18, color: AppColors.navyInk))
                   .copyWith(decoration: TextDecoration.none),
             ),
             const SizedBox(height: 18),
@@ -172,25 +154,14 @@ class _DiplomaRow extends StatelessWidget {
         SizedBox(
           width: 120,
           child: Text(
-            label.toUpperCase(),
-            style: GoogleFonts.spaceMono(
-              fontSize: 10,
-              letterSpacing: 1.2,
-              fontWeight: FontWeight.w700,
-              color: AppColors.flutterBlue,
-              decoration: TextDecoration.none,
-            ),
+            context.caps(label),
+            style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
           ),
         ),
         Expanded(
           child: Text(
             value,
-            style: GoogleFonts.spaceMono(
-              fontSize: 12,
-              height: 1.4,
-              color: AppColors.navyInk,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 12, height: 1.4, color: AppColors.navyInk),
           ),
         ),
       ],
@@ -236,16 +207,10 @@ class _CertificateTicket extends StatelessWidget {
                     if (org != null)
                       Expanded(
                         child: Text(
-                          org.toUpperCase(),
+                          context.caps(org),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 11,
-                            letterSpacing: 1.4,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.flutterBlue,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
                         ),
                       )
                     else
@@ -267,13 +232,7 @@ class _CertificateTicket extends StatelessWidget {
                         ),
                         child: Text(
                           l10n.eduCertificateStamp,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 9,
-                            letterSpacing: 1.4,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.flutterBlue,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: 9, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
                         ),
                       ),
                     ),
@@ -282,12 +241,7 @@ class _CertificateTicket extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   title,
-                  style: GoogleFonts.kalam(
-                    fontSize: 15,
-                    height: 1.35,
-                    color: AppColors.navyInk,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.note(context, fontSize: 15, height: 1.35, color: AppColors.navyInk),
                 ),
                 if (hasLink) ...[
                   const SizedBox(height: 10),
@@ -297,13 +251,7 @@ class _CertificateTicket extends StatelessWidget {
                       onTap: () => _open(course.url!),
                       child: Text(
                         l10n.eduViewCert,
-                        style: GoogleFonts.spaceMono(
-                          fontSize: 11,
-                          letterSpacing: 1,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.flutterBlue,
-                          decoration: TextDecoration.none,
-                        ),
+                        style: AppTypography.label(context, fontSize: 11, letterSpacing: 1, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
                       ),
                     ),
                   ),

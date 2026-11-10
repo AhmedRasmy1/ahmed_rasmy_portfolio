@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -17,14 +17,14 @@ class ProjectChips extends StatelessWidget {
   final bool reduceMotion;
   final bool customCursor;
 
-  static String _label(AppLocalizations l10n, String slug) {
+  static String _label(BuildContext context, AppLocalizations l10n, String slug) {
     return switch (slug) {
       'gatherup' => l10n.chipGatherUp,
       'awwaab' => l10n.chipAwwaab,
       'elmohandes' => l10n.chipElmohandes,
       'flowery' => l10n.chipFlowery,
       'servicex' => l10n.chipServiceX,
-      _ => slug.toUpperCase(),
+      _ => context.caps(slug),
     };
   }
 
@@ -41,7 +41,7 @@ class ProjectChips extends StatelessWidget {
       children: [
         for (var i = 0; i < slugs.length; i++)
           _Chip(
-            label: _label(l10n, slugs[i]),
+            label: _label(context, l10n, slugs[i]),
             slug: slugs[i],
             angle: reduceMotion ? 0 : angles[i % angles.length],
             reduceMotion: reduceMotion,
@@ -112,13 +112,7 @@ class _ChipState extends State<_Chip> {
           ),
           child: Text(
             widget.label,
-            style: GoogleFonts.spaceMono(
-              fontSize: 10,
-              letterSpacing: 1.2,
-              fontWeight: FontWeight.w700,
-              color: fg,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: fg),
           ),
         ),
       ),

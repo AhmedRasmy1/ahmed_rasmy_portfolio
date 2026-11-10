@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/tape_painter.dart';
 
 /// Mono `0N / TITLE` + condensed headline + short intro + tape strip.
@@ -71,13 +71,7 @@ class _SectionHeaderState extends State<SectionHeader> {
               child: Text(
                 '${widget.number} / ${widget.eyebrow}',
                 softWrap: true,
-                style: GoogleFonts.spaceMono(
-                  fontSize: 11,
-                  letterSpacing: 2.2,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.flutterLightBlue,
-                  decoration: TextDecoration.none,
-                ),
+                style: AppTypography.label(context, fontSize: 11, letterSpacing: 2.2, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue),
               ),
             ),
           ],
@@ -86,16 +80,8 @@ class _SectionHeaderState extends State<SectionHeader> {
         Text(
           widget.title,
           style: (isAr
-                  ? GoogleFonts.reemKufi(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w700,
-                      color: zine.ink,
-                    )
-                  : GoogleFonts.bebasNeue(
-                      fontSize: 48,
-                      letterSpacing: 1.5,
-                      color: zine.ink,
-                    ))
+                  ? AppTypography.headline(context, fontSize: 40, fontWeight: FontWeight.w700, color: zine.ink)
+                  : AppTypography.headline(context, fontSize: 48, letterSpacing: 1.5, color: zine.ink))
               .copyWith(decoration: TextDecoration.none),
         ),
         if (widget.intro.trim().isNotEmpty) ...[
@@ -105,16 +91,8 @@ class _SectionHeaderState extends State<SectionHeader> {
             child: Text(
               widget.intro,
               style: (isAr
-                      ? GoogleFonts.cairo(
-                          fontSize: 15,
-                          height: 1.45,
-                          color: zine.inkMuted,
-                        )
-                      : GoogleFonts.kalam(
-                          fontSize: 16,
-                          height: 1.4,
-                          color: zine.inkMuted,
-                        ))
+                      ? AppTypography.body(context, fontSize: 15, height: 1.45, color: zine.inkMuted)
+                      : AppTypography.note(context, fontSize: 16, height: 1.4, color: zine.inkMuted))
                   .copyWith(decoration: TextDecoration.none),
             ),
           ),

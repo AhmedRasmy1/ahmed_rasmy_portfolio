@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/animation/idle_ticker.dart';
 import 'package:ahmed_rasmy_portfolio/core/painters/hand_drawn_painter.dart';
@@ -80,17 +80,11 @@ class _WhoIAmNoteState extends State<WhoIAmNote> {
                   children: [
                     Text(
                       l10n.whoIAmTitle,
-                      style: (isAr
-                              ? GoogleFonts.reemKufi(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.flutterLightBlue,
-                                )
-                              : GoogleFonts.permanentMarker(
-                                  fontSize: 26,
-                                  color: AppColors.flutterLightBlue,
-                                ))
-                          .copyWith(decoration: TextDecoration.none),
+                      style: AppTypography.brush(
+                        context,
+                        fontSize: isAr ? 24 : 26,
+                        color: AppColors.flutterLightBlue,
+                      ).copyWith(decoration: TextDecoration.none),
                     ),
                     SizedBox(
                       width: 110,
@@ -105,11 +99,7 @@ class _WhoIAmNoteState extends State<WhoIAmNote> {
                     ...items.asMap().entries.map((e) {
                       Widget check = Text(
                         '✓ ',
-                        style: GoogleFonts.permanentMarker(
-                          color: AppColors.flutterLightBlue,
-                          fontSize: 16,
-                          decoration: TextDecoration.none,
-                        ),
+                        style: AppTypography.brush(context, color: AppColors.flutterLightBlue, fontSize: 16),
                       );
                       if (!widget.reduceMotion) {
                         check = check
@@ -129,18 +119,12 @@ class _WhoIAmNoteState extends State<WhoIAmNote> {
                             Expanded(
                               child: Text(
                                 e.value,
-                                style: (isAr
-                                        ? GoogleFonts.cairo(
-                                            fontSize: 14,
-                                            height: 1.3,
-                                            color: AppColors.navyInk,
-                                          )
-                                        : GoogleFonts.kalam(
-                                            fontSize: 14,
-                                            height: 1.25,
-                                            color: AppColors.navyInk,
-                                          ))
-                                    .copyWith(decoration: TextDecoration.none),
+                                style: AppTypography.note(
+                                  context,
+                                  fontSize: 14,
+                                  height: isAr ? 1.55 : 1.25,
+                                  color: AppColors.navyInk,
+                                ).copyWith(decoration: TextDecoration.none),
                               ),
                             ),
                           ],
@@ -182,13 +166,7 @@ class _WhoIAmNoteState extends State<WhoIAmNote> {
                         child: Text(
                           l10n.estBadge,
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.spaceMono(
-                            fontSize: widget.expand ? 7 : 8,
-                            fontWeight: FontWeight.w700,
-                            height: 1.15,
-                            color: AppColors.offWhite,
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: widget.expand ? 7 : 8, fontWeight: FontWeight.w700, height: 1.15, color: AppColors.offWhite),
                         ),
                       ),
                     ],

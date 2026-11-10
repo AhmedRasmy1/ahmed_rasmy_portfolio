@@ -18,6 +18,7 @@ import 'package:ahmed_rasmy_portfolio/features/case_study/widgets/scroll_reveal.
 import 'package:ahmed_rasmy_portfolio/features/home/widgets/zine_background.dart';
 import 'package:ahmed_rasmy_portfolio/features/host_venue/widgets/dart_code_viewer.dart';
 import 'package:ahmed_rasmy_portfolio/features/host_venue/widgets/status_stamp.dart';
+import 'package:ahmed_rasmy_portfolio/features/host_venue/widgets/store_link_chips.dart';
 
 /// Deep-dive: `/work/gatherup/host-venue-mode`
 class HostVenuePage extends StatefulWidget {
@@ -333,6 +334,7 @@ class _Hero extends StatelessWidget {
             color: zine.inkMuted,
           ),
         ),
+        StoreLinkChips(customCursor: customCursor),
       ],
     );
   }
@@ -994,8 +996,11 @@ class _PhoneShot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // contain: different screenshot aspect ratios letterbox inside the frame
+    // (navy bezel) — never crop or stretch.
     return OptionalAssetFrame(
       assetPath: path,
+      fit: BoxFit.contain,
       builder: (context, image) {
         return AspectRatio(
           aspectRatio: 9 / 19,
@@ -1009,7 +1014,10 @@ class _PhoneShot extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(8, 14, 8, 10),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(18),
-                child: image,
+                child: ColoredBox(
+                  color: AppColors.navyInk,
+                  child: SizedBox.expand(child: image),
+                ),
               ),
             ),
           ),
@@ -1767,19 +1775,15 @@ class _GallerySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shots = HostVenueData.gallery
-        .where((g) => AssetChecker.has(g.path))
+        .where((g) => g.isPublic && AssetChecker.has(g.path))
         .toList();
     if (shots.isEmpty) return const SizedBox.shrink();
 
-    final groups = {
-      OperatorRole.member: shots
-          .where((s) => s.mode == OperatorRole.member)
-          .toList(),
-      OperatorRole.host:
-          shots.where((s) => s.mode == OperatorRole.host).toList(),
-      OperatorRole.venue:
-          shots.where((s) => s.mode == OperatorRole.venue).toList(),
-    };
+    // Only render mode groups that have at least one visible shot (no empty frames).
+    final groups = <(OperatorRole, List<GalleryShot>)>[
+      for (final mode in OperatorRole.values)
+        (mode, shots.where((s) => s.mode == mode).toList()),
+    ].where((e) => e.$2.isNotEmpty).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1792,50 +1796,49 @@ class _GallerySection extends StatelessWidget {
           scrollOffset: scrollOffset,
           reduceMotion: reduceMotion,
         ),
-        for (final entry in groups.entries)
-          if (entry.value.isNotEmpty) ...[
-            const SizedBox(height: 18),
-            Text(
-              switch (entry.key) {
-                OperatorRole.member =>
-                  ar ? 'العضو / التبديل' : 'Member / switch',
-                OperatorRole.host => ar ? 'المضيف' : 'Host',
-                OperatorRole.venue => ar ? 'المكان' : 'Venue',
-              },
-              style: AppTypography.label(
-                context,
-                fontSize: 12,
-                color: AppColors.flutterLightBlue,
-              ),
+        for (final entry in groups) ...[
+          const SizedBox(height: 18),
+          Text(
+            switch (entry.$1) {
+              OperatorRole.member =>
+                ar ? 'العضو / التبديل' : 'Member / switch',
+              OperatorRole.host => ar ? 'المضيف' : 'Host',
+              OperatorRole.venue => ar ? 'المكان' : 'Venue',
+            },
+            style: AppTypography.label(
+              context,
+              fontSize: 12,
+              color: AppColors.flutterLightBlue,
             ),
-            const SizedBox(height: 10),
-            CaseSnapGallery(
-              height: 340,
-              viewportFraction:
-                  MediaQuery.sizeOf(context).width < 600 ? 0.55 : 0.32,
-              itemCount: entry.value.length,
-              itemBuilder: (context, i) {
-                final shot = entry.value[i];
-                return CursorTarget(
-                  enabled: customCursor,
-                  child: GestureDetector(
-                    onTap: () => _openLightbox(context, shot.path),
-                    child: Column(
-                      children: [
-                        Expanded(child: _PhoneShot(path: shot.path)),
-                        const SizedBox(height: 8),
-                        Text(
-                          shot.caption.t(ar),
-                          textAlign: TextAlign.center,
-                          style: AppTypography.label(context, fontSize: 10),
-                        ),
-                      ],
-                    ),
+          ),
+          const SizedBox(height: 10),
+          CaseSnapGallery(
+            height: 340,
+            viewportFraction:
+                MediaQuery.sizeOf(context).width < 600 ? 0.55 : 0.32,
+            itemCount: entry.$2.length,
+            itemBuilder: (context, i) {
+              final shot = entry.$2[i];
+              return CursorTarget(
+                enabled: customCursor,
+                child: GestureDetector(
+                  onTap: () => _openLightbox(context, shot.path),
+                  child: Column(
+                    children: [
+                      Expanded(child: _PhoneShot(path: shot.path)),
+                      const SizedBox(height: 8),
+                      Text(
+                        shot.caption(ar),
+                        textAlign: TextAlign.center,
+                        style: AppTypography.label(context, fontSize: 10),
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
-          ],
+                ),
+              );
+            },
+          ),
+        ],
       ],
     );
   }

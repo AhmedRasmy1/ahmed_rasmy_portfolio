@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/settings/settings_provider.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/cursor_controller.dart';
@@ -81,12 +81,7 @@ class _SegmentedToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = GoogleFonts.spaceMono(
-      fontSize: 10,
-      fontWeight: FontWeight.w700,
-      letterSpacing: 1.2,
-      decoration: TextDecoration.none,
-    );
+    final style = AppTypography.label(context, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.2);
 
     return Container(
       decoration: BoxDecoration(

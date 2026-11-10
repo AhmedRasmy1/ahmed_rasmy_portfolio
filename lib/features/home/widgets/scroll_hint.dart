@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
 
@@ -60,13 +60,7 @@ class _ScrollHintState extends State<ScrollHint>
             children: [
               Text(
                 label,
-                style: GoogleFonts.spaceMono(
-                  fontSize: 10,
-                  letterSpacing: 2.4,
-                  fontWeight: FontWeight.w700,
-                  color: zine.ink.withValues(alpha: 0.7),
-                  decoration: TextDecoration.none,
-                ),
+                style: AppTypography.label(context, fontSize: 10, letterSpacing: 2.4, fontWeight: FontWeight.w700, color: zine.ink.withValues(alpha: 0.7)),
               ),
               const SizedBox(height: 8),
               AnimatedBuilder(

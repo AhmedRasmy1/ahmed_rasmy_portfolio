@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/social_links.dart';
 import 'package:ahmed_rasmy_portfolio/core/cursor/custom_cursor_overlay.dart';
@@ -47,12 +47,7 @@ class SiteFooter extends StatelessWidget {
             children: [
               Text(
                 l10n.footerCopyright,
-                style: GoogleFonts.spaceMono(
-                  fontSize: 11,
-                  letterSpacing: 1.1,
-                  color: zine.inkMuted,
-                  decoration: TextDecoration.none,
-                ),
+                style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.1, color: zine.inkMuted),
               ),
               if (linkedIn != null || github != null)
                 Wrap(
@@ -88,12 +83,7 @@ class SiteFooter extends StatelessWidget {
                   ),
                   child: Text(
                     l10n.footerBackToTop,
-                    style: GoogleFonts.spaceMono(
-                      fontSize: 11,
-                      letterSpacing: 1.4,
-                      fontWeight: FontWeight.w700,
-                      decoration: TextDecoration.none,
-                    ),
+                    style: AppTypography.label(context, fontSize: 11, letterSpacing: 1.4, fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
@@ -164,13 +154,7 @@ class _FooterSocialChipState extends State<_FooterSocialChip> {
                 const SizedBox(width: 6),
                 Text(
                   widget.label,
-                  style: GoogleFonts.spaceMono(
-                    fontSize: 10,
-                    letterSpacing: 1.2,
-                    fontWeight: FontWeight.w700,
-                    color: fg,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.2, fontWeight: FontWeight.w700, color: fg),
                 ),
               ],
             ),

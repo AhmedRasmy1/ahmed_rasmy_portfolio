@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
 import 'package:ahmed_rasmy_portfolio/core/l10n/case_study_copy.dart';
@@ -60,12 +60,7 @@ class CaseSystemSection extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             credit,
-            style: GoogleFonts.spaceMono(
-              fontSize: 11,
-              letterSpacing: 0.8,
-              color: zine.inkMuted,
-              decoration: TextDecoration.none,
-            ),
+            style: AppTypography.label(context, fontSize: 11, letterSpacing: 0.8, color: zine.inkMuted),
           ),
         ],
         if (study.designTiers.isNotEmpty) ...[
@@ -90,11 +85,7 @@ class CaseSystemSection extends StatelessWidget {
                       Text(
                         CaseStudyCopy.t(l10n, study.designTiers[i].titleKey),
                         softWrap: true,
-                        style: GoogleFonts.bebasNeue(
-                          fontSize: 20,
-                          color: AppColors.navyInk,
-                          decoration: TextDecoration.none,
-                        ),
+                        style: AppTypography.headline(context, fontSize: 20, color: AppColors.navyInk),
                       ),
                       const SizedBox(height: 8),
                       Wrap(
@@ -116,13 +107,7 @@ class CaseSystemSection extends StatelessWidget {
                               child: Text(
                                 CaseStudyCopy.t(l10n, chip),
                                 softWrap: true,
-                                style: GoogleFonts.spaceMono(
-                                  fontSize: 9,
-                                  letterSpacing: 0.6,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.navyInk,
-                                  decoration: TextDecoration.none,
-                                ),
+                                style: AppTypography.label(context, fontSize: 9, letterSpacing: 0.6, fontWeight: FontWeight.w700, color: AppColors.navyInk),
                               ),
                             ),
                         ],
@@ -186,20 +171,12 @@ class CaseSystemSection extends StatelessWidget {
                                 ),
                                 softWrap: true,
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.kalam(
-                                  fontSize: 13,
-                                  color: AppColors.navyInk,
-                                  decoration: TextDecoration.none,
-                                ),
+                                style: AppTypography.note(context, fontSize: 13, color: AppColors.navyInk),
                               ),
                               Text(
                                 study.colorSwatches[i].hex,
                                 softWrap: true,
-                                style: GoogleFonts.spaceMono(
-                                  fontSize: 10,
-                                  color: AppColors.flutterBlue,
-                                  decoration: TextDecoration.none,
-                                ),
+                                style: AppTypography.label(context, fontSize: 10, color: AppColors.flutterBlue),
                               ),
                             ],
                           ),
@@ -343,33 +320,20 @@ class _TypeCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              label.toUpperCase(),
+              context.caps(label),
               softWrap: true,
-              style: GoogleFonts.spaceMono(
-                fontSize: 10,
-                letterSpacing: 1.4,
-                fontWeight: FontWeight.w700,
-                color: AppColors.flutterBlue,
-                decoration: TextDecoration.none,
-              ),
+              style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: AppColors.flutterBlue),
             ),
             const SizedBox(height: 12),
             Text(
               sample,
               softWrap: true,
-              style: specimen.rtl
-                  ? GoogleFonts.reemKufi(
-                      fontSize: 22,
-                      height: 1.35,
-                      color: AppColors.navyInk,
-                      decoration: TextDecoration.none,
-                    )
-                  : GoogleFonts.bebasNeue(
-                      fontSize: 26,
-                      height: 1.2,
-                      color: AppColors.navyInk,
-                      decoration: TextDecoration.none,
-                    ),
+              style: AppTypography.headlineFor(
+                arabic: specimen.rtl,
+                fontSize: specimen.rtl ? 22 : 26,
+                height: specimen.rtl ? 1.35 : 1.2,
+                color: AppColors.navyInk,
+              ),
             ),
           ],
         ),

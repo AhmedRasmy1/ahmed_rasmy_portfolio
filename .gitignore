@@ -43,3 +43,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Raw inbound assets (WhatsApp names / EXIF) — never commit
+/incoming_assets/
+
+# Local screenshot privacy review (may list personal data)
+/docs/SCREENSHOT_REVIEW.md

@@ -161,6 +161,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get linkPlayStore => 'Play Store';
 
   @override
+  String get linkAppStore => 'App Store';
+
+  @override
   String get linkWebsite => 'Website';
 
   @override
@@ -370,7 +373,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get expGatherUpB4 => 'Real-time chat and responsive cross-platform UI';
 
   @override
-  String get expGatherUpB5 => 'Built Host & Venue Mode end-to-end (Flutter)';
+  String get expGatherUpB5 =>
+      'Built Host & Venue modes end-to-end (Flutter), live on Android and iOS.';
 
   @override
   String get expCenterlyRole => 'Intern Flutter Developer';

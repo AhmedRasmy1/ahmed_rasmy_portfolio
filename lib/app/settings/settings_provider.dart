@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/settings/app_settings.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/portfolio_fonts.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/app_constants.dart';
 
 final sharedPreferencesProvider = Provider<SharedPreferences>((ref) {
@@ -56,6 +57,8 @@ class SettingsNotifier extends Notifier<AppSettings> {
 
     state = state.copyWith(locale: Locale(code));
     await _prefs.setString(_localeKey, code);
+    // Ensure target locale fonts are loaded before the frame that paints them.
+    await PortfolioFonts.loadForLocale(arabic: code == 'ar');
   }
 
   static ThemeMode _decodeThemeMode(String? raw) {

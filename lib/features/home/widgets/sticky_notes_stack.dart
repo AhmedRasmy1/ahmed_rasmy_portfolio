@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/l10n/generated/app_localizations.dart';
+import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/core/animation/idle_ticker.dart';
 import 'package:ahmed_rasmy_portfolio/core/constants/portfolio_data.dart';
@@ -51,23 +51,12 @@ class StickyNotesStack extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   l10n.statCardLabel,
-                  style: GoogleFonts.spaceMono(
-                    fontSize: 10,
-                    letterSpacing: 1.5,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.navyInk,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.5, fontWeight: FontWeight.w700, color: AppColors.navyInk),
                 ),
                 _CountUpStat(end: PortfolioData.shippedAppsCount),
                 Text(
                   l10n.statCardSub,
-                  style: GoogleFonts.spaceMono(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.flutterLightBlue,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.label(context, fontSize: 10, fontWeight: FontWeight.w700, color: AppColors.flutterLightBlue),
                 ),
               ],
             ),
@@ -99,23 +88,13 @@ class StickyNotesStack extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   l10n.flagshipLabel,
-                  style: GoogleFonts.spaceMono(
-                    fontSize: 10,
-                    letterSpacing: 1.4,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.navyInk,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.label(context, fontSize: 10, letterSpacing: 1.4, fontWeight: FontWeight.w700, color: AppColors.navyInk),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   l10n.flagshipValue,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.bebasNeue(
-                    fontSize: 26,
-                    color: AppColors.flutterBlue,
-                    decoration: TextDecoration.none,
-                  ),
+                  style: AppTypography.headline(context, fontSize: 26, color: AppColors.flutterBlue),
                 ),
               ],
             ),
@@ -196,13 +175,7 @@ class _OpenToWorkStickyState extends State<_OpenToWorkSticky> {
                       Text(
                         l10n.teachNote,
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.kalam(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                          height: 1.2,
-                          color: AppColors.navyInk,
-                          decoration: TextDecoration.none,
-                        ),
+                        style: AppTypography.note(context, fontSize: 15, fontWeight: FontWeight.w700, height: 1.2, color: AppColors.navyInk),
                       ),
                       const SizedBox(height: 6),
                       const Icon(
@@ -380,11 +353,7 @@ class _CountUpStat extends StatelessWidget {
       builder: (context, value, _) {
         return Text(
           '${value.round()}',
-          style: GoogleFonts.bebasNeue(
-            fontSize: 42,
-            color: AppColors.flutterLightBlue,
-            decoration: TextDecoration.none,
-          ),
+          style: AppTypography.headline(context, fontSize: 42, color: AppColors.flutterLightBlue),
         );
       },
     );

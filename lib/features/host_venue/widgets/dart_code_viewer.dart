@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:ahmed_rasmy_portfolio/app/theme/app_colors.dart';
 import 'package:ahmed_rasmy_portfolio/app/theme/app_typography.dart';
@@ -68,23 +67,13 @@ class DartCodeViewer extends StatelessWidget {
                           width: 12.0 + lineNoWidth * 8,
                           child: Text(
                             '${i + 1}'.padLeft(lineNoWidth),
-                            style: GoogleFonts.spaceMono(
-                              fontSize: 11,
-                              height: 1.45,
-                              color: AppColors.offWhite.withValues(alpha: 0.35),
-                              decoration: TextDecoration.none,
-                            ),
+                            style: AppTypography.label(context, fontSize: 11, height: 1.45, color: AppColors.offWhite.withValues(alpha: 0.35)),
                           ),
                         ),
                         const SizedBox(width: 10),
                         Text(
                           lines[i].isEmpty ? ' ' : lines[i],
-                          style: GoogleFonts.spaceMono(
-                            fontSize: 12,
-                            height: 1.45,
-                            color: AppColors.offWhite.withValues(alpha: 0.92),
-                            decoration: TextDecoration.none,
-                          ),
+                          style: AppTypography.label(context, fontSize: 12, height: 1.45, color: AppColors.offWhite.withValues(alpha: 0.92)),
                         ),
                       ],
                     ),
